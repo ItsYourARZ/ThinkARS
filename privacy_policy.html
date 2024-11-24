@@ -86,6 +86,14 @@
             color: #d0d0d0;
         }
 
+        header .icon {
+            margin-top: 20px;
+            padding: 15px;
+            text-align: left;
+            color: #b0b0b0;
+            font-size: 0.9em;
+        }
+
         /* Footer */
         footer {
             margin-top: 30px;
@@ -102,13 +110,32 @@
             font-weight: bold;
         }
 
+
         footer a:hover {
             text-decoration: underline;
+        }
+
+        a {
+            text-decoration: none; /* Remove underline from the link */
+        }
+        img {
+            width: 40px; /* Set icon size */
+            height: 40px;
+            transition: transform 0.3s; /* Smooth zoom effect */
+        }
+        img:hover {
+            transform: scale(1.1); /* Zoom effect on hover */
         }
     </style>
 </head>
 <body>
     <header>
+        <div class="icon">
+            <a href="index.html">
+                <img src="apple-touch-icon.png" alt="Home Icon">
+            </a>
+        </div>
+        
         <h1>Privacy Policy</h1>
         <p>Learn about our practices for collecting, using, and protecting your data.</p>
     </header>
