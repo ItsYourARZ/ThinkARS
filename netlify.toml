@@ -1,0 +1,9 @@
+[build]
+  functions = "netlify/functions" # Path to your functions directory
+  publish = "dist"               # Replace with your build output folder (e.g., dist or public)
+
+# Optional: Redirects if needed
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

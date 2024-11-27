@@ -8,7 +8,7 @@ exports.handler = async (event, context) => {
       service: 'gmail',
       auth: {
         user: 'founderofthinkars@gmail.com',
-        pass: '27November2024[TheCreatorIt'SyOuRaRRz]confidential',
+        pass: "27November2024[TheCreatorIt'SyOuRaRRz]confidential",
       },
     });
 
