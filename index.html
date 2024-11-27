@@ -257,60 +257,97 @@
         <p>Each project represents a new adventure in my journey with technology and design.</p>
         <p>I'm pleased for you to try my Security Application. I call it SPA, Have a look!</p>
         <p>Don't worry the file is safe, I assure you.</p>
-        <p><a href="https://drive.google.com/file/d/15pbRXZcKDOJuUyGpxtda7GAgtsDd36JD/view?usp=drive_link" target="_blank">Click here for SPA APK</a></p>
+        <p><a href="https://drive.google.com/file/d/15pbRXZcKDOJuUyGpxtda7GAgtsDd36JD/view?usp=drive_link" target="_blank" style="color: #00bcd4; font-weight: bold;">Download My Project SPA (.exe)</a></p>
       </div>
       <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
     </div>
 
-    <div class="section fade-in">
-      <a href="https://discord.com" class="discord-button" target="_blank">Join My Discord</a>
+    <div class="section fade-in" aria-labelledby="contact-me">
+      <h2 id="contact-me"><span class="highme">Contact Me</span></h2>
+      <p>Click below for contact options.</p>
+      <div class="hidden-info">
+        <p>Let's connect!</p>
+        <p>Reach out if you'd like to collaborate, ask questions, or just say hello.</p>
+        <p><strong>Join my community on Discord!</strong></p>
+        <a href="https://discord.gg/Qbjv8RKt" class="discord-button" target="_blank" aria-label="Join the It'sYourARZ community on Discord">Join the Community</a>
+      </div>
+      <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
     </div>
+    <div class="section fade-in" aria-labelledby="song">
+  <h2 id="about-me"><span class="highme">Song Section</span></h2>
+  <p>Click below to listen to a song.</p>
+  <div class="hidden-info">
+    <img src="https://source.boomplaymusic.com/group10/M00/07/01/a7f20c5dd7304b5393ada0c095cd8011_464_464.webp" alt="My Image" style="width: 150px; height: 150px; border-radius: 15%;" />
+    <p>Song Director - RJ Pasin</p>
+    <p>Song Name - Tourist </p>
+    <p>Song Composed Date - 4th January 2024 </p>
+    <button class="playPauseButton" id="playPauseButton" target="_blank" aria-label="Listen to the song.">Play the Song</button>
+  </div>
+  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
+</div>
 
-    <div class="section fade-in">
-      <button class="playPauseButton" onclick="toggleAudio()">Play Music</button>
-    </div>
+<audio id="backgroundMusic" loop>
+  <source src="https://www.dropbox.com/scl/fi/danev9k0s2ffvuxxlpxbw/Tourist.mp3?rlkey=9zaypu87cp6nx2kqbsba0npkq&st=csia9a15&raw=1" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
-    <footer>
-      <p>© 2024 It'sYourARZ. All Rights Reserved.</p>
-    </footer>
-  </main>
+  <footer>
+    <p>&copy; 2024 ThinkARS All Rights Reserved. | <a href='/privacy_policy'>Privacy Policy</a></p>
+  </footer>
 
   <script>
-    let sections = document.querySelectorAll('.section');
-    let progressBar = document.getElementById('progressBar');
+    function toggleInfo(link) {
+      const section = link.closest('.section');
+      section.classList.toggle("active");
+      link.textContent = section.classList.contains("active") ? "View Less" : "View More";
+    }
 
-    window.addEventListener('scroll', function () {
-      let scrollPosition = window.scrollY;
-      let windowHeight = window.innerHeight;
+    document.addEventListener("DOMContentLoaded", function() {
+      const sections = document.querySelectorAll(".fade-in");
 
-      sections.forEach((section) => {
-        let sectionPosition = section.getBoundingClientRect().top;
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+              entry.target.style.animation = "fadeUp 1s ease";
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
 
-        if (sectionPosition <= windowHeight * 0.8) {
-          section.classList.add('show');
-        }
+      sections.forEach(section => {
+        observer.observe(section);
       });
 
-      let progress = (scrollPosition / (document.documentElement.scrollHeight - windowHeight)) * 100;
-      progressBar.style.width = progress + '%';
+      document.body.style.opacity = 1;
     });
 
-    function toggleInfo(link) {
-      let hiddenInfo = link.previousElementSibling;
-      hiddenInfo.classList.toggle('active');
-      link.innerText = hiddenInfo.classList.contains('active') ? 'View Less' : 'View More';
-    }
+    window.addEventListener("scroll", function() {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPosition = window.scrollY;
+      const scrollPercentage = (scrollPosition / scrollHeight) * 100;
+      document.getElementById("progressBar").style.width = `${scrollPercentage}%`;
+    });
+   
+  document.addEventListener('DOMContentLoaded', () => {
+  let audioPlaying = false;
+  const audio = document.getElementById('backgroundMusic');
+  const playPauseButton = document.getElementById('playPauseButton');
 
-    function toggleAudio() {
-      let audio = new Audio('your-audio-file.mp3'); // Replace with your audio file URL
-      if (audio.paused) {
-        audio.play();
-        event.target.innerText = "Pause Music";
-      } else {
-        audio.pause();
-        event.target.innerText = "Play Music";
-      }
+  playPauseButton.addEventListener('click', function () {
+    if (audioPlaying) {
+      audio.pause();
+      playPauseButton.textContent = 'Play the Song';
+    } else {
+      audio.play();
+      playPauseButton.textContent = 'Pause the Song';
     }
+    audioPlaying = !audioPlaying;
+  });
+});
   </script>
 </body>
 </html>
