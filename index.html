@@ -15,6 +15,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <script src="https://www.google.com/recaptcha/api.js?render=6LfDZHsqAAAAAP6V0eAkhjX5xnRIkAsU03KVyC28"></script>
+
 
   <style>
     * {
@@ -286,6 +288,17 @@
   <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
 </div>
 
+<div class="section fade-in" aria-labelledby="verify">
+  <h2 id="verify"><span class="highme">Verify You're Human</span></h2>
+  <form id="recaptchaForm" action="verify_v3.php" method="POST" onsubmit="onSubmitForm(event)">
+    <p>Please verify your identity:</p>
+    <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+    <button type="submit" class="playPauseButton">Submit</button>
+  </form>
+</div>
+<script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY"></script>
+
+
 <audio id="backgroundMusic" loop>
   <source src="https://www.dropbox.com/scl/fi/danev9k0s2ffvuxxlpxbw/Tourist.mp3?rlkey=9zaypu87cp6nx2kqbsba0npkq&st=csia9a15&raw=1" type="audio/mpeg">
   Your browser does not support the audio element.
@@ -348,6 +361,18 @@
     audioPlaying = !audioPlaying;
   });
 });
+
+    function onSubmitForm(event) {
+    event.preventDefault(); // Prevent default form submission
+    grecaptcha.ready(function () {
+      grecaptcha.execute('6LfDZHsqAAAAAP6V0eAkhjX5xnRIkAsU03KVyC28', { action: 'submit' }).then(function (token) {
+        // Add the token to the form
+        const recaptchaResponse = document.getElementById('recaptchaResponse');
+        recaptchaResponse.value = token;
+        event.target.submit(); // Submit the form after adding the token
+      });
+    });
+  }
   </script>
 </body>
 </html>
