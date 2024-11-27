@@ -7,14 +7,14 @@ exports.handler = async (event, context) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'your-dummy-email@gmail.com',
-        pass: 'your-app-password',
+        user: 'founderofthinkars@gmail.com',
+        pass: '27November2024[TheCreatorIt'SyOuRaRRz]confidential',
       },
     });
 
     // Email to User
     await transporter.sendMail({
-      from: 'your-dummy-email@gmail.com',
+      from: 'founderofthinkars@gmail.com',
       to: email,
       subject: `Thank you, ${name}!`,
       text: `We have received your message: "${message}"`,
@@ -22,8 +22,8 @@ exports.handler = async (event, context) => {
 
     // Email to Admin
     await transporter.sendMail({
-      from: 'your-dummy-email@gmail.com',
-      to: 'your-admin-email@gmail.com',
+      from: 'founderofthinkars@gmail.com',
+      to: 'itsyourars@gmail.com',
       subject: `New message from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
     });
