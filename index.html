@@ -362,14 +362,20 @@
   });
 });
 
-    function onSubmitForm(event) {
-    event.preventDefault(); // Prevent default form submission
+function onSubmitForm(event) {
+    event.preventDefault();
+
     grecaptcha.ready(function () {
-      grecaptcha.execute('6LfDZHsqAAAAAP6V0eAkhjX5xnRIkAsU03KVyC28', { action: 'submit' }).then(function (token) {
-        // Add the token to the form
-        const recaptchaResponse = document.getElementById('recaptchaResponse');
-        recaptchaResponse.value = token;
-        event.target.submit(); // Submit the form after adding the token
+      grecaptcha.execute("6LfDZHsqAAAAAP6V0eAkhjX5xnRIkAsU03KVyC28", { action: "submit" }).then(function (token) {
+        fetch("/.netlify/functions/verifyRecaptcha", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ recaptchaResponse: token }),
+        })
+          .then((response) => response.json())
+          .then((data) => alert(data.message));
       });
     });
   }
