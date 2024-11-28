@@ -250,7 +250,7 @@ input, textarea {
 button {
   display: block;
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   background: #00bcd4;
   color: white;
   border: none;
@@ -263,7 +263,6 @@ button {
 button:hover {
   background: #008c99;
 }
-
   </style>
 </head>
 <body onload="document.body.style.opacity = 1;">
@@ -326,12 +325,10 @@ button:hover {
 </div>
 
 <div class="section fade-in" aria-labelledby="song">
-  <h2 id="about-me"><span class="highme">Get in touch!</span></h2>
+  <h2 id="touch"><span class="highme">Get in touch!</span></h2>
   <p>Click to get in touch with the owner of this web.</p>
   <div class="hidden-info">
-    <p>Fill out the form below to get in touch:</p>
   <form action="https://formsubmit.co/itsyourars@gmail.com" method="POST">
-    <!-- Auto-Response -->
     <input type="hidden" name="_autoresponse" value="Thank you for reaching out! We have received your message and will get back to you soon.">
 
     <label for="name">Name:</label>
@@ -341,7 +338,7 @@ button:hover {
     <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
     <label for="message">Message:</label>
-    <textarea id="message" name="message" placeholder="Your message" rows="4" required></textarea>
+    <textarea id="message" name="message" placeholder="Your message" rows="1" required></textarea>
 
     <button type="submit">Send</button>
   </form>
