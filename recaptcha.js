@@ -15,7 +15,7 @@ document.getElementById('submitButton').addEventListener('click', () => {
 });
 
 function sendToServer(token) {
-    fetch('verify.php', {
+    fetch('script.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ recaptchaResponse: token })
