@@ -425,8 +425,10 @@ body {
   <h2 id="recaptcha"><span class="highme">ReCaptcha</span></h2>
   <p>Attempt the Captcha to prove that you are not a robot.</p>
   <div class="hidden-info">
-    <div id="recaptcha" class="g-recaptcha" data-sitekey="6LdgKp0qAAAAAIrB5UlBbRmmZBkJefP1_ccbkth_" data-callback="verifyCallback"></div>
-    <button id="submitButton" disabled>Proceed</button>
+    <form action="script.php" method="POST">
+      <!-- reCAPTCHA widget -->
+      <div class="g-recaptcha" data-sitekey="6LdgKp0qAAAAAIrB5UlBbRmmZBkJefP1_ccbkth_"></div>
+      <button type="submit">Proceed</button>
   </div>
   <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
 </div>
@@ -440,7 +442,6 @@ body {
     <p>&copy; 2024 ThinkARS All Rights Reserved. | <a href='/privacy_policy'>Privacy Policy</a></p>
   </footer>
 
-  <script src="recaptcha.js"></script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script>
     function toggleInfo(link) {

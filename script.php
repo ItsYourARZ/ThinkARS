@@ -1,29 +1,44 @@
 <?php
-$secretKey = '6LdgKp0qAAAAANytDJ5K3-mk83M3iiuOMDHw26TK';
-$recaptchaResponse = $_POST['g-recaptcha-response'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Replace with your Google reCAPTCHA Secret Key
+    $secretKey = '6LdgKp0qAAAAANytDJ5K3-mk83M3iiuOMDHw26TK';
 
-// Verify with Google's API
-$url = 'https://www.google.com/recaptcha/api/siteverify';
-$data = [
-    'secret' => $secretKey,
-    'response' => $recaptchaResponse,
-    'remoteip' => $_SERVER['REMOTE_ADDR']
-];
+    // Get the reCAPTCHA response from the POST data
+    $recaptchaResponse = $_POST['g-recaptcha-response'];
 
-$options = [
-    'http' => [
-        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-        'method'  => 'POST',
-        'content' => http_build_query($data),
-    ],
-];
-$context = stream_context_create($options);
-$result = file_get_contents($url, false, $context);
-$response = json_decode($result);
+    // Verify if the response token exists
+    if (empty($recaptchaResponse)) {
+        die('Please complete the reCAPTCHA.');
+    }
 
-if ($response->success) {
-    echo "Verification successful!";
+    // Send a POST request to Google's API for verification
+    $url = 'https://www.google.com/recaptcha/api/siteverify';
+    $data = [
+        'secret' => $secretKey,
+        'response' => $recaptchaResponse,
+        'remoteip' => $_SERVER['REMOTE_ADDR'] // Optional, but recommended
+    ];
+
+    // Use cURL to send the request
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    // Decode the JSON response
+    $responseData = json_decode($response);
+
+    // Check if the reCAPTCHA was successfully validated
+    if ($responseData->success) {
+        echo "Verification successful! You are not a robot.";
+    } else {
+        echo "Verification failed. Please try again.";
+    }
 } else {
-    echo "Verification failed!";
+    echo "Invalid request method.";
 }
 ?>
