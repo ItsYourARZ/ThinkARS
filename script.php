@@ -1,19 +1,29 @@
 <?php
-// Get the JSON payload
-$input = file_get_contents('php://input');
-$data = json_decode($input, true);
-
-// Extract the reCAPTCHA response token
-$recaptchaResponse = $data['recaptchaResponse'] ?? '';
-
-// Your secret key
 $secretKey = '6LdgKp0qAAAAANytDJ5K3-mk83M3iiuOMDHw26TK';
+$recaptchaResponse = $_POST['g-recaptcha-response'];
 
-// Verify the response with Google's API
+// Verify with Google's API
 $url = 'https://www.google.com/recaptcha/api/siteverify';
-$response = file_get_contents($url . '?secret=' . $secretKey . '&response=' . $recaptchaResponse);
-$responseData = json_decode($response, true);
+$data = [
+    'secret' => $secretKey,
+    'response' => $recaptchaResponse,
+    'remoteip' => $_SERVER['REMOTE_ADDR']
+];
 
-// Return the verification result as JSON
-header('Content-Type: application/json');
-echo json_encode($responseData);
+$options = [
+    'http' => [
+        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+        'method'  => 'POST',
+        'content' => http_build_query($data),
+    ],
+];
+$context = stream_context_create($options);
+$result = file_get_contents($url, false, $context);
+$response = json_decode($result);
+
+if ($response->success) {
+    echo "Verification successful!";
+} else {
+    echo "Verification failed!";
+}
+?>
