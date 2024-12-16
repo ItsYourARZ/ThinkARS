@@ -1,32 +1,30 @@
-// Callback function when reCAPTCHA is solved
-function verifyCallback(response) {
-    console.log("reCAPTCHA verified with response:", response);
+document.getElementById('recaptcha-form').addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent default form submission
 
-    // Enable the button after successful verification
-    document.getElementById('submitButton').disabled = false;
+    // Get the reCAPTCHA response
+    const recaptchaResponse = grecaptcha.getResponse();
 
-    // Optionally send the response token to the server using AJAX
-    // You can call your backend API here
-}
+    if (!recaptchaResponse) {
+        alert("Please complete the reCAPTCHA.");
+        return;
+    }
 
-// Example button click handling
-document.getElementById('submitButton').addEventListener('click', () => {
-    alert("Action allowed! reCAPTCHA passed.");
-});
+    try {
+        // Send the reCAPTCHA response to the Netlify Function
+        const response = await fetch('/.netlify/functions/recaptcha-verify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ recaptchaResponse }),
+        });
 
-function sendToServer(token) {
-    fetch('script.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ recaptchaResponse: token })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert("Server-side verification passed!");
+        const result = await response.json();
+        if (response.ok) {
+            alert(result.message);
         } else {
-            alert("Server-side verification failed.");
+            alert(`Verification failed: ${result.message}`);
         }
-    })
-    .catch(error => console.error("Error verifying reCAPTCHA:", error));
-}
+    } catch (error) {
+        alert("An error occurred while verifying reCAPTCHA.");
+        console.error(error);
+    }
+});
