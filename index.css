@@ -253,9 +253,8 @@ width: 100%;
 height: 8%;
 z-index: 500;
 backdrop-filter: blur(12px); /* Increase blur for a softer frosted effect */
--webkit-backdrop-filter: blur(12px); /* Frosted glass effect for Safari */
+-webkit-backdrop-filter: blur(10000000px); /* Frosted glass effect for Safari */
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Softer shadow for more subtle depth */
-border-bottom: 1px solid rgba(82, 57, 210, 0.815); /* Lighter border */
 }
 
 .navbar {
