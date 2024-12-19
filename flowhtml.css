@@ -1,0 +1,29 @@
+.coder , #output-iframe { /* Style for the iframe */
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #fff;
+    color: #000000;
+    font-family: 'Roboto Condensed', sans-serif;
+    box-sizing: border-box;
+    height: 350px; /* Set a fixed height, or use a percentage */
+}
+
+#output-iframe {
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+.hidden-info-flowhtml {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.6s ease, opacity 0.6s ease;
+  }
+
+  .section.active .hidden-info-flowhtml {
+    max-height: 1000px;
+    opacity: 1;
+  }

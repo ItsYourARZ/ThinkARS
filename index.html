@@ -17,6 +17,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="index.css"/>
+  <link rel="stylesheet" href="flowhtml.css"/>
+
 </head>
 <body onload="document.body.style.opacity = 1;">
 
@@ -127,6 +129,17 @@
   <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
 </div>
 
+<div class="section fade-in" aria-labelledby="compiler">
+  <h2><span class="highme">HTML Compiler</span></h2>
+  <p>Check out the Compiler I made. I call it FlowHTML!</p>
+  <div class="hidden-info-flowhtml">
+    <textarea class="coder" id="code" placeholder="Enter your HTML Code here..."></textarea>
+    <iframe id="output-iframe"></iframe> 
+    <button onclick="runHTML()">Run Code</button>
+  </div>
+  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
+</div>
+
 <audio id="backgroundMusic" loop>
   <source src="https://www.dropbox.com/scl/fi/danev9k0s2ffvuxxlpxbw/Tourist.mp3?rlkey=9zaypu87cp6nx2kqbsba0npkq&st=csia9a15&raw=1" type="audio/mpeg">
   Your browser does not support the audio element.
@@ -139,5 +152,6 @@
   <script src="recaptcha.js" async defer></script> 
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script src="index.js"></script>
+  <script src="flowhtml.js"></script>
 </body>
 </html>
