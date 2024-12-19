@@ -163,7 +163,7 @@
     .discord-button:hover {
       background-color: #4754C8;
     }
-
+   
     .playPauseButton {
       margin-top: 20px;
       display: inline-block;
@@ -341,7 +341,7 @@ body {
         </nav>
     </div>
   </header>
-
+  
     <div id="progressBarContainer">
     <div id="progressBar"></div>
   </div>
@@ -421,6 +421,18 @@ body {
   <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
 </div>
 
+<div class="section fade-in" aria-labelledby="form">
+  <h2 id="recaptcha"><span class="highme">ReCaptcha</span></h2>
+  <p>Attempt the Captcha to prove that you are not a robot.</p>
+  <div class="hidden-info">
+    <form id="recaptcha-form">
+      <div class="g-recaptcha" data-sitekey="6LdgKp0qAAAAAIrB5UlBbRmmZBkJefP1_ccbkth_"></div>
+      <button type="submit">Submit</button>
+  </form>
+  </div>
+  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
+</div>
+
 <audio id="backgroundMusic" loop>
   <source src="https://www.dropbox.com/scl/fi/danev9k0s2ffvuxxlpxbw/Tourist.mp3?rlkey=9zaypu87cp6nx2kqbsba0npkq&st=csia9a15&raw=1" type="audio/mpeg">
   Your browser does not support the audio element.
@@ -430,6 +442,8 @@ body {
     <p>&copy; 2024 ThinkARS All Rights Reserved. | <a href='/privacy_policy'>Privacy Policy</a></p>
   </footer>
 
+  <script src="recaptcha.js" async defer></script> 
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script>
     function toggleInfo(link) {
       const section = link.closest('.section');
@@ -466,7 +480,7 @@ body {
       const scrollPercentage = (scrollPosition / scrollHeight) * 100;
       document.getElementById("progressBar").style.width = `${scrollPercentage}%`;
     });
-
+   
   document.addEventListener('DOMContentLoaded', () => {
   let audioPlaying = false;
   const audio = document.getElementById('backgroundMusic');
