@@ -1,42 +1,31 @@
-document
-  .getElementById("recaptcha-form")
-  .addEventListener("submit", async (event) => {
-    event.preventDefault();
+const siteKey = "6LdDOqIqAAAAAL4mV96yLBJLrVGkKP1rFuYYTapZ"; // Replace with your Site Key
 
-    // Ensure reCAPTCHA library is loaded
-    if (typeof grecaptcha === "undefined") {
-      console.error("reCAPTCHA library not loaded.");
-      alert("Failed to load reCAPTCHA. Please refresh the page.");
-      return;
-    }
+    document.getElementById("verifyButton").addEventListener("click", async () => {
+      const resultElement = document.getElementById("result");
 
-    // Get the reCAPTCHA response
-    const recaptchaResponse = grecaptcha.getResponse();
+      try {
+        // Execute reCAPTCHA
+        const token = await grecaptcha.execute(siteKey, { action: "verify" });
+        console.log("reCAPTCHA Token:", token);
 
-    console.log("Client reCAPTCHA Response:", recaptchaResponse);
+        // Send token to serverless function
+        const response = await fetch("/.netlify/functions/recaptcha-verify.js", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ token }),
+        });
 
-    if (!recaptchaResponse) {
-      alert("Please complete the reCAPTCHA.");
-      return;
-    }
+        const result = await response.json();
 
-    try {
-      const response = await fetch("/.netlify/functions/recaptcha-verify", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ recaptchaResponse }),
-      });
-
-      const result = await response.json();
-      console.log("Server Response:", result);
-
-      if (response.ok) {
-        alert(result.message);
-      } else {
-        alert(`Verification failed: ${result.message}`);
+        if (response.ok) {
+          resultElement.textContent = `Verification successful! Score: ${result.score}`;
+        } else {
+          resultElement.textContent = `Verification failed: ${result.error}`;
+        }
+      } catch (error) {
+        console.error("Error verifying reCAPTCHA:", error);
+        resultElement.textContent = "An error occurred while verifying.";
       }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("An error occurred while verifying reCAPTCHA.");
-    }
-  });
+    });

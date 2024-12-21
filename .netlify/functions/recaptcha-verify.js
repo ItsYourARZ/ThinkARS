@@ -1,55 +1,41 @@
-const https = require('https');
+const fetch = require("node-fetch");
 
 exports.handler = async (event) => {
-    if (event.httpMethod !== 'POST') {
-        return {
-            statusCode: 405,
-            body: JSON.stringify({ message: 'Method Not Allowed' }),
-        };
-    }
+  if (event.httpMethod !== "POST") {
+    return {
+      statusCode: 405,
+      body: JSON.stringify({ error: "Method not allowed" }),
+    };
+  }
 
-    const secretKey = '6LdgKp0qAAAAANytDJ5K3-mk83M3iiuOMDHw26TK';
-    const { recaptchaResponse } = JSON.parse(event.body);
+  const secretKey = process.env.RECAPTCHA_SECRET_KEY; // Ensure this is set in Netlify Environment Variables
+  const { token } = JSON.parse(event.body);
+  const verifyUrl = "https://www.google.com/recaptcha/api/siteverify";
 
-    if (!recaptchaResponse) {
-        return {
-            statusCode: 400,
-            body: JSON.stringify({ message: 'Missing reCAPTCHA response.' }),
-        };
-    }
-
-    console.log('reCAPTCHA Response Token:', recaptchaResponse);
-
-    const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${recaptchaResponse}`;
-
-    return new Promise((resolve, reject) => {
-        https.get(verificationUrl, (res) => {
-            let data = '';
-            res.on('data', (chunk) => (data += chunk));
-            res.on('end', () => {
-                console.log('Google reCAPTCHA API Response:', data);
-                const verificationData = JSON.parse(data);
-
-                if (verificationData.success) {
-                    resolve({
-                        statusCode: 200,
-                        body: JSON.stringify({ message: 'Verification successful!' }),
-                    });
-                } else {
-                    resolve({
-                        statusCode: 400,
-                        body: JSON.stringify({
-                            message: 'Verification failed.',
-                            errors: verificationData['error-codes'],
-                        }),
-                    });
-                }
-            });
-        }).on('error', (err) => {
-            reject({
-                statusCode: 500,
-                body: JSON.stringify({ message: 'Internal Server Error', error: err.message }),
-            });
-        });
+  try {
+    const response = await fetch(verifyUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `secret=${secretKey}&response=${token}`,
     });
+
+    const data = await response.json();
+
+    if (data.success && data.score > 0.5) {
+      return {
+        statusCode: 200,
+        body: JSON.stringify({ message: "Verification successful", score: data.score }),
+      };
+    } else {
+      return {
+        statusCode: 403,
+        body: JSON.stringify({ error: "Verification failed", score: data.score }),
+      };
+    }
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: "Server error" }),
+    };
+  }
 };
