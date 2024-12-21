@@ -119,13 +119,14 @@
   <h2 id="recaptcha"><span class="highme">Are you a Robot?</span></h2>
   <p>Attempt the Captcha to prove that you are not a robot.</p>
   <div class="hidden-info">
-    <form id="recaptcha-form">
-      <div style="text-align: center;">
-       <div class="g-recaptcha" data-sitekey="6LdgKp0qAAAAAIrB5UlBbRmmZBkJefP1_ccbkth_" style="display: inline-block;"></div>
+    <div id="recaptcha-container" style="text-align: center;">
+      <div class="g-recaptcha" 
+           data-sitekey="6LdgKp0qAAAAAIrB5UlBbRmmZBkJefP1_ccbkth_" 
+           data-callback="onRecaptchaSuccess">
       </div>
-      <button class="discord-button" type="submit">Submit</button>
-  </form>
+      <p id="message" style="margin-top: 20px; font-size: 18px;"></p>
   </div>
+      <button class="discord-button" type="submit">Submit</button>
   <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
 </div>
 

@@ -1,42 +1,25 @@
-document
-  .getElementById("recaptcha-form")
-  .addEventListener("submit", async (event) => {
-    event.preventDefault();
+// Check if the user has already verified reCAPTCHA
+if (localStorage.getItem("recaptchaVerified") === "true") {
+  document.getElementById("recaptcha-container").style.display = "none";
+  document.getElementById("message").textContent = "You're verified!";
+}
 
-    // Ensure reCAPTCHA library is loaded
-    if (typeof grecaptcha === "undefined") {
-      console.error("reCAPTCHA library not loaded.");
-      alert("Failed to load reCAPTCHA. Please refresh the page.");
-      return;
-    }
-
-    // Get the reCAPTCHA response
-    const recaptchaResponse = grecaptcha.getResponse();
-
-    console.log("Client reCAPTCHA Response:", recaptchaResponse);
-
-    if (!recaptchaResponse) {
-      alert("Please complete the reCAPTCHA.");
-      return;
-    }
-
-    try {
-      const response = await fetch("/.netlify/functions/recaptcha-verify", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ recaptchaResponse }),
-      });
-
-      const result = await response.json();
-      console.log("Server Response:", result);
-
-      if (response.ok) {
-        alert(result.message);
+// Function triggered when reCAPTCHA is solved
+function onRecaptchaSuccess(token) {
+  fetch("/.netlify/functions/verify-recaptcha", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ token }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        localStorage.setItem("recaptchaVerified", "true");
+        document.getElementById("recaptcha-container").style.display = "none";
+        document.getElementById("message").textContent = "You're verified!";
       } else {
-        alert(`Verification failed: ${result.message}`);
+        document.getElementById("message").textContent =
+          "Verification failed. Please try again.";
       }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("An error occurred while verifying reCAPTCHA.");
-    }
-  });
+    });
+}
