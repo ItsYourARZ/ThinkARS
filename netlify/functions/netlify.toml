@@ -1,5 +1,0 @@
-[build]
-  functions = "netlify/functions"
-
-[functions.environment]
-  RECAPTCHA_SECRET_KEY = "6LdDOqIqAAAAALSk_QWSZSK9Gfn5b8iz-clRwc0Q"

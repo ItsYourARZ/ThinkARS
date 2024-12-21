@@ -26,7 +26,7 @@ document.getElementById("recaptchaButton").addEventListener("click", async () =>
 // Function to send token to the server for verification
 async function verifyRecaptchaToken(token) {
   try {
-    const response = await fetch("/.netlify/functions/recaptcha-verify", {
+    const response = await fetch("/.netlify/functions/recaptcha-verify.js", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
