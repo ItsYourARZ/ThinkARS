@@ -1,31 +1,23 @@
-const siteKey = "6LdDOqIqAAAAAL4mV96yLBJLrVGkKP1rFuYYTapZ"; // Replace with your Site Key
+const siteKey = "6LdDOqIqAAAAAL4mV96yLBJLrVGkKP1rFuYYTapZ"; // Replace with your reCAPTCHA Site Key
 
-    document.getElementById("verifyButton").addEventListener("click", async () => {
-      const resultElement = document.getElementById("result");
+document.getElementById("recaptchaButton").addEventListener("click", async () => {
+  const resultElement = document.getElementById("result");
 
-      try {
-        // Execute reCAPTCHA
-        const token = await grecaptcha.execute(siteKey, { action: "verify" });
-        console.log("reCAPTCHA Token:", token);
+  try {
+    // Execute reCAPTCHA
+    const token = await grecaptcha.execute(siteKey, { action: "submit" });
 
-        // Send token to serverless function
-        const response = await fetch("/.netlify/functions/recaptcha-verify.js", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ token }),
-        });
+    // Call the verification function
+    const verificationResult = await verifyRecaptchaToken(token);
 
-        const result = await response.json();
-
-        if (response.ok) {
-          resultElement.textContent = `Verification successful! Score: ${result.score}`;
-        } else {
-          resultElement.textContent = `Verification failed: ${result.error}`;
-        }
-      } catch (error) {
-        console.error("Error verifying reCAPTCHA:", error);
-        resultElement.textContent = "An error occurred while verifying.";
-      }
-    });
+    // Display the result
+    if (verificationResult.success) {
+      resultElement.textContent = `Verification successful! Score: ${verificationResult.score}`;
+    } else {
+      resultElement.textContent = `Verification failed: ${verificationResult.error}`;
+    }
+  } catch (error) {
+    console.error("Error executing reCAPTCHA:", error);
+    resultElement.textContent = "An error occurred while verifying.";
+  }
+});
