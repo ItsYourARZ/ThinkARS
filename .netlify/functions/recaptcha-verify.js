@@ -8,7 +8,7 @@ exports.handler = async (event) => {
     };
   }
 
-  const secretKey = process.env.RECAPTCHA_SECRET_KEY; // Ensure this is set in Netlify Environment Variables
+  const secretKey = process.env.RECAPTCHA_SECRET_KEY; // Access the key from environment variables
   const { token } = JSON.parse(event.body);
   const verifyUrl = "https://www.google.com/recaptcha/api/siteverify";
 
