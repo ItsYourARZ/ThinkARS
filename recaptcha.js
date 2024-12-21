@@ -1,11 +1,10 @@
-const siteKey = "6LdDOqIqAAAAAL4mV96yLBJLrVGkKP1rFuYYTapZ"; // Replace with your reCAPTCHA Site Key
-
 document.getElementById("recaptchaButton").addEventListener("click", async () => {
   const resultElement = document.getElementById("result");
 
   try {
     // Execute reCAPTCHA
     const token = await grecaptcha.execute(siteKey, { action: "submit" });
+    console.log("reCAPTCHA Token:", token); // Check if the token is generated correctly
 
     // Call the verification function
     const verificationResult = await verifyRecaptchaToken(token);
