@@ -8,12 +8,9 @@ exports.handler = async (event) => {
     };
   }
 
-  // Replace with your actual reCAPTCHA secret key
-  const secretKey = "6LdDOqIqAAAAALSk_QWSZSK9Gfn5b8iz-clRwc0Q";  // <-- hard-code the secret key here
-
+  const secretKey = "y6LdDOqIqAAAAALSk_QWSZSK9Gfn5b8iz-clRwc0Q";  // Replace with your actual reCAPTCHA secret key
   const { token } = JSON.parse(event.body);
 
-  // Google reCAPTCHA API endpoint
   const verifyUrl = "https://www.google.com/recaptcha/api/siteverify";
 
   if (!token) {
@@ -24,8 +21,6 @@ exports.handler = async (event) => {
   }
 
   try {
-    console.log("Verifying token with Google reCAPTCHA API:", token);
-
     const response = await fetch(verifyUrl, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -33,7 +28,6 @@ exports.handler = async (event) => {
     });
 
     const data = await response.json();
-    console.log("Google reCAPTCHA API Response:", data);
 
     if (data.success && data.score > 0.5) {
       return {
@@ -47,7 +41,6 @@ exports.handler = async (event) => {
       };
     }
   } catch (error) {
-    console.error("Error during verification:", error);
     return {
       statusCode: 500,
       body: JSON.stringify({ success: false, error: error.message }),
