@@ -1,4 +1,4 @@
-document
+/** document
   .getElementById("recaptcha-form")
   .addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -39,4 +39,39 @@ document
       console.error("Error:", error);
       alert("An error occurred while verifying reCAPTCHA.");
     }
-  });
+  }); **/
+
+  document.addEventListener('DOMContentLoaded', () => {
+    if (document.cookie.includes('captchaVerified=true')) {
+        document.getElementById('captcha-container').innerHTML = 'Captcha already verified.';
+    }
+});
+
+function verifyCaptcha(event) {
+    event.preventDefault();
+    const captchaResponse = grecaptcha.getResponse();
+    if (captchaResponse) {
+        fetch('/.netlify/functions/recaptcha-verify', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ response: captchaResponse }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.success) {
+                    document.cookie = 'captchaVerified=true; path=/; max-age=86400'; // 1 day
+                    document.getElementById('captcha-container').innerHTML = 'Captcha verified!';
+                } else {
+                    alert('Captcha verification failed. Please try again.');
+                }
+            })
+            .catch((err) => {
+                console.error('Error:', err);
+                alert('Something went wrong. Please try again.');
+            });
+    } else {
+        alert('Please complete the CAPTCHA.');
+    }
+}
