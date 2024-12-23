@@ -54,6 +54,8 @@ exports.handler = async (event) => {
     });
 }; **/
 
+const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+
 const fetch = require('node-fetch');
 
 exports.handler = async (event) => {
@@ -65,7 +67,7 @@ exports.handler = async (event) => {
     }
 
     const { response } = JSON.parse(event.body);
-    const secretKey = '6Lc5VKIqAAAAACtOhKGuf_ER2r7Jcsqdig1oSC6N'; // Replace with your reCAPTCHA Secret Key
+    // const secretKey = '*'; // Replace with your reCAPTCHA Secret Key
     const verifyUrl = 'https://www.google.com/recaptcha/api/siteverify';
 
     try {
