@@ -21,6 +21,20 @@
 
 </head>
 <body onload="document.body.style.opacity = 1;">
+
+  <header>
+    <div class="navbar">
+        <h1 class="logo"><span class="highlight"><img src="android-chrome-192x192.png" alt="Main" style="width: 25px; height: 25px; border-radius: 15%;" />   It'sYourARZ</span></h1>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#about-me">About</a></li>
+            <li><a href="#my-projects">Projects</a></li>
+            <li><a href="#contact-me">Contact</a></li>
+            <li><a href="#song">Song</a></li>
+          </ul>
+        </nav>
+    </div>
+  </header>
   
     <div id="progressBarContainer">
     <div id="progressBar"></div>
@@ -105,22 +119,13 @@
   <h2 id="recaptcha"><span class="highme">Are you a Robot?</span></h2>
   <p>Attempt the Captcha to prove that you are not a robot.</p>
   <div class="hidden-info">
-  
-    <!--  <form id="recaptcha-form">
+    <form id="recaptcha-form">
       <div style="text-align: center;">
        <div class="g-recaptcha" data-sitekey="6Lc5VKIqAAAAAFL_EwCeK9-7ECjcUvX511X4bO76" style="display: inline-block;"></div>
       </div>
       <button class="discord-button" type="submit">Submit</button>
-    </form> -->
-
-    <div id="captcha-container">
-      <form id="captcha-form" onsubmit="verifyCaptcha(event)">
-          <div class="g-recaptcha" data-sitekey="6Lc5VKIqAAAAAFL_EwCeK9-7ECjcUvX511X4bO76"></div>
-          <button type="submit">Submit</button>
-      </form>
-    </div>
-
-  </div> 
+  </form>
+  </div>
   <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
 </div>
 

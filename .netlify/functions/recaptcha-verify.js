@@ -1,4 +1,4 @@
-/** const https = require('https');
+const https = require('https');
 
 exports.handler = async (event) => {
     if (event.httpMethod !== 'POST') {
@@ -52,55 +52,4 @@ exports.handler = async (event) => {
             });
         });
     });
-}; **/
-
-const secretKey = process.env.RECAPTCHA_SECRET_KEY;
-
-const fetch = require('node-fetch');
-
-exports.handler = async (event) => {
-    if (event.httpMethod !== 'POST') {
-        return {
-            statusCode: 405,
-            body: JSON.stringify({ error: 'Method not allowed' }),
-        };
-    }
-
-    const { response } = JSON.parse(event.body);
-    // const secretKey = '*'; // Replace with your reCAPTCHA Secret Key
-    const verifyUrl = 'https://www.google.com/recaptcha/api/siteverify';
-
-    try {
-        const verifyResponse = await fetch(verifyUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: new URLSearchParams({
-                secret: secretKey,
-                response,
-            }),
-        });
-
-        const verifyResult = await verifyResponse.json();
-
-        if (verifyResult.success) {
-            return {
-                statusCode: 200,
-                body: JSON.stringify({ success: true }),
-            };
-        } else {
-            return {
-                statusCode: 400,
-                body: JSON.stringify({ success: false, error: 'Verification failed' }),
-            };
-        }
-    } catch (error) {
-        console.error('Error verifying reCAPTCHA:', error);
-        return {
-            statusCode: 500,
-            body: JSON.stringify({ success: false, error: 'Internal server error' }),
-        };
-    }
 };
-
