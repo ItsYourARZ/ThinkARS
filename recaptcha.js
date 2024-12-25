@@ -1,7 +1,7 @@
 document
   .getElementById("recaptcha-form")
   .addEventListener("submit", async (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Prevent default form submission
 
     // Ensure reCAPTCHA library is loaded
     if (typeof grecaptcha === "undefined") {
@@ -32,6 +32,7 @@ document
 
       if (response.ok) {
         alert(result.message);
+        document.getElementById("recaptcha-form").submit(); // Automatically submit the form
       } else {
         alert(`Verification failed: ${result.message}`);
       }
@@ -40,3 +41,9 @@ document
       alert("An error occurred while verifying reCAPTCHA.");
     }
   });
+
+// Function called when reCAPTCHA succeeds
+function onRecaptchaSuccess() {
+  console.log("reCAPTCHA completed successfully.");
+  document.getElementById("recaptcha-form").submit(); // Automatically submit the form
+}
