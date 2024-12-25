@@ -1,4 +1,4 @@
-let recaptchaToken = null; // Store the reCAPTCHA token
+/** let recaptchaToken = null; // Store the reCAPTCHA token
 
 // Function called when reCAPTCHA succeeds
 function onRecaptchaSuccess(token) {
@@ -55,4 +55,73 @@ document
       console.error("Error:", error);
       alert("An error occurred while verifying reCAPTCHA.");
     }
-  });
+  }); **/
+
+  // Check if the user has already passed reCAPTCHA (cookie exists)
+  window.onload = function () {
+    const recaptchaVerified = getCookie('recaptcha_verified');
+    if (recaptchaVerified) {
+        // Manually mark the reCAPTCHA as verified by showing the tick
+        document.querySelector('.g-recaptcha').style.display = 'none'; // Hide the widget
+        // Optionally, you can show a custom message or indicate the user is verified
+        console.log('User already verified via reCAPTCHA');
+    }
+};
+
+// Callback function when reCAPTCHA is successfully completed
+function onRecaptchaSuccess(response) {
+    if (response) {
+        // Set a cookie to remember that the user passed the reCAPTCHA
+        setCookie('recaptcha_verified', 'true', 7); // 7 days expiration
+        // Optionally, you can send the response to your Netlify function or server for verification
+        verifyRecaptcha(response); // If you want to verify server-side as well
+    }
+}
+
+// Function to send reCAPTCHA response to Netlify function for verification (optional)
+async function verifyRecaptcha(recaptchaResponse) {
+    try {
+        const res = await fetch('/.netlify/functions/verify-recaptcha', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ recaptchaResponse })
+        });
+
+        const data = await res.json();
+        if (data.success) {
+            console.log('reCAPTCHA verified server-side!');
+        } else {
+            console.log('reCAPTCHA verification failed.');
+        }
+    } catch (error) {
+        console.error('Error verifying reCAPTCHA:', error);
+    }
+}
+
+// Function to set a cookie
+function setCookie(name, value, days) {
+    let date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // Expiry time
+    let expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+// Function to get a cookie value by name
+function getCookie(name) {
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i].trim();
+        if (c.indexOf(nameEQ) === 0) {
+            return c.substring(nameEQ.length, c.length);
+        }
+    }
+    return null;
+}
+
+// Function to delete a cookie (e.g., when the user decides to log out)
+function deleteCookie(name) {
+    setCookie(name, "", -1); // Set expiration to past date to delete the cookie
+}
