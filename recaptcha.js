@@ -61,9 +61,9 @@ document
   window.onload = function () {
     const recaptchaVerified = getCookie('recaptcha_verified');
     if (recaptchaVerified) {
-        // Manually mark the reCAPTCHA as verified by showing the tick
+        // Show the message instead of the reCAPTCHA widget
         document.querySelector('.g-recaptcha').style.display = 'none'; // Hide the widget
-        // Optionally, you can show a custom message or indicate the user is verified
+        document.getElementById('recaptcha-message').style.display = 'block'; // Show the message
         console.log('User already verified via reCAPTCHA');
     }
 };
