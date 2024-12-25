@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+/* Full-Width Cookie Bar with Frosted Glass Effect */
+.wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1); /* Transparent frosted glass */
+  backdrop-filter: blur(15px); /* Glassy effect */
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  transition: opacity 0.3s ease-in-out;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Hide the consent bar */
+.wrapper.hide {
+  display: none;
+}
+
+/* Cookie Logo */
+.wrapper img {
+  width: 50px; /* Larger cookie logo */
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+
+.wrapper img:hover {
+  transform: scale(1.1);
+}
+
+/* Content inside the wrapper */
+.content {
+  flex: 1;
+}
+
+header {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+p {
+  font-size: 12px;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+/* Buttons container */
+.buttons {
+  display: flex;
+  gap: 15px;
+}
+
+/* "I understand" button */
+button.item {
+  padding: 5px 12px; /* Small button */
+  background-color: #6c63ff; /* Purple color */
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+button.item:hover {
+  background-color: #5748d3; /* Darker purple on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+button.item:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.5); /* Focus ring */
+}
+
+/* "Learn more" link styling */
+.buttons a.item {
+  color: #6c63ff;
+  font-size: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.buttons a.item:hover {
+  color: #5748d3; /* Darker purple on hover */
+}
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+  .wrapper {
+    flex-direction: column; /* Stack content vertically */
+    text-align: center;
+    padding: 15px 10px; /* Adjust padding for mobile */
+  }
+
+  .wrapper img {
+    width: 40px; /* Slightly smaller logo for mobile */
+    height: 40px;
+    margin-bottom: 10px; /* Add spacing below the logo */
+  }
+
+  .content {
+    margin-bottom: 10px; /* Space between text and button */
+  }
+
+  p {
+    font-size: 11px; /* Slightly smaller text */
+  }
+
+  .buttons {
+    justify-content: center;
+    gap: 0; /* Remove gap between buttons */
+  }
+
+  button.item {
+    margin: 0 auto; /* Center align the button */
+    padding: 5px 10px; /* Smaller padding for mobile */
+    font-size: 11px; /* Smaller font size */
+  }
+
+  .buttons a.item {
+    display: block; /* Stack the "Learn more" link */
+    margin-top: 5px;
+    font-size: 11px; /* Smaller font size */
+  }
+}
