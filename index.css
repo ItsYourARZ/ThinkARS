@@ -109,7 +109,7 @@
   }
 
   .section.active .hidden-info {
-    max-height: 350px;
+    max-height: 1000px;
     opacity: 1;
   }
 

@@ -1,0 +1,112 @@
+<!-- The ARS Realm -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The personal website of It'sYourARZ showcasing projects, about me, and contact details.">
+  <meta name="author" content="It'sYourARZ">
+  <meta name="theme-color" content="#00bcd4">
+  <title>The ARS Realm</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="index.css"/>
+
+</head>
+<body onload="document.body.style.opacity = 1;">
+  
+    <div id="progressBarContainer">
+    <div id="progressBar"></div>
+  </div>
+
+  <main>
+    <div class="section fade-in">
+      <h1 id="about-me">Welcome to <span class="highlight">It'sYourARZ</span> News Website</h1>
+      <p>Discover who I am, what I do, and what I'm passionate about!</p>
+    </div>
+
+<!-- News Section using RSS Feeds-->
+
+<div class="section fade-in" aria-labelledby="rss">
+  <h2><span class="highme">General</span></h2>
+  <div class="hidden-info">
+    <div id="rss-general-feed"></div>
+  </div>
+  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
+</div>
+
+<div class="section fade-in" aria-labelledby="rss">
+  <h2><span class="highme">Politics</span></h2>
+  <div class="hidden-info">
+    <div id="rss-politics-feed"></div>
+  </div>
+  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
+</div>
+
+<div class="section fade-in" aria-labelledby="rss">
+  <h2><span class="highme">Business</span></h2>
+  <div class="hidden-info">
+    <div id="rss-business-feed"></div>
+  </div>
+  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
+</div>
+
+<div class="section fade-in" aria-labelledby="rss">
+  <h2><span class="highme">Health</span></h2>
+  <div class="hidden-info">
+    <div id="rss-health-feed"></div>
+  </div>
+  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
+</div>
+
+<div class="section fade-in" aria-labelledby="rss">
+  <h2><span class="highme">Science</span></h2>
+  <div class="hidden-info">
+    <div id="rss-science-feed"></div>
+  </div>
+  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
+</div>
+
+<div class="section fade-in" aria-labelledby="rss">
+  <h2><span class="highme">Sports</span></h2>
+  <div class="hidden-info">
+    <div id="rss-sports-feed"></div>
+  </div>
+  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
+</div>
+
+<div class="section fade-in" aria-labelledby="rss">
+  <h2><span class="highme">Technology</span></h2>
+  <div class="hidden-info">
+    <div id="rss-tech-feed"></div>
+  </div>
+  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
+</div>
+
+<div class="section fade-in" aria-labelledby="rss">
+  <h2><span class="highme">Entertainment</span></h2>
+  <div class="hidden-info">
+    <div id="rss-entertainment-feed"></div>
+  </div>
+  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
+</div>
+
+<audio id="backgroundMusic" loop>
+  <source src="https://www.dropbox.com/scl/fi/danev9k0s2ffvuxxlpxbw/Tourist.mp3?rlkey=9zaypu87cp6nx2kqbsba0npkq&st=csia9a15&raw=1" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+  <footer>
+    <p>&copy; 2024 ThinkARS All Rights Reserved. | <a href='/privacy_policy'>Privacy Policy</a></p>
+  </footer>
+
+  <script src="index.js"></script>
+  <script src="rss.js"></script>
+</body>
+</html>
