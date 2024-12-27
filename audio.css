@@ -49,12 +49,12 @@
 }
 
 .controls button:hover {
-  transform: scale(1.15);
+  transform: scale(1);
   background-color: #9b59b6; /* Lighter purple on hover */
 }
 
 .controls button:active {
-  transform: scale(1.05);
+  transform: scale(1);
 }
 
 .play-pause {
