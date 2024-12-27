@@ -36,42 +36,22 @@
 }
 
 .controls button {
-  background: #333;
+  background: #8e44ad; /* Purple color */
   border: none;
   color: #fff;
-  font-size: 22px;
-  padding: 15px;
-  border-radius: 50%;
-  width: 65px;
-  height: 65px;
+  font-size: 20px;
+  padding: 15px; /* Balanced padding for size */
+  border-radius: 50%; /* Circular button */
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth size and color change */
 }
 
 .controls button:hover {
-  transform: scale(1.15);
+  transform: scale(1.1); /* Slight increase in size */
   background-color: #9b59b6; /* Lighter purple on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 .controls button:active {
-  transform: scale(1.05);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.play-pause {
-  background: #8e44ad; /* Purple color */
-  color: #fff;
-  font-size: 30px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-}
-
-.play-pause:hover {
-  background: #9b59b6; /* Lighter purple on hover */
-}
-
-.play-pause:active {
-  background: #8e44ad;
-  transform: scale(1);
+  transform: scale(1); /* Reset size on active */
+  background-color: #8e44ad;
 }
