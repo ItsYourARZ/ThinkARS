@@ -86,7 +86,21 @@
     <p>Song Director - RJ Pasin</p>
     <p>Song Name - Tourist </p>
     <p>Song Composed Date - 4th January 2024 </p>
-    <button class="playPauseButton" id="playPauseButton" target="_blank" aria-label="Listen to the song.">Play the Song</button>
+    <div class="custom-audio-player-root">
+  <div class="audio-player">
+    <div class="progress-bar-container" id="progress-bar-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <div class="time">
+      <span id="current-time">0:00</span>
+      <span id="duration">0:00</span>
+    </div>
+    <div class="controls">
+      <button class="play-pause" id="play-pause"><i class="fas fa-play"></i></button>
+    </div>
+    <audio id="audio" src="https://www.dropbox.com/scl/fi/danev9k0s2ffvuxxlpxbw/Tourist.mp3?rlkey=9zaypu87cp6nx2kqbsba0npkq&st=csia9a15&raw=1"></audio>
+  </div>
+</div>
   </div>
   <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
 </div>
