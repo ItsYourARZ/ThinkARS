@@ -50,7 +50,7 @@
 
 .controls button:hover {
   transform: scale(1);
-  background-color: #9b59b6; /* Lighter purple on hover */
+  background-color: #7581eb; /* Lighter purple on hover */
 }
 
 .controls button:active {
@@ -58,7 +58,7 @@
 }
 
 .play-pause {
-  background: #8e44ad; /* Purple color */
+  background: #7581eb; /* Purple color */
   color: #fff;
   font-size: 30px;
 }
@@ -68,6 +68,6 @@
 }
 
 .play-pause:active {
-  background: #8e44ad;
+  background: #7581eb;
   transform: scale(1);
 }
