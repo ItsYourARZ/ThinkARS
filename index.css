@@ -244,3 +244,17 @@ transition: background 0.3s ease;
 button:hover {
 background: #008c99;
 }
+
+.highsong {
+    font-family: "Edu AU VIC WA NT Pre", sans-serif;
+    color: #7581eb;
+    font-size: 16px;
+}
+
+.hightour {
+    font-family: 'Pacifico', cursive;
+    color: #00bcd4;
+    font-size: 16px;
+    font-weight: bold;
+}
+
