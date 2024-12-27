@@ -39,8 +39,8 @@
   background: #8e44ad; /* Purple color */
   border: none;
   color: #fff;
-  font-size: 20px;
-  padding: 15px; /* Balanced padding for size */
+  font-size: 16px; /* Adjusted font size */
+  padding: 10px 12px; /* Reduced padding for balanced size */
   border-radius: 50%; /* Circular button */
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth size and color change */
