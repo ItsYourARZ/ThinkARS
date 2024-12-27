@@ -16,7 +16,7 @@
 .progress-bar {
   width: 0%;
   height: 100%;
-  background: #8e44ad; /* Purple color */
+  background: linear-gradient(to right, #2132c9, #4258e8);
   border-radius: 2px;
 }
 
