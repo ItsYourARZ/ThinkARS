@@ -1,0 +1,86 @@
+.custom-audio-player-root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #121212;
+  font-family: Arial, sans-serif;
+  color: #fff;
+}
+
+.custom-audio-player-root .audio-player {
+  width: 100%;
+  max-width: 500px;
+}
+
+.custom-audio-player-root .progress-bar-container {
+  width: 100%;
+  height: 4px;
+  background: #444;
+  border-radius: 2px;
+  position: relative;
+  cursor: pointer;
+}
+
+.custom-audio-player-root .progress-bar {
+  width: 0%;
+  height: 100%;
+  background: #1db954;
+  border-radius: 2px;
+}
+
+.custom-audio-player-root .time {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #aaa;
+}
+
+.custom-audio-player-root .controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.custom-audio-player-root .controls button {
+  background: #333;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  padding: 15px;
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.custom-audio-player-root .controls button:hover {
+  transform: scale(1.15);
+  background-color: #1db954;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.custom-audio-player-root .controls button:active {
+  transform: scale(1.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.custom-audio-player-root .play-pause {
+  background: #1db954;
+  color: #fff;
+  font-size: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.custom-audio-player-root .play-pause:hover {
+  background: #1aab47;
+}
+
+.custom-audio-player-root .play-pause:active {
+  background: #1db954;
+  transform: scale(1);
+}
