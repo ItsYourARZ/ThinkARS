@@ -1,5 +1,3 @@
-<!-- The ARS Realm -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,103 +10,98 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="index.css"/>
   <link rel="stylesheet" href="news.css"/>
-
 </head>
 <body onload="document.body.style.opacity = 1;">
-  
-    <div id="progressBarContainer">
+
+  <!-- Progress Bar -->
+  <div id="progressBarContainer">
     <div id="progressBar"></div>
   </div>
 
+  <!-- Header -->
+  <header>
+    <h1>Welcome to <span class="highlight">The ARS Realm</span></h1>
+    <nav>
+      <a href="#general">General</a>
+      <a href="#politics">Politics</a>
+      <a href="#business">Business</a>
+      <a href="#health">Health</a>
+      <a href="#science">Science</a>
+      <a href="#sports">Sports</a>
+      <a href="#technology">Technology</a>
+      <a href="#entertainment">Entertainment</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
   <main>
-    <div class="section fade-in">
-      <h1 id="about-me">Welcome to <span class="highlight"><a href="index.html">It'sYourARZ</a></span> News Website</h1>
-      <p>Be aware of the the latest news!</p>
+    <div class="rss-container">
+      <!-- General News -->
+      <section id="general" class="rss-category">
+        <h2>General</h2>
+        <p>Courtesy: economictimes.indiatimes.com</p>
+        <div id="rss-general-feed"></div>
+      </section>
+
+      <!-- Politics News -->
+      <section id="politics" class="rss-category">
+        <h2>Politics</h2>
+        <p>Courtesy: www.thehindu.com</p>
+        <div id="rss-politics-feed"></div>
+      </section>
+
+      <!-- Business News -->
+      <section id="business" class="rss-category">
+        <h2>Business</h2>
+        <p>Courtesy: timesofindia.indiatimes.com</p>
+        <div id="rss-business-feed"></div>
+      </section>
+
+      <!-- Health News -->
+      <section id="health" class="rss-category">
+        <h2>Health</h2>
+        <p>Courtesy: timesofindia.indiatimes.com</p>
+        <div id="rss-health-feed"></div>
+      </section>
+
+      <!-- Science News -->
+      <section id="science" class="rss-category">
+        <h2>Science</h2>
+        <p>Courtesy: timesofindia.indiatimes.com</p>
+        <div id="rss-science-feed"></div>
+      </section>
+
+      <!-- Sports News -->
+      <section id="sports" class="rss-category">
+        <h2>Sports</h2>
+        <p>Courtesy: timesofindia.indiatimes.com</p>
+        <div id="rss-sports-feed"></div>
+      </section>
+
+      <!-- Technology News -->
+      <section id="technology" class="rss-category">
+        <h2>Technology</h2>
+        <p>Courtesy: timesofindia.indiatimes.com</p>
+        <div id="rss-tech-feed"></div>
+      </section>
+
+      <!-- Entertainment News -->
+      <section id="entertainment" class="rss-category">
+        <h2>Entertainment</h2>
+        <p>Courtesy: timesofindia.indiatimes.com</p>
+        <div id="rss-entertainment-feed"></div>
+      </section>
     </div>
+  </main>
 
-<!-- News Section using RSS Feeds-->
-
-<div class="section fade-in" aria-labelledby="rss">
-  <h2><span class="highme">General</span></h2>
-  <div class="hidden-info">
-    <p>Courtesy : economictimes.indiatimes.com</p>
-    <div id="rss-general-feed"></div>
-  </div>
-  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-</div>
-
-<div class="section fade-in" aria-labelledby="rss">
-  <h2><span class="highme">Politics</span></h2>
-  <div class="hidden-info">
-    <div id="rss-politics-feed"></div>
-  </div>
-  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-</div>
-
-<div class="section fade-in" aria-labelledby="rss">
-  <h2><span class="highme">Business</span></h2>
-  <div class="hidden-info">
-    <p>Courtesy : www.thehindu.com</p>
-    <div id="rss-business-feed"></div>
-  </div>
-  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-</div>
-
-<div class="section fade-in" aria-labelledby="rss">
-  <h2><span class="highme">Health</span></h2>
-  <div class="hidden-info">
-    <p>Courtesy : timesofindia.indiatimes.com</p>
-    <div id="rss-health-feed"></div>
-  </div>
-  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-</div>
-
-<div class="section fade-in" aria-labelledby="rss">
-  <h2><span class="highme">Science</span></h2>
-  <div class="hidden-info">
-    <p>Courtesy : timesofindia.indiatimes.com</p>
-    <div id="rss-science-feed"></div>
-  </div>
-  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-</div>
-
-<div class="section fade-in" aria-labelledby="rss">
-  <h2><span class="highme">Sports</span></h2>
-  <div class="hidden-info">
-    <p>Courtesy : timesofindia.indiatimes.com</p>
-    <div id="rss-sports-feed"></div>
-  </div>
-  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-</div>
-
-<div class="section fade-in" aria-labelledby="rss">
-  <h2><span class="highme">Technology</span></h2>
-  <div class="hidden-info">
-    <p>Courtesy : timesofindia.indiatimes.com</p>
-    <div id="rss-tech-feed"></div>
-  </div>
-  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-</div>
-
-<div class="section fade-in" aria-labelledby="rss">
-  <h2><span class="highme">Entertainment</span></h2>
-  <div class="hidden-info">
-    <p>Courtesy : timesofindia.indiatimes.com</p>
-    <div id="rss-entertainment-feed"></div>
-  </div>
-  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-</div>
-
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2024 ThinkARS All Rights Reserved. | <a href='/privacy_policy'>Privacy Policy</a></p>
+    <p>&copy; 2024 ThinkARS All Rights Reserved. | <a href="/privacy_policy">Privacy Policy</a></p>
   </footer>
 
+  <!-- Scripts -->
   <script src="index.js"></script>
   <script src="rss.js"></script>
 </body>
