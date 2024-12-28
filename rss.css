@@ -56,24 +56,24 @@ main {
   transition: width 0.15s ease;
 }
 
-/* RSS Feed Styles */
+/* Translucent Box with Div Structure */
 .rss-feed-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin-top: 20px;
   width: 100%;
 }
 
 .rss-category {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.4));
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   padding: 20px;
-  text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 30%;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .rss-category:hover {
@@ -147,6 +147,7 @@ footer a:hover {
 /* Responsive Design */
 @media (max-width: 768px) {
   .rss-category {
+    width: 48%;
     padding: 15px;
   }
 
@@ -161,6 +162,7 @@ footer a:hover {
   }
 
   .rss-category {
+    width: 100%;
     padding: 10px;
   }
 
