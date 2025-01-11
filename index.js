@@ -1,7 +1,42 @@
-function toggleInfo(link) {
+function toggleInfoforWhoAmI(link) {
     const section = link.closest('.section');
     section.classList.toggle("active");
-    link.textContent = section.classList.contains("active") ? "View Less" : "View More";
+    link.textContent = section.classList.contains("active") ? "Who am I?" : "Who am I?";
+  }
+  function toggleInfoforProjects(link) {
+    const section = link.closest('.section');
+    section.classList.toggle("active");
+    link.textContent = section.classList.contains("active") ? "Projects" : "Projects";
+  }
+  function toggleInfoforLetsMeet(link) {
+    const section = link.closest('.section');
+    section.classList.toggle("active");
+    link.textContent = section.classList.contains("active") ? "Let's meet!" : "Let's meet!";
+  }
+  function toggleInfoforSong(link) {
+    const section = link.closest('.section');
+    section.classList.toggle("active");
+    link.textContent = section.classList.contains("active") ? "Boring without a song." : "Boring without a song.";
+  }
+  function toggleInfoforTouch(link) {
+    const section = link.closest('.section');
+    section.classList.toggle("active");
+    link.textContent = section.classList.contains("active") ? "Get in touch!" : "Get in touch!";
+  }
+  function toggleInfoforCaptcha(link) {
+    const section = link.closest('.section');
+    section.classList.toggle("active");
+    link.textContent = section.classList.contains("active") ? "Are you a Robot?" : "Are you a Robot?";
+  }
+  function toggleInfoforHTMLCompiler(link) {
+    const section = link.closest('.section');
+    section.classList.toggle("active");
+    link.textContent = section.classList.contains("active") ? "Test your HTML Codes." : "Test your HTML Codes.";
+  }
+  function toggleInfoforNewsWeb(link) {
+    const section = link.closest('.section');
+    section.classList.toggle("active");
+    link.textContent = section.classList.contains("active") ? "Want some news?" : "Want some news?";
   }
 
   document.addEventListener("DOMContentLoaded", function() {
