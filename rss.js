@@ -48,4 +48,10 @@ const fetchRSSFeeds = async () => {
   }
 };
 
+function toggleInfo(link) {
+  const section = link.closest('.section');
+  section.classList.toggle("active");
+  link.textContent = section.classList.contains("active") ? "View More" : "View Less";
+}
+
 fetchRSSFeeds();
