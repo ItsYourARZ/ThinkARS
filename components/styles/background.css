@@ -1,0 +1,42 @@
+
+/* 🔥 Smooth Gliding Background Animation */
+@keyframes glideSphere {
+    0% {
+        background: radial-gradient(circle at 40% 40%, 
+            #4b0082 20%, #2c003e 40%, #1a001a 60%, #000428 80%, #000000 100%);
+    }
+    25% {
+        background: radial-gradient(circle at 60% 30%, 
+            #4b0082 20%, #2c003e 40%, #1a001a 60%, #000428 80%, #000000 100%);
+    }
+    50% {
+        background: radial-gradient(circle at 70% 70%, 
+            #4b0082 20%, #2c003e 40%, #1a001a 60%, #000428 80%, #000000 100%);
+    }
+    75% {
+        background: radial-gradient(circle at 30% 60%, 
+            #4b0082 20%, #2c003e 40%, #1a001a 60%, #000428 80%, #000000 100%);
+    }
+    100% {
+        background: radial-gradient(circle at 50% 50%, 
+            #4b0082 20%, #2c003e 40%, #1a001a 60%, #000428 80%, #000000 100%);
+    }
+  }
+  
+  
+  body {
+      /* Radial Gradient with smooth gliding animation */
+      background: radial-gradient(circle at 50% 50%, 
+    #4b0082 20%,  /* Indigo Core */
+    #2c003e 40%,  /* Dark Violet */
+    #1a001a 60%,  /* Deep Purple */
+    #000428 80%,  /* Dark Blue */
+    #000000 100%  /* Black Outer */
+    );
+  
+    /* Animate the background */
+    animation: glideSphere 8s infinite linear;
+  }
+  
+  
+  
