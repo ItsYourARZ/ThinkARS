@@ -22,6 +22,13 @@
   <link rel="stylesheet" href="./components/styles/audio.css"/>
   <link rel="stylesheet" href="./components/styles/background.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/theme/dracula.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/htmlmixed/htmlmixed.min.js"></script>
 
   <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32x32.png">
@@ -144,10 +151,17 @@
 
 <div class="section fade-in" aria-labelledby="compiler">
   <h2><span class="highme"><a onclick="toggleInfoforHTMLCompiler(this)">Test your HTML Codes.</a></span></h2>
-  <div class="hidden-info-flowhtml">
-    <textarea class="coder" id="code" placeholder="Enter your HTML Code here..."></textarea>
-    <iframe id="output-iframe"></iframe> 
-    <button onclick="runHTML()">Run Code</button>
+  <div class="hidden-info">
+    <div class="editor-container">
+      <div class="editor-header">Code Editor</div>
+      <div class="editor-box">
+          <textarea id="editor"></textarea>
+      </div>
+  </div>
+  <button class="btn-run" onclick="runCode()">Run</button>
+  <div class="output-container">
+      <iframe id="output"></iframe>
+  </div>
   </div>
 </div>
 

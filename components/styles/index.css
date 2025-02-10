@@ -217,16 +217,6 @@ font-weight: bold;
 margin-bottom: 5px;
 }
 
-input, textarea {
-width: 100%;
-padding: 10px;
-margin-bottom: 15px;
-border: 1px solid #ccc;
-border-radius: 5px;
-box-sizing: border-box;
-font-size: 16px;
-}
-
 button {
 display: block;
 width: 100%;
