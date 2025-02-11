@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="./components/styles/flowhtml.css"/>
   <link rel="stylesheet" href="./components/styles/audio.css"/>
   <link rel="stylesheet" href="./components/styles/form.css"/>
+  <link rel="stylesheet" href="./components/styles/footer.css"/>
   <link rel="stylesheet" href="./components/styles/background.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -32,6 +33,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/javascript/javascript.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/css/css.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/htmlmixed/htmlmixed.min.js"></script>
+  <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
 
   <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32x32.png">
@@ -59,14 +63,14 @@
 
   <main>
     <div class="section fade-in">
-      <h1 id="about-me">Welcome to <span class="highlight">It'sYourARZ</span> Website</h1>
+      <h1 id="welcome">Welcome to <span class="highlight">It'sYourARZ</span> Website</h1>
       <p>Discover who I am, what I do, and what I'm passionate about!</p>
       <p>Click each tile heading for more information</p>
     </div>
 
 
     <div class="section fade-in" aria-labelledby="about-me">
-      <h2 id="my-projects"><span class="highme"><a onclick="toggleInfoforWhoAmI(this)">Who am I?</a></span></h2>
+      <h2 id="about"><span class="highme"><a onclick="toggleInfoforWhoAmI(this)">Who am I?</a></span></h2>
       <div class="hidden-info">
         <p>I'm a passionate web developer who loves creating beautiful and functional websites.</p>
         <p>I enjoy working with new technologies.</p>
@@ -75,7 +79,7 @@
     </div>
 
     <div class="section fade-in" aria-labelledby="my-projects">
-      <h2 id="contact-me"><span class="highme"><a onclick="toggleInfoforProjects(this)">Projects</a></span></h2>
+      <h2 id="projects"><span class="highme"><a onclick="toggleInfoforProjects(this)">Projects</a></span></h2>
       <div class="hidden-info">
         <p>Here are some of my exciting projects that I’ve worked on, ranging from web applications to design portfolios.</p>
         <p>Each project represents a new adventure in my journey with technology and design.</p>
@@ -86,7 +90,7 @@
     </div>
 
     <div class="section fade-in" aria-labelledby="contact-me">
-      <h2 id="song"><span class="highme"><a onclick="toggleInfoforLetsMeet(this)">Let's meet!</a></span></h2>
+      <h2 id="contact"><span class="highme"><a onclick="toggleInfoforLetsMeet(this)">Let's meet!</a></span></h2>
       <div class="hidden-info">
         <p>Let's connect!</p>
         <p>Reach out if you'd like to collaborate, ask questions, or just say hello.</p>
@@ -185,9 +189,34 @@
 
 </main>
 
-  <footer>
-    <p>&copy; 2024 - 2025 ThinkARS All Rights Reserved. | <a href='./components/policy/privacy_policy.html'>Privacy Policy</a></p>
-  </footer>
+<footer>
+  <div class="footer-container">
+      <h2 class="neon-text">The ARS Realm 🔥</h2>
+      <p>Made with grind mode ON 💀</p>
+
+      <!-- 🚀 NAVIGATION LINKS -->
+      <div class="footer-links">
+        <a href="#welcome" class="footer-link">🏠 Welcome</a>
+        <a href="#projects" class="footer-link">🚀 Projects</a>
+        <a href="#about" class="footer-link">📖 About</a>
+        <a href="#contact" class="footer-link">📩 Contact</a>
+    </div>
+
+      
+      <!-- 🚀 SOCIAL MEDIA ICONS -->
+      <div class="social-icons">
+          <a href="https://facebook.com" target="_blank" class="icon facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com" target="_blank" class="icon twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://instagram.com" target="_blank" class="icon instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com" target="_blank" class="icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com" target="_blank" class="icon github"><i class="fab fa-github"></i></a>
+      </div>
+
+      <p class="copyright">© 2025 ThinkARS. All Rights Reserved. | <a href='/components/policy/privacy_policy'>Privacy Policy</a></p>
+  </div>
+  <div class="footer-wave"></div>
+  <div id="particles-js"></div>
+</footer>
 
   <script src="recaptcha.js" async defer></script> 
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -196,5 +225,6 @@
   <script src="./components/scripts/cookies.js"></script>
   <script src="./components/scripts/audio.js"></script>
   <script src="./components/scripts/clock.js"></script>
+  <script src="./components/scripts/footer.js"></script>
 </body>
 </html>

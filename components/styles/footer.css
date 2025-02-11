@@ -1,0 +1,137 @@
+/* 🌌 FOOTER STYLES */
+footer {
+    position: relative;
+    background: linear-gradient(135deg, #0a001a, #1b0033, #3a007d, #00132d, #000a1a);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    border-top: 4px solid transparent;
+    animation: glow 2s infinite alternate;
+}
+
+/* 👀 FOOTER CONTENT */
+.footer-container {
+    position: relative;
+    z-index: 2;
+}
+
+/* 🌟 GLOW ANIMATION */
+@keyframes glow {
+    0% { border-top-color: #6a0dad; }
+    100% { border-top-color: cyan; }
+}
+
+/* 🔥 NEON GLOW TEXT */
+.neon-text {
+    font-size: 24px;
+    color: cyan;
+    text-shadow: 0px 0px 10px cyan, 0px 0px 20px cyan;
+    animation: neon-glow 1.5s infinite alternate;
+}
+
+@keyframes neon-glow {
+    0% { text-shadow: 0px 0px 5px cyan, 0px 0px 10px cyan; }
+    100% { text-shadow: 0px 0px 15px cyan, 0px 0px 30px cyan; }
+}
+
+/* 🌊 FIXED CSS WAVES */
+.footer-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.1);
+    clip-path: polygon(0% 85%, 50% 100%, 100% 85%, 100% 100%, 0% 100%);
+    animation: wave-move 5s infinite ease-in-out;
+}
+
+@keyframes wave-move {
+    0% { transform: translateX(-30px); }
+    50% { transform: translateX(30px); }
+    100% { transform: translateX(-30px); }
+}
+
+/* 🌌 FIXED PARTICLES */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* 🚀 SOCIAL ICONS */
+.social-icons {
+    margin-top: 20px;
+}
+
+.icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 22px;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+.icon i {
+    transition: all 0.3s ease-in-out;
+}
+
+/* 🔥 ICON HOVER EFFECTS */
+.icon:hover {
+    transform: scale(1.2);
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
+}
+
+/* 🎨 ICON SPECIFIC COLORS */
+.facebook:hover { background: #1877F2; }
+.twitter:hover { background: #1DA1F2; }
+.instagram:hover { background: #E1306C; }
+.linkedin:hover { background: #0077B5; }
+.github:hover { background: #333; }
+
+
+/* 🛡️ COPYRIGHT TEXT */
+.copyright {
+    margin-top: 20px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+}
+
+/* 🌟 HOVER EFFECT */
+.copyright:hover {
+    color: cyan;
+    text-shadow: 0px 0px 5px cyan;
+}
+
+/* 🛠️ FOOTER LINKS */
+.footer-links {
+    margin: 15px 0;
+}
+
+.footer-link {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+.footer-link:hover {
+    color: cyan;
+    text-shadow: 0px 0px 5px cyan;
+}
+
