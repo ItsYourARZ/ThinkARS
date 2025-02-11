@@ -1,0 +1,79 @@
+/* 🌊 Form Box */
+.form-container {
+    background: rgba(15, 15, 27, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(157, 78, 221, 0.7);
+    text-align: center;
+}
+
+/* 📦 Input Box Styling */
+.input-box {
+    position: relative;
+    margin: 20px 0;
+}
+
+/* ✍️ Input Fields */
+.input-box input, 
+.input-box textarea {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    height: 25px; /* 🔥 Same Height for All Inputs */
+    outline: none;
+    background: transparent;
+    color: #fff;
+    font-size: 1rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    transition: 0.3s ease-in-out;
+    font-family: "Edu AU VIC WA NT Pre", sans-serif;
+}
+
+/* 📌 Placeholder Labels */
+.input-box label {
+    position: absolute;
+    left: 0;
+    top: -4px;
+    color: rgba(255, 255, 255, 0.5);
+    transition: 0.3s ease-in-out;
+}
+
+/* 🏄‍♂️ Float Label on Focus */
+.input-box input:focus ~ label, 
+.input-box input:valid ~ label,
+.input-box textarea:focus ~ label, 
+.input-box textarea:valid ~ label {
+    top: -15px;
+    font-size: 0.8rem;
+    color: #9d4edd;
+}
+
+/* 🌊 Neon Focus Effect */
+.input-box input:focus, 
+.input-box textarea:focus {
+    border-bottom: 2px solid #9d4edd;
+}
+
+/* 🚀 Textarea Custom Size */
+.input-box textarea {
+    height: 100px;
+    resize: none;
+}
+
+/* 🎯 Send Button */
+.form {
+    background: linear-gradient(45deg, #9d4edd, #4b0082);
+    color: #fff;
+    font-size: 1rem;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+/* 🔥 Button Hover Effect */
+.form:hover {
+    box-shadow: 0 0 15px #9d4edd;
+    transform: scale(1.1);
+}

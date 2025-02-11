@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="./components/styles/cookies.css"/>
   <link rel="stylesheet" href="./components/styles/flowhtml.css"/>
   <link rel="stylesheet" href="./components/styles/audio.css"/>
+  <link rel="stylesheet" href="./components/styles/form.css"/>
   <link rel="stylesheet" href="./components/styles/background.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -119,20 +120,24 @@
 <div class="section fade-in" aria-labelledby="song">
   <h2 id="touch"><span class="highme"><a onclick="toggleInfoforTouch(this)">Get in touch!</a></span></h2>
   <div class="hidden-info">
-  <form action="https://formsubmit.co/itsyourarz@gmail.com" method="POST">
-    <input type="hidden" name="_autoresponse" value="Thank you for reaching out! We have received your message and will get back to you soon.">
+      <form action="https://formsubmit.co/itsyourarz@gmail.com" method="POST">
+          <div class="input-box">
+              <input type="text" required>
+              <label>Name</label>
+          </div>
 
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+          <div class="input-box">
+              <input type="email" required>
+              <label>Email</label>
+          </div>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          <div class="input-box">
+              <textarea required></textarea>
+              <label>Message</label>
+          </div>
 
-    <label for="message">Message:</label>
-    <textarea id="message" name="message" placeholder="Your message" rows="1" required></textarea>
-
-    <button type="submit">Send</button>
-  </form>
+          <button type="submit" class="form">SEND IT! 🔥</button>
+      </form>
   </div>
 </div>
 

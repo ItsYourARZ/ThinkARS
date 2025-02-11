@@ -54,7 +54,7 @@
     margin: 20px 0;
     padding: 30px 20px;
     background-color: rgba(255, 255, 255, 0.1);
-    width: 90%;
+    width: 100%;
     max-width: 600px;
     border-radius: 15px;
     text-align: center;
@@ -192,11 +192,6 @@ margin-top: 20px;
 text-align: left;
 }
 
-label {
-display: block;
-font-weight: bold;
-margin-bottom: 5px;
-}
 
 button {
 display: block;
@@ -211,10 +206,6 @@ cursor: pointer;
 transition: background 0.3s ease;
 }
 
-button:hover {
-background: #008c99;
-}
-
 .highsong {
     font-family: "Edu AU VIC WA NT Pre", sans-serif;
     color: #7581eb;
@@ -226,4 +217,20 @@ background: #008c99;
     color: #00bcd4;
     font-size: 1.3em;
     font-weight: bold;
+}
+
+.view-more-link {
+  color: #00bcd4;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1em;
+  transition: color 0.3s ease, transform 0.3s;
+}
+
+.view-more-link:hover {
+  color: #008c99;
+  transform: scale(1.1);
 }
