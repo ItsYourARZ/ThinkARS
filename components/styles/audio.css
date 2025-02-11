@@ -7,7 +7,7 @@
 .progress-bar-container {
   width: 100%;
   height: 4px;
-  background: #444;
+  background: #8e8c8c;
   border-radius: 2px;
   position: relative;
   cursor: pointer;
@@ -36,21 +36,21 @@
 }
 
 .controls button {
-  background: #333;
+  background: linear-gradient(to right, #2132c9, #4258e8);
   border: none;
   color: #fff;
   font-size: 22px;
   padding: 15px;
-  border-radius: 50%;
-  width: 65px;
-  height: 65px;
+  border-radius: 100%;
+  width: 60px;
+  height: 60px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .controls button:hover {
   transform: scale(1);
-  background-color: #7581eb; /* Lighter purple on hover */
+  background: linear-gradient(to right, #4258e8, #2132c9);
 }
 
 .controls button:active {
@@ -58,16 +58,16 @@
 }
 
 .play-pause {
-  background: #7581eb; /* Purple color */
+  background: linear-gradient(to right, #4258e8, #2132c9);
   color: #fff;
   font-size: 30px;
 }
 
 .play-pause:hover {
-  background: #9b59b6; /* Lighter purple on hover */
+  background: linear-gradient(to right, #4258e8, #2132c9);
 }
 
 .play-pause:active {
-  background: #7581eb;
+  background: linear-gradient(to right, #4258e8, #2132c9);
   transform: scale(1);
 }
