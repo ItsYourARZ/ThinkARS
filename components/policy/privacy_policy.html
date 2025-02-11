@@ -28,7 +28,6 @@
 
         body {
             font-family: 'Roboto Condensed', sans-serif;
-            background-image: url('https://wallpaper.dog/large/10921241.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -123,6 +122,49 @@
         img:hover {
             transform: scale(1.1); /* Zoom effect on hover */
         }
+
+        
+/* 🔥 Smooth Gliding Background Animation */
+@keyframes glideSphere {
+    0% {
+        background: radial-gradient(circle at 40% 40%, 
+            #4b0082 20%, #2c003e 40%, #1a001a 60%, #000428 80%, #000000 100%);
+    }
+    25% {
+        background: radial-gradient(circle at 60% 30%, 
+            #4b0082 20%, #2c003e 40%, #1a001a 60%, #000428 80%, #000000 100%);
+    }
+    50% {
+        background: radial-gradient(circle at 70% 70%, 
+            #4b0082 20%, #2c003e 40%, #1a001a 60%, #000428 80%, #000000 100%);
+    }
+    75% {
+        background: radial-gradient(circle at 30% 60%, 
+            #4b0082 20%, #2c003e 40%, #1a001a 60%, #000428 80%, #000000 100%);
+    }
+    100% {
+        background: radial-gradient(circle at 50% 50%, 
+            #4b0082 20%, #2c003e 40%, #1a001a 60%, #000428 80%, #000000 100%);
+    }
+  }
+  
+  
+  body {
+      /* Radial Gradient with smooth gliding animation */
+      background: radial-gradient(circle at 50% 50%, 
+    #4b0082 20%,  /* Indigo Core */
+    #2c003e 40%,  /* Dark Violet */
+    #1a001a 60%,  /* Deep Purple */
+    #000428 80%,  /* Dark Blue */
+    #000000 100%  /* Black Outer */
+    );
+  
+    /* Animate the background */
+    animation: glideSphere 8s infinite linear;
+  }
+  
+  
+  
     </style>
 </head>
 <body>
@@ -169,7 +211,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2024 ThinkARS All Rights Reserved. | <a href="#">Contact Us</a></p>
+        <p>&copy; 2024 - 2025 ThinkARS All Rights Reserved. | <a href="#">Contact Us</a></p>
     </footer>
 </body>
 </html>
