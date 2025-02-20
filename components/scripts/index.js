@@ -68,20 +68,3 @@ function toggleInfoforWhoAmI(link) {
     const scrollPercentage = (scrollPosition / scrollHeight) * 100;
     document.getElementById("progressBar").style.width = `${scrollPercentage}%`;
   });
- 
-document.addEventListener('DOMContentLoaded', () => {
-let audioPlaying = false;
-const audio = document.getElementById('backgroundMusic');
-const playPauseButton = document.getElementById('playPauseButton');
-
-playPauseButton.addEventListener('click', function () {
-  if (audioPlaying) {
-    audio.pause();
-    playPauseButton.textContent = 'Play the Song';
-  } else {
-    audio.play();
-    playPauseButton.textContent = 'Pause the Song';
-  }
-  audioPlaying = !audioPlaying;
-});
-});

@@ -3,19 +3,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Information about Webpage -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="The personal website of It'sYourARZ showcasing projects, about me, and contact details.">
   <meta name="author" content="It'sYourARZ">
   <meta name="theme-color" content="#00bcd4">
   <title>The ARS Realm</title>
-
+  
+  <!-- Font Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
+  
+  <!-- Local Styles -->
   <link rel="stylesheet" href="./components/styles/index.css"/>
   <link rel="stylesheet" href="./components/styles/cookies.css"/>
   <link rel="stylesheet" href="./components/styles/flowhtml.css"/>
@@ -28,6 +31,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/theme/dracula.min.css">
   
+  <!-- External Javascripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/xml/xml.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/javascript/javascript.min.js"></script>
@@ -36,7 +40,7 @@
   <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
-
+  <!-- Website Logo -->
   <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16x16.png">
@@ -46,10 +50,12 @@
 </head>
 <body onload="document.body.style.opacity = 1;">
   
-    <div id="progressBarContainer">
+  <!-- Progress Bar -->
+  <div id="progressBarContainer">
     <div id="progressBar"></div>
   </div>
 
+  <!-- Cookie Consents -->
   <div class="wrapper">
     <div class="content">
       <header>Cookies Consent</header>
@@ -61,14 +67,18 @@
     </div>
   </div>
 
+
+  <!-- MAIN WEBPAGE -->
   <main>
+    
+    <!-- The Welcome Section -->
     <div class="section fade-in">
       <h1 id="welcome">Welcome to <span class="highlight">It'sYourARZ</span> Website</h1>
       <p>Discover who I am, what I do, and what I'm passionate about!</p>
       <p>Click each tile heading for more information</p>
     </div>
 
-
+    <!-- The About Me Section -->
     <div class="section fade-in" aria-labelledby="about-me">
       <h2 id="about"><span class="highme"><a onclick="toggleInfoforWhoAmI(this)">Who am I?</a></span></h2>
       <div class="hidden-info">
@@ -78,6 +88,7 @@
       </div>
     </div>
 
+    <!-- The Projects Section -->
     <div class="section fade-in" aria-labelledby="my-projects">
       <h2 id="projects"><span class="highme"><a onclick="toggleInfoforProjects(this)">Projects</a></span></h2>
       <div class="hidden-info">
@@ -89,6 +100,7 @@
       </div>
     </div>
 
+    <!-- The Contact Me Section -->
     <div class="section fade-in" aria-labelledby="contact-me">
       <h2 id="contact"><span class="highme"><a onclick="toggleInfoforLetsMeet(this)">Let's meet!</a></span></h2>
       <div class="hidden-info">
@@ -98,125 +110,135 @@
         <a href="https://discord.com/invite/YEhUTjdHXk" class="discord-button" target="_blank" aria-label="Join the It'sYourARZ community on Discord">Join the Community</a>
       </div>
     </div>
+
+      <!-- The Song Section -->
     <div class="section fade-in" aria-labelledby="song">
-  <h2 id="song-section"><span class="highme"><a onclick="toggleInfoforSong(this)">Boring without a song.</a></span></h2>
-  <div class="hidden-info">
-    <img src="https://source.boomplaymusic.com/group10/M00/07/01/a7f20c5dd7304b5393ada0c095cd8011_464_464.webp" alt="Tourist" style="width: 150px; height: 150px; border-radius: 15%;" />
-    <h3><span class="hightour">Tourist</span>   by   <span class="highsong">RJ Pasin</span></h3>
-    <div class="custom-audio-player-root">
-  <div class="audio-player">
-    <div class="progress-bar-container" id="progress-bar-container">
-      <div class="progress-bar" id="progress-bar"></div>
-    </div>
-    <div class="time">
-      <span id="current-time">0:00</span>
-      <span id="duration">0:00</span>
-    </div>
-    <div class="controls">
-      <button class="play-pause" id="play-pause"><i class="fas fa-play"></i></button>
-    </div>
-    <audio id="audio" src="https://www.dropbox.com/scl/fi/danev9k0s2ffvuxxlpxbw/Tourist.mp3?rlkey=9zaypu87cp6nx2kqbsba0npkq&st=csia9a15&raw=1"></audio>
-  </div>
-</div>
-  </div>
-</div>
-
-<div class="section fade-in" aria-labelledby="song">
-  <h2 id="touch"><span class="highme"><a onclick="toggleInfoforTouch(this)">Get in touch!</a></span></h2>
-  <div class="hidden-info">
-      <form action="https://formsubmit.co/itsyourarz@gmail.com" method="POST">
-          <div class="input-box">
-              <input type="text" required>
-              <label>Name</label>
+      <h2 id="song-section"><span class="highme"><a onclick="toggleInfoforSong(this)">Boring without a song.</a></span></h2>
+      <div class="hidden-info">
+        <img src="https://source.boomplaymusic.com/group10/M00/07/01/a7f20c5dd7304b5393ada0c095cd8011_464_464.webp" alt="Tourist" style="width: 150px; height: 150px; border-radius: 15%;" />
+        <h3><span class="hightour">Tourist</span>   by   <span class="highsong">RJ Pasin</span></h3>
+        <div class="custom-audio-player-root">
+          <div class="audio-player">
+            <div class="progress-bar-container" id="progress-bar-container">
+            <div class="progress-bar" id="progress-bar"></div>
           </div>
+          <div class="time">
+            <span id="current-time">0:00</span>
+            <span id="duration">0:00</span>
+          </div>
+          <div class="controls">
+           <button class="play-pause" id="play-pause"><i class="fas fa-play"></i></button>
+          </div>
+          <audio id="audio" src="https://www.dropbox.com/scl/fi/danev9k0s2ffvuxxlpxbw/Tourist.mp3?rlkey=9zaypu87cp6nx2kqbsba0npkq&st=csia9a15&raw=1"></audio>
+        </div>
+      </div>
+      </div>
+    </div>
 
-          <div class="input-box">
+
+    <!-- The Touch Section -->
+    <div class="section fade-in" aria-labelledby="song">
+      <h2 id="touch"><span class="highme"><a onclick="toggleInfoforTouch(this)">Get in touch!</a></span></h2>
+      <div class="hidden-info">
+        <form action="https://formsubmit.co/itsyourarz@gmail.com" method="POST">
+            <div class="input-box">
+                <input type="text" required>
+                <label>Name</label>
+            </div>
+
+            <div class="input-box">
               <input type="email" required>
               <label>Email</label>
-          </div>
+            </div>
 
-          <div class="input-box">
+            <div class="input-box">
               <textarea required></textarea>
               <label>Message</label>
+            </div>
+
+            <button type="submit" class="form">Send</button>
+
+        </form>
+      </div>
+    </div>
+
+    <!-- The ReCaptcha Section -->
+    <div class="section fade-in" aria-labelledby="form">
+      <h2 id="recaptcha"><span class="highme"><a onclick="toggleInfoforCaptcha(this)">Are you a Robot?</a></span></h2>
+      <div class="hidden-info">
+        <form id="recaptcha-form">
+          <div style="text-align: center;">
+          <div class="g-recaptcha" data-sitekey="6Lc5VKIqAAAAAFL_EwCeK9-7ECjcUvX511X4bO76" style="display: inline-block;" data-callback="onRecaptchaSuccess"></div>
           </div>
-
-          <button type="submit" class="form">SEND IT! 🔥</button>
-      </form>
-  </div>
-</div>
-
-<div class="section fade-in" aria-labelledby="form">
-  <h2 id="recaptcha"><span class="highme"><a onclick="toggleInfoforCaptcha(this)">Are you a Robot?</a></span></h2>
-  <div class="hidden-info">
-    <form id="recaptcha-form">
-      <div style="text-align: center;">
-       <div class="g-recaptcha" data-sitekey="6Lc5VKIqAAAAAFL_EwCeK9-7ECjcUvX511X4bO76" style="display: inline-block;" data-callback="onRecaptchaSuccess"></div>
+          <!-- Message to show when the user has already completed the reCAPTCHA -->
+          <div id="recaptcha-message" style="display: none; text-align:center;">
+          You have already attempted the reCAPTCHA.
+          </div>
+        </form>
       </div>
-       <!-- Message to show when the user has already completed the reCAPTCHA -->
-    <div id="recaptcha-message" style="display: none; text-align:center;">
-      You have already attempted the reCAPTCHA.
-    </div>
-  </form>
-  </div>
-</div>
-
-<div class="section fade-in" aria-labelledby="compiler">
-  <h2><span class="highme"><a onclick="toggleInfoforHTMLCompiler(this)">Test your HTML Codes.</a></span></h2>
-  <div class="hidden-info">
-    <div class="editor-container">
-      <div class="editor-header">Code Editor</div>
-      <div class="editor-box">
-          <textarea id="editor"></textarea>
-      </div>
-  </div>
-  <button class="btn-run" onclick="runCode()">Run</button>
-  <div class="output-container">
-      <iframe id="output"></iframe>
-  </div>
-  </div>
-</div>
-
-<div class="section fade-in" aria-labelledby="rss">
-  <h2><span class="highme"><a onclick="toggleInfoforNewsWeb(this)">Want some news?</a></span></h2>
-  <div class="hidden-info">
-    <p>Stay up-to-date with the latest news from India</p>
-    <div class="hidden-info">
-    <p>Please visit my News Webpage.</p>
-    <a class="view-more-link" href="./components/news/news.html/" target="_blank" aria-label="Visit the News Webpage">Visit the News Webpage</a>
-    </div>
-  </div>
-</div>
-
-</main>
-
-<footer>
-  <div class="footer-container">
-      <h2 class="neon-text">The ARS Realm 🔥</h2>
-      <p>Made with grind mode ON 💀</p>
-
-      <!-- 🚀 NAVIGATION LINKS -->
-      <div class="footer-links">
-        <a href="#welcome" class="footer-link">🏠 Welcome</a>
-        <a href="#projects" class="footer-link">🚀 Projects</a>
-        <a href="#about" class="footer-link">📖 About</a>
-        <a href="#contact" class="footer-link">📩 Contact</a>
     </div>
 
-      
-      <!-- 🚀 SOCIAL MEDIA ICONS -->
-      <div class="social-icons">
-          <a href="https://facebook.com" target="_blank" class="icon facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://x.com" target="_blank" class="icon twitter"><i class="fab fa-x-twitter"></i></a>
-          <a href="https://instagram.com" target="_blank" class="icon instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://linkedin.com" target="_blank" class="icon linkedin"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://github.com" target="_blank" class="icon github"><i class="fab fa-github"></i></a>
+    <!-- The Compiler Section -->
+    <div class="section fade-in" aria-labelledby="compiler">
+      <h2><span class="highme"><a onclick="toggleInfoforHTMLCompiler(this)">Test your HTML Codes.</a></span></h2>
+      <div class="hidden-info">
+        <div class="editor-container">
+          <div class="editor-header">Code Editor</div>
+          <div class="editor-box">
+              <textarea id="editor"></textarea>
+          </div>
+      </div>
+      <button class="btn-run" onclick="runCode()">Run</button>
+      <div class="output-container">
+          <iframe id="output"></iframe>
+      </div>
+      </div>
+    </div>
+
+
+    <!-- The News Section-->
+    <div class="section fade-in" aria-labelledby="rss">
+      <h2><span class="highme"><a onclick="toggleInfoforNewsWeb(this)">Want some news?</a></span></h2>
+      <div class="hidden-info">
+        <p>Stay up-to-date with the latest news from India</p>
+        <div class="hidden-info">
+        <p>Please visit my News Webpage.</p>
+        <a class="view-more-link" href="./components/news/news.html/" target="_blank" aria-label="Visit the News Webpage">Visit the News Webpage</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- The Footer!-->
+  <footer>
+    <div class="footer-container">
+        <h2 class="neon-text">The ARS Realm 🔥</h2>
+        <p>Made with grind mode ON 💀</p>
+
+        <!-- 🚀 NAVIGATION LINKS -->
+        <div class="footer-links">
+          <a href="#welcome" class="footer-link">🏠 Welcome</a>
+          <a href="#projects" class="footer-link">🚀 Projects</a>
+          <a href="#about" class="footer-link">📖 About</a>
+          <a href="#contact" class="footer-link">📩 Contact</a>
       </div>
 
-      <p class="copyright">© 2025 ThinkARS. All Rights Reserved. | <a href='/components/policy/privacy_policy'>Privacy Policy</a></p>
-  </div>
-  <div class="footer-wave"></div>
-  <div id="particles-js"></div>
-</footer>
+        
+        <!-- 🚀 SOCIAL MEDIA ICONS -->
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" class="icon facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com" target="_blank" class="icon twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank" class="icon instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com" target="_blank" class="icon github"><i class="fab fa-github"></i></a>
+        </div>
+
+        <p class="copyright">© 2025 ThinkARS. All Rights Reserved. | <a href='/components/policy/privacy_policy'>Privacy Policy</a></p>
+    </div>
+    <div class="footer-wave"></div>
+    <div id="particles-js"></div>
+  </footer>
 
   <script src="recaptcha.js" async defer></script> 
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
