@@ -65,6 +65,7 @@ document
         document.querySelector('.g-recaptcha').style.display = 'none'; // Hide the widget
         document.getElementById('recaptcha-message').style.display = 'block'; // Show the message
         console.log('User already verified via reCAPTCHA');
+        document.getElementById("recaptcha-section").style.display = 'none';
     }
 };
 
