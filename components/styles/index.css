@@ -18,6 +18,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+    user-select: none;         /* Standard */
   }
 
   main {
@@ -62,6 +66,10 @@
     border: 1px solid transparent;
     backdrop-filter: blur(10px);
     position: relative;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+    user-select: none;         /* Standard */
   }
 
   .section.show {
@@ -84,7 +92,7 @@
 
   h1 .highlight {
     font-family: 'Pacifico', cursive;
-    color: #7e42cd;
+    color: #00bcd4;
     font-size: 1.3em;
     font-weight: bold;
   }
