@@ -11,7 +11,7 @@ function toggleInfoforWhoAmI(link) {
   function toggleInfoforLetsMeet(link) {
     const section = link.closest('.section');
     section.classList.toggle("active");
-    link.textContent = section.classList.contains("active") ? "Let's meet!" : "Let's meet!";
+    link.textContent = section.classList.contains("active") ? "Join the community today!" : "Join the community today!";
   }
   function toggleInfoforSong(link) {
     const section = link.closest('.section');

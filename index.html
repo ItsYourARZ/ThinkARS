@@ -40,7 +40,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/javascript/javascript.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/css/css.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/htmlmixed/htmlmixed.min.js"></script>
-  <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
   <!-- Website Logo -->
@@ -105,7 +104,7 @@
 
     <!-- The Contact Me Section -->
     <div class="section fade-in" aria-labelledby="contact-me">
-      <h2 id="contact"><span class="highme"><a onclick="toggleInfoforLetsMeet(this)">Let's meet!</a></span></h2>
+      <h2 id="contact"><span class="highme"><a onclick="toggleInfoforLetsMeet(this)">Join the community today!</a></span></h2>
       <div class="hidden-info">
         <p>Let's connect!</p>
         <p>Reach out if you'd like to collaborate, ask questions, or just say hello.</p>
@@ -143,19 +142,24 @@
     <div class="section fade-in" aria-labelledby="song">
       <h2 id="touch"><span class="highme"><a onclick="toggleInfoforTouch(this)">Get in touch!</a></span></h2>
       <div class="hidden-info">
-        <form action="https://formsubmit.co/itsyourarz@gmail.com" method="POST">
+        <form id="contact-form">
             <div class="input-box">
-                <input type="text" required>
+                <input type="name" name="name" required>
                 <label>Name</label>
             </div>
 
             <div class="input-box">
-              <input type="email" required>
+              <input type="email" name="email" required>
               <label>Email</label>
             </div>
 
             <div class="input-box">
-              <textarea required></textarea>
+              <input type="phone" name="phone" required>
+              <label>Phone</label>
+            </div>
+
+            <div class="input-box">
+              <textarea required name="message" type="message"></textarea>
               <label>Message</label>
             </div>
 
@@ -244,11 +248,12 @@
 
   <script src="recaptcha.js" async defer></script> 
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script src="./components/scripts/index.js"></script>
   <script src="./components/scripts/flowhtml.js"></script>
   <script src="./components/scripts/cookies.js"></script>
   <script src="./components/scripts/audio.js"></script>
-  <script src="./components/scripts/clock.js"></script>
   <script src="./components/scripts/footer.js"></script>
+  <script src="./components/scripts/email.js"></script>
 </body>
 </html>
