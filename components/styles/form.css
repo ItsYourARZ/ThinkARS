@@ -26,7 +26,12 @@
     font-size: 1rem;
     border-bottom: 2px solid rgba(255, 255, 255, 0.5);
     transition: 0.3s ease-in-out;
-    font-family: "Edu AU VIC WA NT Pre", sans-serif;
+    
+    /* Font Family */
+    font-family: "Winky Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* 📌 Placeholder Labels */
@@ -70,6 +75,10 @@
     border-radius: 10px;
     cursor: pointer;
     transition: 0.3s ease-in-out;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* 🔥 Button Hover Effect */

@@ -133,3 +133,14 @@ button.item:focus {
     font-size: 11px; /* Smaller font size */
   }
 }
+
+.cookies {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}

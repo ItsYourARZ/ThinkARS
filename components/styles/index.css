@@ -137,20 +137,6 @@
     background-color: #4754C8;
   }
  
-  .playPauseButton {
-    margin-top: 20px;
-    display: inline-block;
-    padding: 10px 20px;
-    color: #ffffff;
-    background-color: #5865F2;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-  }
-  .playPauseButton:hover {
-    background-color: #4754C8;
-  }
 
   footer {
     margin-top: 20px;
@@ -202,18 +188,7 @@ text-align: left;
 }
 
 
-button {
-display: block;
-width: 100%;
-padding: 10px;
-background: #00bcd4;
-color: white;
-border: none;
-border-radius: 5px;
-font-size: 16px;
-cursor: pointer;
-transition: background 0.3s ease;
-}
+
 
 .highsong {
     font-family: "Edu AU VIC WA NT Pre", sans-serif;

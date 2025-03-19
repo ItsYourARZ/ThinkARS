@@ -1,7 +1,7 @@
 <!-- The ARS Realm -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" domain="thinkars.netlify.app">
 <head>
   <!-- Information about Webpage -->
   <meta charset="UTF-8">
@@ -12,12 +12,13 @@
   <title>The ARS Realm</title>
   
   <!-- Font Styles -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    
   <!-- Local Styles -->
   <link rel="stylesheet" href="./components/styles/index.css"/>
   <link rel="stylesheet" href="./components/styles/cookies.css"/>
@@ -63,8 +64,8 @@
       <header>Cookies Consent</header>
       <p class="cookies">This website use cookies to ensure you get the best experience on our website.</p>
       <div class="buttons">
-        <button id="accept-all" style="margin: 5px; padding: 6px 12px; background-color: #4b0082; color: white; border: none; cursor: pointer; font-size: 14px;">Accept All</button>
-        <button id="reject-all" style="margin: 5px; padding: 6px 12px; background-color: #2c003e; color: white; border: none; cursor: pointer; font-size: 14px;">Reject All</button>
+        <button class="cookies" id="accept-all" style="margin: 5px; padding: 6px 12px; background-color: #4b0082; color: white; border: none; cursor: pointer; font-size: 14px;">Accept All</button>
+        <button class="cookies" id="reject-all" style="margin: 5px; padding: 6px 12px; background-color: #2c003e; color: white; border: none; cursor: pointer; font-size: 14px;">Reject All</button>
       </div>
     </div>
   </div>
@@ -142,6 +143,7 @@
     <div class="section fade-in" aria-labelledby="song">
       <h2 id="touch"><span class="highme"><a onclick="toggleInfoforTouch(this)">Get in touch!</a></span></h2>
       <div class="hidden-info">
+        <p>Please complete the form, and we’ll automatically submit it for you 😉.</p>
         <form id="contact-form">
             <div class="input-box">
                 <input type="name" name="name" required>
@@ -163,7 +165,6 @@
               <label>Message</label>
             </div>
 
-            <button type="submit" class="form">Send</button>
 
         </form>
       </div>

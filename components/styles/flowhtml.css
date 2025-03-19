@@ -48,7 +48,13 @@ iframe {
   color: #282a36;
   font-weight: bold;
   border-radius: 5px;
+
+  display: block;
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 .btn-run:hover {
-  background-color: #6272a4;
+  background-color: #26512e;
 }

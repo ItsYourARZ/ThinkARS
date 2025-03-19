@@ -1,20 +1,34 @@
 // Initialize EmailJS with your Public Key
 emailjs.init("A8olTuRB06ukMNMNa"); // Replace with your EmailJS Public Key
+var formSent = false;
 
-// Handle form submission
-document.getElementById("contact-form").addEventListener("submit", function(event) {
-    event.preventDefault();
+// Automatically send the form when completed
 
-    emailjs.sendForm("service_5a3kvoe", "template_epn83bh", this)
-        .then(() => {
-            window.alert("✅ Message sent successfully!");
-            this.reset();
-        })
-        .catch((error) => {
-            console.error("Error:", error);
-            alert("❌ Failed to send message. Please try again.");
-        });
-});
+  document.getElementById("contact-form").addEventListener("input", () => {
+    const form = document.getElementById("contact-form");
+    if (form.checkValidity() && !formSent) { // Ensure it sends only once
+        formSent = true;
+        setTimeout(() => { // Wait 5 seconds before sending
+            const formData = {
+                name: form.name.value,
+                email: form.email.value,
+                phone: form.phone.value,
+                message: form.message.value
+            };
+
+            emailjs.send("service_5a3kvoe", "template_epn83bh", formData)
+            .then(() => {
+                alert("Message sent successfully!");
+                form.reset(); // Clear the form after sending
+                formSent = false; // Reset to allow another submission
+            })
+            .catch((err) => {
+                console.error("Failed to send message:", err);
+                formSent = false; // Reset on error
+            });
+        }, 5000);
+    }
+  });
 
 /**
  * <!-- The Touch Section -->
