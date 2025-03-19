@@ -7,7 +7,7 @@ document.getElementById("contact-form").addEventListener("submit", function(even
 
     emailjs.sendForm("service_5a3kvoe", "template_epn83bh", this)
         .then(() => {
-            prompt("✅ Message sent successfully! Would you like to send another one?");
+            window.alert("✅ Message sent successfully!");
             this.reset();
         })
         .catch((error) => {
