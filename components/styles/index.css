@@ -55,7 +55,7 @@
   .section {
     opacity: 0;
     transform: translateY(50px);
-    transition: opacity 1s ease, transform 1s ease;
+    transition: opacity 1s ease, transform 2s ease;
     margin: 20px 0;
     padding: 30px 20px;
     background-color: rgba(255, 255, 255, 0.1);
