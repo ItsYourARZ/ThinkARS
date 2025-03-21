@@ -60,7 +60,7 @@ export const handler = async (event) => {
     try {
         const { recaptchaResponse } = JSON.parse(event.body);
 
-        const secretKey = '6Lcge_sqAAAAAF5IlWsOf6jvPRxBW6_MhmalENHz'; // Replace with your reCAPTCHA secret key
+        const secretKey = '6Lcge_sqAAAAAF5IlWsOf6jvPRxBW6_MhmalENHz'; // replace with your reCAPTCHA secret key
         const googleVerifyURL = 'https://www.google.com/recaptcha/api/siteverify';
 
         const response = await fetch(googleVerifyURL, {
@@ -92,3 +92,4 @@ export const handler = async (event) => {
         };
     }
 };
+
