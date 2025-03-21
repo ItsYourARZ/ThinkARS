@@ -1,5 +1,2 @@
 # Local Netlify folder
 .netlify
-
-# ReCaptcha Javascript
-./recaptcha.js
