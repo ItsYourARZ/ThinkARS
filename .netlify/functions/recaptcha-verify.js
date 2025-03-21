@@ -54,27 +54,45 @@ exports.handler = async (event) => {
     });
 }; */
 
-const fetch = require('node-fetch');
+// Ensure we're using ES modules
+import fetch from 'node-fetch';
 
-exports.handler = async (event) => {
-    const { token } = JSON.parse(event.body);
-    const secretKey = '6Lcge_sqAAAAAF5IlWsOf6jvPRxBW6_MhmalENHz';
+export const handler = async (event) => {
+    try {
+        const { recaptchaResponse } = JSON.parse(event.body);
+        const secretKey = '6Lcge_sqAAAAAF5IlWsOf6jvPRxBW6_MhmalENHz'; // Replace with your reCAPTCHA secret key
 
-    const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `secret=${secretKey}&response=${token}`
-    });
+        // Call Google's reCAPTCHA verification API
+        const googleVerifyURL = 'https://www.google.com/recaptcha/api/siteverify';
+        const response = await fetch(googleVerifyURL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `secret=${secretKey}&response=${recaptchaResponse}`
+        });
 
-    const data = await response.json();
+        const data = await response.json();
 
-    return {
-        statusCode: 200,
-        body: JSON.stringify({
-            success: data.success && data.score > 0.5,
-            score: data.score,
-            message: data.success ? "Verification passed" : "Verification failed"
-        })
-    };
+        // Return success if score is decent (Google recommends 0.5+)
+        if (data.success && data.score > 0.5) {
+            return {
+                statusCode: 200,
+                body: JSON.stringify({ success: true, score: data.score, message: "reCAPTCHA verified successfully!" })
+            };
+        } else {
+            return {
+                statusCode: 400,
+                body: JSON.stringify({ success: false, score: data.score, message: "reCAPTCHA verification failed!" })
+            };
+        }
+
+    } catch (error) {
+        console.error("Error verifying reCAPTCHA:", error);
+
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ success: false, message: "Server error during reCAPTCHA verification" })
+        };
+    }
 };
+
 
