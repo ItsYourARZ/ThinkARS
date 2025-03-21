@@ -57,9 +57,7 @@ document
     }
   }); **/
 
-
-
-// Check if the user has already passed reCAPTCHA (cookie exists)
+  // Check if the user has already passed reCAPTCHA (cookie exists)
   window.onload = function () {
     const recaptchaVerified = getCookie('recaptcha_verified');
     if (recaptchaVerified) {
@@ -67,7 +65,6 @@ document
         document.querySelector('.g-recaptcha').style.display = 'none'; // Hide the widget
         document.getElementById('recaptcha-message').style.display = 'block'; // Show the message
         console.log('User already verified via reCAPTCHA');
-        document.getElementById("recaptcha-section").style.display = 'none';
     }
 };
 

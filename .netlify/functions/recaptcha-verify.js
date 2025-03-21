@@ -55,26 +55,50 @@ exports.handler = async (event) => {
 }; */
 
 const fetch = require('node-fetch');
-
-exports.handler = async (event) => {
-    const { token } = JSON.parse(event.body);
-    const secretKey = '6LcNd_sqAAAAAD4QjB_FzPTjwKTi9_lwQp7VtvN3';
-
-    const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `secret=${secretKey}&response=${token}`
-    });
-
-    const data = await response.json();
-
-    return {
-        statusCode: 200,
-        body: JSON.stringify({
-            success: data.success && data.score > 0.5,
-            score: data.score,
-            message: data.success ? "Verification passed" : "Verification failed"
-        })
-    };
-};
+ 
+ exports.handler = async (event) => {
+     if (event.httpMethod !== 'POST') {
+         return {
+             statusCode: 405,
+             body: JSON.stringify({ error: 'Method not allowed' }),
+         };
+     }
+ 
+     const { response } = JSON.parse(event.body);
+     const secretKey = '6Lc5VKIqAAAAACtOhKGuf_ER2r7Jcsqdig1oSC6N'; // Replace with your reCAPTCHA Secret Key
+     const verifyUrl = 'https://www.google.com/recaptcha/api/siteverify';
+ 
+     try {
+         const verifyResponse = await fetch(verifyUrl, {
+             method: 'POST',
+             headers: {
+                 'Content-Type': 'application/x-www-form-urlencoded',
+             },
+             body: new URLSearchParams({
+                 secret: secretKey,
+                 response,
+             }),
+         });
+ 
+         const verifyResult = await verifyResponse.json();
+ 
+         if (verifyResult.success) {
+             return {
+                 statusCode: 200,
+                 body: JSON.stringify({ success: true }),
+             };
+         } else {
+             return {
+                 statusCode: 400,
+                 body: JSON.stringify({ success: false, error: 'Verification failed' }),
+             };
+         }
+     } catch (error) {
+         console.error('Error verifying reCAPTCHA:', error);
+         return {
+             statusCode: 500,
+             body: JSON.stringify({ success: false, error: 'Internal server error' }),
+         };
+     }
+ };
 
