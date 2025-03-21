@@ -47,7 +47,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16x16.png">
-  <link rel="manifest" href="./icons/site.webmanifest">
+  <link rel="manifest" href=".icons/site.webmanifest">
 
 
 </head>
@@ -171,13 +171,10 @@
     </div>
 
     
-
-   <!--  Old ReCaptcha v2
-      
+    <!-- The Recaptcha Section -->
     <div class="section fade-in" aria-labelledby="form" id="recaptcha-section">
       <h2 id="recaptcha"><span class="highme"><a onclick="toggleInfoforCaptcha(this)">Are you a Robot?</a></span></h2>
       <div class="hidden-info">
-        
           <div style="text-align: center;">
           <div class="g-recaptcha" data-sitekey="6Lc5VKIqAAAAAFL_EwCeK9-7ECjcUvX511X4bO76" style="text-align: center; flex-direction: column; align-items: center; justify-content: center;" data-callback="onRecaptchaSuccess"></div>
           </div>
@@ -187,12 +184,6 @@
         
       </div>
     </div> 
-    -->
- 
-
-    <!-- Build : New ReCaptcha System -->
-
-
 
 
     <!-- The Compiler Section -->
@@ -227,6 +218,7 @@
 
   </main>
 
+  
   <!-- The Footer!-->
   <footer>
     <div class="footer-container">
@@ -257,8 +249,7 @@
   </footer>
 
   <script src="recaptcha.js" async defer></script> 
-  <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
-  <script src="https://www.google.com/recaptcha/api.js?render=6Lcge_sqAAAAAIiWf1uL_99A0H58pqHbfhWuib4L"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script src="./components/scripts/index.js"></script>
   <script src="./components/scripts/flowhtml.js"></script>

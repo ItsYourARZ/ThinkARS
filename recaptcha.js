@@ -59,11 +59,7 @@ document
 
 
 
-
-
-
-
-/**  // Check if the user has already passed reCAPTCHA (cookie exists)
+// Check if the user has already passed reCAPTCHA (cookie exists)
   window.onload = function () {
     const recaptchaVerified = getCookie('recaptcha_verified');
     if (recaptchaVerified) {
@@ -131,26 +127,4 @@ function getCookie(name) {
 // Function to delete a cookie (e.g., when the user decides to log out)
 function deleteCookie(name) {
     setCookie(name, "", -1); // Set expiration to past date to delete the cookie
-} **/
-
-
-
-    grecaptcha.ready(() => {
-      grecaptcha.execute('6Lcge_sqAAAAAIiWf1uL_99A0H58pqHbfhWuib4L', { action: 'homepage' }).then(token => {
-          // Send token to your Netlify backend function
-          fetch('/.netlify/functions/recaptcha-verify', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ token })
-          })
-          .then(response => response.json())
-          .then(data => {
-              if (data.success) {
-                  console.log('User verified successfully!');
-              } else {
-                  console.warn('Failed reCAPTCHA verification!');
-              }
-          })
-          .catch(() => console.error('Something went wrong with reCAPTCHA.'));
-      });
-  });
+}

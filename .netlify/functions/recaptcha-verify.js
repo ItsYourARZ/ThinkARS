@@ -54,42 +54,27 @@ exports.handler = async (event) => {
     });
 }; */
 
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
 
-export const handler = async (event) => {
-    try {
-        const { recaptchaResponse } = JSON.parse(event.body);
+exports.handler = async (event) => {
+    const { token } = JSON.parse(event.body);
+    const secretKey = '6LcNd_sqAAAAAD4QjB_FzPTjwKTi9_lwQp7VtvN3';
 
-        const secretKey = '6Lcge_sqAAAAAF5IlWsOf6jvPRxBW6_MhmalENHz'; // replace with your reCAPTCHA secret key
-        const googleVerifyURL = 'https://www.google.com/recaptcha/api/siteverify';
+    const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `secret=${secretKey}&response=${token}`
+    });
 
-        const response = await fetch(googleVerifyURL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: `secret=${secretKey}&response=${recaptchaResponse}`
-        });
+    const data = await response.json();
 
-        const data = await response.json();
-
-        return {
-            statusCode: data.success && data.score > 0.5 ? 200 : 400,
-            body: JSON.stringify({
-                success: data.success,
-                score: data.score,
-                message: data.success ? "reCAPTCHA verified successfully!" : "reCAPTCHA verification failed!"
-            })
-        };
-
-    } catch (error) {
-        console.error('Error during reCAPTCHA verification:', error);
-
-        return {
-            statusCode: 500,
-            body: JSON.stringify({
-                success: false,
-                message: 'Server error during reCAPTCHA verification'
-            })
-        };
-    }
+    return {
+        statusCode: 200,
+        body: JSON.stringify({
+            success: data.success && data.score > 0.5,
+            score: data.score,
+            message: data.success ? "Verification passed" : "Verification failed"
+        })
+    };
 };
 
