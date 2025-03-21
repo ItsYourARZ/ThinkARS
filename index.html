@@ -170,21 +170,30 @@
       </div>
     </div>
 
-    <!-- The ReCaptcha Section -->
+    
+
+   <!--  Old ReCaptcha v2
+      
     <div class="section fade-in" aria-labelledby="form" id="recaptcha-section">
       <h2 id="recaptcha"><span class="highme"><a onclick="toggleInfoforCaptcha(this)">Are you a Robot?</a></span></h2>
       <div class="hidden-info">
         
           <div style="text-align: center;">
-          <div class="g-recaptcha" data-sitekey="6Lc5VKIqAAAAAFL_EwCeK9-7ECjcUvX511X4bO76" style="display: inline-block;" data-callback="onRecaptchaSuccess"></div>
+          <div class="g-recaptcha" data-sitekey="6Lc5VKIqAAAAAFL_EwCeK9-7ECjcUvX511X4bO76" style="text-align: center; flex-direction: column; align-items: center; justify-content: center;" data-callback="onRecaptchaSuccess"></div>
           </div>
-          <!-- Message to show when the user has already completed the reCAPTCHA -->
           <div id="recaptcha-message" style="display: none; text-align:center;">
           You have already attempted the reCAPTCHA.
           </div>
         
       </div>
-    </div>
+    </div> 
+    -->
+ 
+
+    <!-- Build : New ReCaptcha System -->
+
+
+
 
     <!-- The Compiler Section -->
     <div class="section fade-in" aria-labelledby="compiler">
@@ -248,7 +257,8 @@
   </footer>
 
   <script src="recaptcha.js" async defer></script> 
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LcNd_sqAAAAALybmqx6lWSvXezh9irU21qLWp6N"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script src="./components/scripts/index.js"></script>
   <script src="./components/scripts/flowhtml.js"></script>

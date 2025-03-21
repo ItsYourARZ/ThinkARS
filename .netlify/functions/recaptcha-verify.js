@@ -1,4 +1,4 @@
-const https = require('https');
+/** const https = require('https');
 
 exports.handler = async (event) => {
     if (event.httpMethod !== 'POST') {
@@ -52,4 +52,29 @@ exports.handler = async (event) => {
             });
         });
     });
+}; */
+
+const fetch = require('node-fetch');
+
+exports.handler = async (event) => {
+    const { token } = JSON.parse(event.body);
+    const secretKey = '6LcNd_sqAAAAAD4QjB_FzPTjwKTi9_lwQp7VtvN3';
+
+    const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `secret=${secretKey}&response=${token}`
+    });
+
+    const data = await response.json();
+
+    return {
+        statusCode: 200,
+        body: JSON.stringify({
+            success: data.success && data.score > 0.5,
+            score: data.score,
+            message: data.success ? "Verification passed" : "Verification failed"
+        })
+    };
 };
+
