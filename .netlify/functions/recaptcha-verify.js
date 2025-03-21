@@ -58,7 +58,7 @@ const fetch = require('node-fetch');
 
 exports.handler = async (event) => {
     const { token } = JSON.parse(event.body);
-    const secretKey = '6LcNd_sqAAAAAD4QjB_FzPTjwKTi9_lwQp7VtvN3';
+    const secretKey = '6Lcge_sqAAAAAF5IlWsOf6jvPRxBW6_MhmalENHz';
 
     const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
         method: 'POST',

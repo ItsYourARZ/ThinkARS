@@ -136,7 +136,7 @@ function deleteCookie(name) {
 
 
     grecaptcha.ready(() => {
-      grecaptcha.execute('6LcNd_sqAAAAALybmqx6lWSvXezh9irU21qLWp6N', { action: 'homepage' }).then(token => {
+      grecaptcha.execute('6Lcge_sqAAAAAIiWf1uL_99A0H58pqHbfhWuib4L', { action: 'homepage' }).then(token => {
           // Send token to your Netlify backend function
           fetch('/.netlify/functions/recaptcha-verify', {
               method: 'POST',
