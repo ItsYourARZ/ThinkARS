@@ -10,7 +10,8 @@
     "deploy": "netlify deploy"
   },
   "dependencies": {
-    "node-fetch": "^2.6.7"
+    "node-fetch": "^2.6.7",
+    "whatwg-url": "^14.2.0"
   },
   "engines": {
     "node": "18.x"
