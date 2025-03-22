@@ -63,7 +63,7 @@ document
     if (recaptchaVerified) {
         // Show the message instead of the reCAPTCHA widget
         document.querySelector('.g-recaptcha').style.display = 'none'; // Hide the widget
-        document.getElementById('recaptcha-message').style.display = 'block'; // Show the message
+        document.getElementById('.recaptcha').style.display = 'nones'; // Show the message
         console.log('User already verified via reCAPTCHA');
     }
 };
