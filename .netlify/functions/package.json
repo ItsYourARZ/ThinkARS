@@ -1,12 +1,16 @@
 {
   "name": "functions",
   "version": "1.0.0",
+  "description": "",
   "main": "recaptcha-verify.js",
+  "type": "module",
   "scripts": {
-      "license": "ISC",
-      "description": ""
-    },
-    "dependencies": {
-      "node-fetch": "^3.3.2"
-  }
+    "start": "node recaptcha-verify.js",
+    "build": "echo 'No build script defined'",
+    "test": "echo 'No test script defined' && exit 0"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "license": "ISC"
 }
