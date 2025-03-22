@@ -218,3 +218,11 @@ text-align: left;
   color: #008c99;
   transform: scale(1.1);
 }
+
+
+
+.align-recaptcha{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
