@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "recaptcha-verify.js",
   "scripts": {
-    "license": "ISC",
-    "description": "",
+      "license": "ISC",
+      "description": ""
+    },
     "dependencies": {
       "node-fetch": "^3.3.2"
-    }
   }
 }
