@@ -9,8 +9,8 @@
     "build": "echo 'No build script defined'",
     "test": "echo 'No test script defined' && exit 0"
   },
+  "license": "ISC",
   "dependencies": {
-    "node-fetch": "^3.3.2"
-  },
-  "license": "ISC"
+    "node-fetch": "^2.7.0"
+  }
 }
