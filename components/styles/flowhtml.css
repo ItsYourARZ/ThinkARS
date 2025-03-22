@@ -6,6 +6,7 @@
   border: 2px solid #44475a;
   background-color: #1e1f29;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  
 }
 .editor-header {
   background-color: #44475a;
@@ -15,6 +16,9 @@
 }
 .editor-box {
   padding: 10px;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
 }
 .editor-box textarea {
   width: 100%;
@@ -23,6 +27,9 @@
   outline: none;
   background-color: transparent;
   color: #f8f8f2;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
 }
 .output-container {
   width: 100%;
@@ -32,12 +39,16 @@
   border-radius: 10px;
   background-color: #1e1f29;
   overflow: hidden;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
 }
 iframe {
   width: 100%;
   height: 300px;
   border: none;
   background-color: #282a36;
+  color: #fff;
 }
 .btn-run {
   background-color: #50fa7b;
