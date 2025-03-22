@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "main": "recaptcha-verify.js",
   "scripts": {
-    "start": "node recaptcha-verify.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
-    "node-fetch": "^3.3.2",
-    "whatwg-url": "^11.0.0"
+    "node-fetch": "^3.3.2"
   }
 }
