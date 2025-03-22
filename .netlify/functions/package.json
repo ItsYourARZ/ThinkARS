@@ -1,20 +1,12 @@
 {
-  "name": "netlify-functions",
+  "name": "functions",
   "version": "1.0.0",
-  "description": "Serverless functions setup for Netlify",
   "main": "recaptcha-verify.js",
   "scripts": {
-    "build": "netlify build",
-    "dev": "netlify dev",
-    "start": "node recaptcha-verify.js",
-    "deploy": "netlify deploy"
+    "start": "node recaptcha-verify.js"
   },
   "dependencies": {
-    "node-fetch": "^2.6.7",
-    "whatwg-url": "^14.2.0"
-  },
-  "engines": {
-    "node": "18.x"
-  },
-  "license": "ISC"
+    "node-fetch": "^3.3.2",
+    "whatwg-url": "^11.0.0"
+  }
 }
