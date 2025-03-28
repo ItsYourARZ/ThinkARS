@@ -1,5 +1,4 @@
 const https = require('https');
-const querystring = require('querystring');
 
 exports.handler = async (event) => {
     if (event.httpMethod !== 'POST') {
@@ -21,23 +20,10 @@ exports.handler = async (event) => {
 
     console.log('reCAPTCHA Response Token:', recaptchaResponse);
 
-    const postData = querystring.stringify({
-        secret: secretKey,
-        response: recaptchaResponse,
-    });
-
-    const options = {
-        hostname: 'www.google.com',
-        path: '/recaptcha/api/siteverify',
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Content-Length': Buffer.byteLength(postData),
-        },
-    };
+    const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${recaptchaResponse}`;
 
     return new Promise((resolve, reject) => {
-        const req = https.request(options, (res) => {
+        https.get(verificationUrl, (res) => {
             let data = '';
             res.on('data', (chunk) => (data += chunk));
             res.on('end', () => {
@@ -59,16 +45,11 @@ exports.handler = async (event) => {
                     });
                 }
             });
-        });
-
-        req.on('error', (err) => {
+        }).on('error', (err) => {
             reject({
                 statusCode: 500,
                 body: JSON.stringify({ message: 'Internal Server Error', error: err.message }),
             });
         });
-
-        req.write(postData);
-        req.end();
     });
 };
