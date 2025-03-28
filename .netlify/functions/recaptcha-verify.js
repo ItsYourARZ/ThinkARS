@@ -1,4 +1,5 @@
-const fetch = require('node-fetch');
+const https = require('https');
+const querystring = require('querystring');
 
 exports.handler = async (event) => {
     if (event.httpMethod !== 'POST') {
@@ -20,41 +21,54 @@ exports.handler = async (event) => {
 
     console.log('reCAPTCHA Response Token:', recaptchaResponse);
 
-    const verificationUrl = 'https://www.google.com/recaptcha/api/siteverify';
+    const postData = querystring.stringify({
+        secret: secretKey,
+        response: recaptchaResponse,
+    });
 
-    try {
-        const response = await fetch(verificationUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: new URLSearchParams({
-                secret: secretKey,
-                response: recaptchaResponse,
-            }),
+    const options = {
+        hostname: 'www.google.com',
+        path: '/recaptcha/api/siteverify',
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Length': Buffer.byteLength(postData),
+        },
+    };
+
+    return new Promise((resolve, reject) => {
+        const req = https.request(options, (res) => {
+            let data = '';
+            res.on('data', (chunk) => (data += chunk));
+            res.on('end', () => {
+                console.log('Google reCAPTCHA API Response:', data);
+                const verificationData = JSON.parse(data);
+
+                if (verificationData.success) {
+                    resolve({
+                        statusCode: 200,
+                        body: JSON.stringify({ message: 'Verification successful!' }),
+                    });
+                } else {
+                    resolve({
+                        statusCode: 400,
+                        body: JSON.stringify({
+                            message: 'Verification failed.',
+                            errors: verificationData['error-codes'],
+                        }),
+                    });
+                }
+            });
         });
 
-        const verificationData = await response.json();
-        console.log('Google reCAPTCHA API Response:', verificationData);
+        req.on('error', (err) => {
+            reject({
+                statusCode: 500,
+                body: JSON.stringify({ message: 'Internal Server Error', error: err.message }),
+            });
+        });
 
-        if (verificationData.success) {
-            return {
-                statusCode: 200,
-                body: JSON.stringify({ message: 'Verification successful!' }),
-            };
-        } else {
-            return {
-                statusCode: 400,
-                body: JSON.stringify({
-                    message: 'Verification failed.',
-                    errors: verificationData['error-codes'],
-                }),
-            };
-        }
-    } catch (error) {
-        return {
-            statusCode: 500,
-            body: JSON.stringify({ message: 'Internal Server Error', error: error.message }),
-        };
-    }
+        req.write(postData);
+        req.end();
+    });
 };
