@@ -1,2 +1,3 @@
 [build]
   functions = "functions"
+  command = "sed -i 's|${RECAPTCHA_SITE_KEY}|'${RECAPTCHA_SITE_KEY}'|g' index.html"
