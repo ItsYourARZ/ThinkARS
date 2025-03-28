@@ -8,7 +8,7 @@ exports.handler = async (event) => {
         };
     }
 
-    const secretKey = '6Lc5VKIqAAAAACtOhKGuf_ER2r7Jcsqdig1oSC6N';
+    const secretKey = process.env.RECAPTCHA_SECRET_KEY;
     const { recaptchaResponse } = JSON.parse(event.body);
 
     if (!recaptchaResponse) {
