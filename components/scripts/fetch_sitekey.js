@@ -1,6 +1,6 @@
-fetch('https://thinkars.netlify.app/.netlify/functions/recaptcha-verify')
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById("siteKey").innerHTML = data.siteKey;
-    })
-    .catch(error => console.error("Error fetching JSON:", error));
+fetch("/.netlify/functions/verify-recaptcha")
+.then(response => response.json())
+.then(data => {
+    document.getElementById("recaptcha-container").innerHTML = 
+        `<div class="g-recaptcha" data-sitekey="${data.siteKey}" data-callback="onRecaptchaSuccess"></div>`;
+});
