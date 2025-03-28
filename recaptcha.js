@@ -81,7 +81,7 @@ function onRecaptchaSuccess(response) {
 // Function to send reCAPTCHA response to Netlify function for verification (optional)
 async function verifyRecaptcha(recaptchaResponse) {
     try {
-        const res = await fetch('/.netlify/function/recaptcha-verify', {
+        const res = await fetch('/.netlify/functions/recaptcha-verify', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
