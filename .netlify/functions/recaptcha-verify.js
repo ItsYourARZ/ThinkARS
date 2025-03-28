@@ -1,4 +1,4 @@
-const https = require('https');
+const fetch = require('node-fetch');
 
 exports.handler = async (event) => {
     if (event.httpMethod !== 'POST') {
@@ -20,37 +20,41 @@ exports.handler = async (event) => {
 
     console.log('reCAPTCHA Response Token:', recaptchaResponse);
 
-    const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${recaptchaResponse}`;
+    const verificationUrl = 'https://www.google.com/recaptcha/api/siteverify';
 
-    return new Promise((resolve, reject) => {
-        https.get(verificationUrl, (res) => {
-            let data = '';
-            res.on('data', (chunk) => (data += chunk));
-            res.on('end', () => {
-                console.log('Google reCAPTCHA API Response:', data);
-                const verificationData = JSON.parse(data);
-
-                if (verificationData.success) {
-                    resolve({
-                        statusCode: 200,
-                        body: JSON.stringify({ message: 'Verification successful!' }),
-                    });
-                } else {
-                    resolve({
-                        statusCode: 400,
-                        body: JSON.stringify({
-                            message: 'Verification failed.',
-                            errors: verificationData['error-codes'],
-                        }),
-                    });
-                }
-            });
-        }).on('error', (err) => {
-            reject({
-                statusCode: 500,
-                body: JSON.stringify({ message: 'Internal Server Error', error: err.message }),
-            });
+    try {
+        const response = await fetch(verificationUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+                secret: secretKey,
+                response: recaptchaResponse,
+            }),
         });
-    });
-};
 
+        const verificationData = await response.json();
+        console.log('Google reCAPTCHA API Response:', verificationData);
+
+        if (verificationData.success) {
+            return {
+                statusCode: 200,
+                body: JSON.stringify({ message: 'Verification successful!' }),
+            };
+        } else {
+            return {
+                statusCode: 400,
+                body: JSON.stringify({
+                    message: 'Verification failed.',
+                    errors: verificationData['error-codes'],
+                }),
+            };
+        }
+    } catch (error) {
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ message: 'Internal Server Error', error: error.message }),
+        };
+    }
+};
