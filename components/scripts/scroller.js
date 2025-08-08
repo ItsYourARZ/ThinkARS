@@ -1,4 +1,4 @@
-let scrollSpeed = 1; // Pixels per step
+let scrollSpeed = 2; // Pixels per step
 let scrollInterval = 50; // Time between steps (milliseconds)
 let scrollIntervalId;
 let userInteracted = false;
