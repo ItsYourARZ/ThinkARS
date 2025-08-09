@@ -10,20 +10,43 @@
   <meta name="theme-color" content="#00bcd4">
   <title>The ARS Realm - News Webpage</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- Font Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    
+  <!-- Local Styles -->
+  <link rel="stylesheet" href="./components/css/index.css"/>
+  <link rel="stylesheet" href="./components/css/footer.css"/>
+  <link rel="stylesheet" href="./components/css/background.css"/>
+  <link rel="stylesheet" href="./components/css/news.css"/>
 
-  <link rel="stylesheet" href="index.css"/>
-  <link rel="stylesheet" href="news.css"/>
-  <link rel="stylesheet" href="background.css"/>
+  <!-- External Styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/theme/dracula.min.css">
+  
+  <!-- External Javascripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/xml/xml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/css/css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/htmlmixed/htmlmixed.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+
 
   <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16x16.png">
   <link rel="manifest" href=".icons/site.webmanifest">
+
+  
 
 </head>
 <body onload="document.body.style.opacity = 1;">
@@ -34,89 +57,41 @@
 
   <main>
     <div class="section fade-in">
-      <h1 id="about-me">Welcome to <span class="highlight"><a href="https://thinkars.netlify.app" style="font-family: 'Pacifico', cursive; color: #00bcd4; font-size: 1.3em; font-weight: bold;">It'sYourARZ</a></span> News Website</h1>
-      <p>Be aware of the the latest news!</p>
+      <h1 id="about-me">Welcome to the News Section of <span class="highlight"><a href="https://anirudh-rajesh.netlify.app" style="font-family: 'Pacifico', cursive; color: #00bcd4; font-size: 1.3em; font-weight: bold;">It'sYourARZ</a></span>  Website</h1>
     </div>
 
-<!-- News Section using RSS Feeds-->
-
-<div class="section fade-in" aria-labelledby="rss">
-  <h2><span class="highme">General</span></h2>
-  <div class="hidden-info">
-    <p>Courtesy : economictimes.indiatimes.com</p>
-    <div id="rss-general-feed"></div>
-  </div>
-  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-</div>
-
-<div class="section fade-in" aria-labelledby="rss">
-  <h2><span class="highme">Politics</span></h2>
-  <div class="hidden-info">
-    <p>Courtesy : www.thehindu.com</p>
-    <div id="rss-politics-feed"></div>
-  </div>
-  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-</div>
-
-<div class="section fade-in" aria-labelledby="rss">
-  <h2><span class="highme">Business</span></h2>
-  <div class="hidden-info">
-    <p>Courtesy : timesofindia.indiatimes.com.com</p>
-    <div id="rss-business-feed"></div>
-  </div>
-  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-</div>
-
-<div class="section fade-in" aria-labelledby="rss">
-  <h2><span class="highme">Health</span></h2>
-  <div class="hidden-info">
-    <p>Courtesy : timesofindia.indiatimes.com</p>
-    <div id="rss-health-feed"></div>
-  </div>
-  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-</div>
-
-<div class="section fade-in" aria-labelledby="rss">
-  <h2><span class="highme">Science</span></h2>
-  <div class="hidden-info">
-    <p>Courtesy : timesofindia.indiatimes.com</p>
-    <div id="rss-science-feed"></div>
-  </div>
-  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-</div>
-
-<div class="section fade-in" aria-labelledby="rss">
-  <h2><span class="highme">Sports</span></h2>
-  <div class="hidden-info">
-    <p>Courtesy : timesofindia.indiatimes.com</p>
-    <div id="rss-sports-feed"></div>
-  </div>
-  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-</div>
-
-<div class="section fade-in" aria-labelledby="rss">
-  <h2><span class="highme">Technology</span></h2>
-  <div class="hidden-info">
-    <p>Courtesy : timesofindia.indiatimes.com</p>
-    <div id="rss-tech-feed"></div>
-  </div>
-  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-</div>
-
-<div class="section fade-in" aria-labelledby="rss">
-  <h2><span class="highme">Entertainment</span></h2>
-  <div class="hidden-info">
-    <p>Courtesy : timesofindia.indiatimes.com</p>
-    <div id="rss-entertainment-feed"></div>
-  </div>
-  <a class="view-more-link" onclick="toggleInfo(this)">View More</a>
-</div>
+  </main>
 
   <footer>
-    <p>&copy; 2024 - 2025 ThinkARS All Rights Reserved. | <a href='./privacy_policy.html'>Privacy Policy</a></p>
-  </footer>
+    <div class="footer-container">
+        <h2 class="neon-text">The ARS Realm 🔥</h2>
+        <p>Made with grind mode ON 💀</p>
 
-  <script src="index.js"></script>
-  <script src="rss.js"></script>
+        <!-- 🚀 NAVIGATION LINKS -->
+        <div class="footer-links">
+          <a href="#welcome" class="footer-link">🏠 Welcome</a>
+          <a href="#projects" class="footer-link">🚀 Projects</a>
+          <a href="#about" class="footer-link">📖 About</a>
+          <a href="#contact" class="footer-link">📩 Contact</a>
+        </div>
+
+        
+        <!-- 🚀 SOCIAL MEDIA ICONS -->
+        <div class="social-icons">
+            <a href="https://open.spotify.com/user/31fqmjj657zn7lrqcb7b22a5y7tu?si=282f0c17898e41eb" target="_blank" class="icon spotify"><i class="fab fa-spotify"></i></a>
+            <a href="https://www.instagram.com/__anirudh_rajesh__?igsh=MWhtMDdzaXl0aG5s" target="_blank" class="icon instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://discord.com/invite/YEhUTjdHXk" target="_blank" class="icon discord"><i class="fab fa-discord"></i></a>
+            <a href="https://github.com/ItsYourARZ" target="_blank" class="icon github"><i class="fab fa-github"></i></a>
+        </div>
+
+        <p class="copyright">© 2025 ThinkARS. All Rights Reserved. | <a href='./components/policy/privacy_policy.html' style="color: #00bcd4;">Privacy Policy</a></p>
+    </div>
+    <div class="footer-wave"></div>
+    <div id="particles-js"></div>
+  </footer>
+  
+  <script src="./components/js/index.js"></script>
+  <script src="./components/js/rss.js"></script>
+  <script src="./components/js/footer.js"></script>
 </body>
 </html>

@@ -22,6 +22,7 @@
     -moz-user-select: none;    /* Firefox */
     -ms-user-select: none;     /* IE/Edge */
     user-select: none;         /* Standard */
+    scroll-behavior: smooth; /* Smooth scrolling behavior */
   }
 
   main {
@@ -47,18 +48,18 @@
   #progressBar {
     height: 100%;
     width: 0;
-    background: linear-gradient(to right, #2132c9, #4258e8);
+    background: linear-gradient(to right ,#4b0082 ,#2132c9 ,#4258e8, #00bcd4, #8be9fd);
     transition: width 0.15s ease;
   }
 
   .section {
     opacity: 0;
     transform: translateY(50px);
-    transition: opacity 1s ease, transform 1s ease;
+    transition: opacity 1s ease, transform 2s ease;
     margin: 20px 0;
     padding: 30px 20px;
     background-color: rgba(255, 255, 255, 0.1);
-    width: 90%;
+    width: 100%;
     max-width: 600px;
     border-radius: 15px;
     text-align: center;
@@ -66,6 +67,10 @@
     border: 1px solid transparent;
     backdrop-filter: blur(10px);
     position: relative;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+    user-select: none;         /* Standard */
   }
 
   .section.show {
@@ -95,7 +100,7 @@
 
   .highme {
     font-family: "Edu AU VIC WA NT Pre", sans-serif;
-    color: #7581eb;
+    color: #8be9fd;
   }
 
   p {
@@ -116,22 +121,6 @@
     opacity: 1;
   }
 
-  .view-more-link {
-    color: #00bcd4;
-    cursor: pointer;
-    display: inline-block;
-    margin-top: 15px;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 1.1em;
-    transition: color 0.3s ease, transform 0.3s;
-  }
-
-  .view-more-link:hover {
-    color: #008c99;
-    transform: scale(1.1);
-  }
-
   .discord-button {
     margin-top: 20px;
     display: inline-block;
@@ -148,20 +137,6 @@
     background-color: #4754C8;
   }
  
-  .playPauseButton {
-    margin-top: 20px;
-    display: inline-block;
-    padding: 10px 20px;
-    color: #ffffff;
-    background-color: #5865F2;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-  }
-  .playPauseButton:hover {
-    background-color: #4754C8;
-  }
 
   footer {
     margin-top: 20px;
@@ -206,47 +181,14 @@
           height: 40px;
           transition: transform 0.3s; /* Smooth zoom effect */
       }
-      img:hover {
-          transform: scale(1.1); /* Zoom effect on hover */
-      }
 
       form {
 margin-top: 20px;
 text-align: left;
 }
 
-label {
-display: block;
-font-weight: bold;
-margin-bottom: 5px;
-}
 
-input, textarea {
-width: 100%;
-padding: 10px;
-margin-bottom: 15px;
-border: 1px solid #ccc;
-border-radius: 5px;
-box-sizing: border-box;
-font-size: 16px;
-}
 
-button {
-display: block;
-width: 100%;
-padding: 10px;
-background: #00bcd4;
-color: white;
-border: none;
-border-radius: 5px;
-font-size: 16px;
-cursor: pointer;
-transition: background 0.3s ease;
-}
-
-button:hover {
-background: #008c99;
-}
 
 .highsong {
     font-family: "Edu AU VIC WA NT Pre", sans-serif;
@@ -261,3 +203,26 @@ background: #008c99;
     font-weight: bold;
 }
 
+.view-more-link {
+  color: #00bcd4;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1em;
+  transition: color 0.3s ease, transform 0.3s;
+}
+
+.view-more-link:hover {
+  color: #008c99;
+  transform: scale(1.1);
+}
+
+
+
+.align-recaptcha{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
