@@ -117,7 +117,7 @@
   }
 
   .section.active .hidden-info {
-    max-height: 1000px;
+    max-height: 10000px;
     opacity: 1;
   }
 
@@ -151,7 +151,7 @@
     h1 {
       font-size: 1.4em;
     }
-    .section {
+    .section { 
       padding: 20px;
       width: 95%;
     }

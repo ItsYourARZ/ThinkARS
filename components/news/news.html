@@ -46,6 +46,25 @@
   <link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16x16.png">
   <link rel="manifest" href=".icons/site.webmanifest">
 
+  <style>
+    .designer-text{
+      font-family: 'Edu AU VIC WA NT Pre', sans-serif;
+      color: #661276;
+      font-weight: 700;
+      font-size: 1.2em;
+    }
+
+    .a-tag {
+      font-family: 'Edu AU VIC WA NT Pre', sans-serif;
+      color: #af86b8;
+      font-weight: 700;
+      font-size: 1.2em;
+    }
+
+    .news { background: rgb(0, 0, 0); padding: 15px; margin-bottom: 15px; border-radius: 8px; }
+
+  </style>
+
   
 
 </head>
@@ -58,6 +77,114 @@
   <main>
     <div class="section fade-in">
       <h1 id="about-me">Welcome to the News Section of <span class="highlight"><a href="https://anirudh-rajesh.netlify.app" style="font-family: 'Pacifico', cursive; color: #00bcd4; font-size: 1.3em; font-weight: bold;">It'sYourARZ</a></span>  Website</h1>
+
+     <p>Click each tile heading for more information</p>
+     <p>A big shout out to Hindustan Times and RSS2JSON.com</p>
+    </div>
+
+    <div class="section fade-in" aria-labelledby="about-me">
+      <h2 id="about"><span class="highme"><a onclick="toggleInfo(this)">Education Related</a></span></h2>
+      <div class="hidden-info" id="education">
+        <p>Loading news...</p>
+      </div>
+    </div>
+
+    <div class="section fade-in" aria-labelledby="about-me">
+      <h2 id="about"><span class="highme"><a onclick="toggleInfo(this)">Entertainments</a></span></h2>
+      <div class="hidden-info" id="entertainment">
+        <p>Loading news...</p>
+      </div>
+    </div>
+
+    <div class="section fade-in" aria-labelledby="about-me">
+      <h2 id="about"><span class="highme"><a onclick="toggleInfo(this)">Modern Lifestyle</a></span></h2>
+      <div class="hidden-info" id="lifestyle">
+        <p>Loading news...</p>
+      </div>
+    </div>
+
+    <div class="section fade-in" aria-labelledby="about-me">
+      <h2 id="about"><span class="highme"><a onclick="toggleInfo(this)">Growing Business</a></span></h2>
+      <div class="hidden-info" id="business">
+        <p>Loading news...</p>
+      </div>
+    </div>
+
+    <div class="section fade-in" aria-labelledby="about-me">
+      <h2 id="about"><span class="highme"><a onclick="toggleInfo(this)">Related to Cricket</a></span></h2>
+      <div class="hidden-info" id="cricket">
+        <p>Loading news...</p>
+      </div>
+    </div>
+
+    <div class="section fade-in" aria-labelledby="about-me">
+      <h2 id="about"><span class="highme"><a onclick="toggleInfo(this)">Latest from the World</a></span></h2>
+      <div class="hidden-info" id="world">
+        <p>Loading news...</p>
+      </div>
+    </div>
+
+    <div class="section fade-in" aria-labelledby="about-me">
+      <h2 id="about"><span class="highme"><a onclick="toggleInfo(this)">Anime Stuff</a></span></h2>
+      <div class="hidden-info" id="anime">
+        <p>Loading news...</p>
+      </div>
+    </div>
+
+    <div class="section fade-in" aria-labelledby="about-me">
+      <h2 id="about"><span class="highme"><a onclick="toggleInfo(this)">All about exams</a></span></h2>
+      <div class="hidden-info" id="competitive-exams">
+        <p>Loading news...</p>
+      </div>
+    </div>
+
+    <div class="section fade-in" aria-labelledby="about-me">
+      <h2 id="about"><span class="highme"><a onclick="toggleInfo(this)">Music Dramas</a></span></h2>
+      <div class="hidden-info" id="music">
+        <p>Loading news...</p>
+      </div>
+    </div>
+
+    <div class="section fade-in" aria-labelledby="about-me">
+      <h2 id="about"><span class="highme"><a onclick="toggleInfo(this)">Results in Exam</a></span></h2>
+      <div class="hidden-info" id="exam-results">
+        <p>Loading news...</p>
+      </div>
+    </div>
+
+    <div class="section fade-in" aria-labelledby="about-me">
+      <h2 id="about"><span class="highme"><a onclick="toggleInfo(this)">Cool Fashions</a></span></h2>
+      <div class="hidden-info" id="fashion">
+        <p>Loading news...</p>
+      </div>
+    </div>
+
+    <div class="section fade-in" aria-labelledby="about-me">
+      <h2 id="about"><span class="highme"><a onclick="toggleInfo(this)">Modern day Sports</a></span></h2>
+      <div class="hidden-info" id="sports">
+        <p>Loading news...</p>
+      </div>
+    </div>
+
+    <div class="section fade-in" aria-labelledby="about-me">
+      <h2 id="about"><span class="highme"><a onclick="toggleInfo(this)">Growning Technology</a></span></h2>
+      <div class="hidden-info" id="technology">
+        <p>Loading news...</p>
+      </div>
+    </div>
+
+    <div class="section fade-in" aria-labelledby="about-me">
+      <h2 id="about"><span class="highme"><a onclick="toggleInfo(this)">Maintaining of Health</a></span></h2>
+      <div class="hidden-info" id="health">
+        <p>Loading news...</p>
+      </div>
+    </div>
+
+    <div class="section fade-in" aria-labelledby="about-me">
+      <h2 id="about"><span class="highme"><a onclick="toggleInfo(this)">All there is in Football</a></span></h2>
+      <div class="hidden-info" id="football">
+        <p>Loading news...</p>
+      </div>
     </div>
 
   </main>
@@ -89,9 +216,10 @@
     <div class="footer-wave"></div>
     <div id="particles-js"></div>
   </footer>
-  
+
   <script src="./components/js/index.js"></script>
   <script src="./components/js/rss.js"></script>
+  <script src="./components/js/rss2.js"></script>
   <script src="./components/js/footer.js"></script>
 </body>
 </html>
