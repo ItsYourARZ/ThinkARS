@@ -19,7 +19,8 @@ footer {
 
 /* 🌟 GLOW ANIMATION */
 @keyframes glow {
-    0% { border-top-color: #6a0dad; }
+    0% { border-top-color: rgb(35, 4, 72); }
+    50% { border-top-color: #6a0dad; }
     100% { border-top-color: cyan; }
 }
 
@@ -27,14 +28,8 @@ footer {
 .neon-text {
     font-size: 24px;
     color: cyan;
-    text-shadow: 0px 0px 10px cyan, 0px 0px 20px cyan;
-    animation: neon-glow 1.5s infinite alternate;
 }
 
-@keyframes neon-glow {
-    0% { text-shadow: 0px 0px 5px cyan, 0px 0px 10px cyan; }
-    100% { text-shadow: 0px 0px 15px cyan, 0px 0px 30px cyan; }
-}
 
 /* 🌊 FIXED CSS WAVES */
 .footer-wave {
@@ -132,5 +127,29 @@ footer {
 .footer-link:hover {
     color: cyan;
     text-shadow: 0px 0px 5px cyan;
+}
+
+.footer-section{
+    opacity: 1;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 2s ease;
+    margin: 20px 0;
+    padding: 30px 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 600px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid transparent;
+    backdrop-filter: blur(10px);
+    position: relative;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+    user-select: none;         /* Standard */
+    white-space: nowrap; /* keep in one line */
+    overflow: hidden; /* hide overflow */
+    border: 2px solid rgba(255, 255, 255, 0.4);
 }
 
