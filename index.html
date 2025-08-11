@@ -5,12 +5,33 @@
 <head>
   <!-- Information about Webpage -->
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The personal website of It'sYourARZ showcasing projects, about me, and contact details.">
-  <meta name="author" content="It'sYourARZ">
-  <meta name="theme-color" content="#00bcd4">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The ARS Realm | Anirudh Rajesh">
+  <meta name="author" content="Anirudh Rajesh">
+  <meta name="generator" content="Netlify">
+  <meta name="msapplication-TileColor" content="#000000">
+  <meta name="msapplication-TileImage" content="/favicon.png">
+  <meta name="theme-color" content="#4B5320">
+    
+  <meta name="og:title" content="The ARS Realm">
+  <meta name="og:description" content="A Portfolio Website which gives a brief explanation about Anirudh Rajesh, his works, projects and many more!">
+  <meta name="og:url" content="https://anirudh-rajesh.netlify.app">
+  <meta name="og:type" content="website">
+  <meta name="og:image" content="">
+  <meta name="og:image:alt" content="The ARS Realm">
+  <meta name="og:locale" content="en_US">
+  <meta name="og:site_name" content="The ARS Realm">
+    
+  <meta name="apple-mobile-web-app-title" content="The ARS Realm">
+  <meta name="application-name" content="The ARS Realm">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="keywords" content="Anirudh Rajesh, Portfolio, Web Developer, Student">
+
+
   <title>The ARS Realm</title>
   
+
+
   <!-- Font Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,8 +99,8 @@
   <main>
     
     <!-- The Welcome Section -->
-    <div class="section fade-in">
-      <h1 id="welcome">Welcome to <span class="highlight">It'sYourARZ</span> Website</h1>
+    <div class="section fade-in" class="welcome" id="welcome">
+      <h1>Welcome to <span class="highlight">It'sYourARZ</span> Website</h1>
       <p>Discover who I am, what I do, and what I'm passionate about!</p>
       <p>Click each tile heading for more information</p>
     </div>
@@ -97,8 +118,8 @@
 
 
     <!-- The About Me Section -->
-    <div class="section fade-in" aria-labelledby="about-me">
-      <h2 id="about"><span class="highme"><a onclick="toggleInfoforWhoAmI(this)">Who am I?</a></span></h2>
+    <div class="section fade-in" aria-labelledby="about-me" id="about" class="about">
+      <h2><span class="highme"><a onclick="toggleInfoforWhoAmI(this)">Who am I?</a></span></h2>
       <div class="hidden-info">
         <p>I'm a passionate web developer who loves creating beautiful and functional websites.</p>
         <p>I enjoy working with new technologies.</p>
@@ -107,8 +128,8 @@
     </div>
 
     <!-- The Projects Section -->
-    <div class="section fade-in" aria-labelledby="my-projects">
-      <h2 id="projects"><span class="highme"><a onclick="toggleInfoforProjects(this)">Projects</a></span></h2>
+    <div class="section fade-in" aria-labelledby="my-projects" id="projects" class="projects">
+      <h2><span class="highme"><a onclick="toggleInfoforProjects(this)">Projects</a></span></h2>
       <div class="hidden-info">
         <p>Here are some of my exciting projects that I’ve worked on, ranging from web applications to design portfolios.</p>
         <p>Each project represents a new adventure in my journey with technology and design.</p>
@@ -119,8 +140,8 @@
     </div>
 
     <!-- The Contact Me Section -->
-    <div class="section fade-in" aria-labelledby="contact-me">
-      <h2 id="contact"><span class="highme"><a onclick="toggleInfoforLetsMeet(this)">Join the community today!</a></span></h2>
+    <div class="section fade-in" aria-labelledby="contact-me" id="contact" class="contact">
+      <h2><span class="highme"><a onclick="toggleInfoforLetsMeet(this)">Join the community today!</a></span></h2>
       <div class="hidden-info">
         <p>Let's connect!</p>
         <p>Reach out if you'd like to collaborate, ask questions, or just say hello.</p>
@@ -130,8 +151,8 @@
     </div>
 
       <!-- The Song Section -->
-    <div class="section fade-in" aria-labelledby="song">
-      <h2 id="song-section"><span class="highme"><a onclick="toggleInfoforSong(this)">Boring without a song.</a></span></h2>
+    <div class="section fade-in" aria-labelledby="song" id="song-section" class="song-section">
+      <h2><span class="highme"><a onclick="toggleInfoforSong(this)">Boring without a song.</a></span></h2>
       <div class="hidden-info">
         <img src="https://source.boomplaymusic.com/group10/M00/07/01/a7f20c5dd7304b5393ada0c095cd8011_464_464.webp" alt="Tourist" style="width: 150px; height: 150px; border-radius: 15%;" />
         <h3><span class="hightour">Tourist</span>   by   <span class="highsong">RJ Pasin</span></h3>
@@ -155,8 +176,8 @@
 
 
     <!-- The Get-in-Touch Section -->
-    <div class="section fade-in" aria-labelledby="song">
-      <h2 id="touch"><span class="highme"><a onclick="toggleInfoforTouch(this)">Get in touch!</a></span></h2>
+    <div class="section fade-in" aria-labelledby="song" id="touch" class="touch">
+      <h2><span class="highme"><a onclick="toggleInfoforTouch(this)">Get in touch!</a></span></h2>
       <div class="hidden-info">
         <p>Please complete the form, and we’ll automatically submit it for you 😉.</p>
         <form id="contact-form">
@@ -187,8 +208,8 @@
 
     
     <!-- The Recaptcha Section -->
-    <div class="section fade-in" aria-labelledby="form" id="recaptcha-section">
-      <h2 id="recaptcha"><span class="highme"><a onclick="toggleInfoforCaptcha(this)">Are you a Robot?</a></span></h2>
+    <div class="section fade-in" aria-labelledby="form" id="recaptcha-section" class="">
+      <h2><span class="highme"><a onclick="toggleInfoforCaptcha(this)">Are you a Robot?</a></span></h2>
       <div class="hidden-info">
           <div class="align-recaptcha" id="recaptcha-container">
             <div class="g-recaptcha" data-sitekey="__RECAPTCHA_SITE_KEY__" data-callback="onRecaptchaSuccess"></div>
@@ -246,7 +267,7 @@
               <a href="#welcome" class="footer-link">Welcome</a>
               <a href="#projects" class="footer-link">Projects</a>
               <a href="#about" class="footer-link">About</a>
-              <a href="#contact" class="footer-link">Contact</a>
+              <a href="#touch" class="footer-link">Contact</a>
             </div>
 
             
