@@ -61,3 +61,16 @@ function toggleInfoforWhoAmI(link) {
     const scrollPercentage = (scrollPosition / scrollHeight) * 100;
     document.getElementById("progressBar").style.width = `${scrollPercentage}%`;
   });
+
+
+function fitTextToBox(element, maxSize = 50) {
+  let size = maxSize;
+  const box = element.parentElement;
+
+  element.style.fontSize = size + "1.5px";
+
+  while ((element.scrollWidth > box.clientWidth || element.scrollHeight > box.clientHeight) && size > 5) {
+    size--;
+    element.style.fontSize = size + "1.5px";
+  }
+}

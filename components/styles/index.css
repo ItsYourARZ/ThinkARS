@@ -71,6 +71,8 @@
     -moz-user-select: none;    /* Firefox */
     -ms-user-select: none;     /* IE/Edge */
     user-select: none;         /* Standard */
+    white-space: nowrap; /* keep in one line */
+    overflow: hidden; /* hide overflow */
   }
 
   .section.show {
