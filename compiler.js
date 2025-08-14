@@ -6,27 +6,42 @@ const editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
     autoCloseTags: true
 });
 
-function runCode() {
-    const code = editor.getValue();
-    const outputFrame = document.getElementById("output").contentWindow.document;
-    outputFrame.open();
-    outputFrame.write(code);
-    outputFrame.close();
-}
+let suggestion = "";
 
-async function getAISuggestion() {
-    const code = editor.getValue();
-    const res = await fetch("/.netlify/functions/suggest", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code })
-    });
-    const data = await res.json();
-
-    if (data.suggestion) {
-        // Append AI suggestion to editor
-        editor.replaceRange("\n" + data.suggestion, editor.getCursor());
-    } else {
-        alert("No suggestion received");
+async function fetchSuggestion(code) {
+    try {
+        const res = await fetch("/suggest", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ prompt: code })
+        });
+        const data = await res.json();
+        suggestion = data.suggestion || "";
+        showSuggestion();
+    } catch (err) {
+        console.error(err);
     }
 }
+
+function showSuggestion() {
+    const lineCount = editor.lineCount();
+    const lastLine = editor.getLine(lineCount - 1);
+    const ghost = suggestion.startsWith(lastLine) ? suggestion.slice(lastLine.length) : "";
+    
+    const wrapper = editor.getWrapperElement();
+    const lines = wrapper.querySelectorAll(".CodeMirror-line");
+    lines.forEach((line, idx) => {
+        if (idx === lineCount - 1) {
+            line.setAttribute("data-ghost", ghost);
+        } else {
+            line.removeAttribute("data-ghost");
+        }
+    });
+}
+
+editor.on("change", () => {
+    const code = editor.getValue();
+    if (code.trim() !== "") {
+        fetchSuggestion(code);
+    }
+});
