@@ -1,13 +1,5 @@
-  body {
-    /* Radial Gradient with smooth gliding animation */
-    background: linear-gradient(180deg,
-    #4b0082 ,  /* Indigo */
-    #2c003e ,  /* Dark Violet */
-    #1a001a ,  /* Deep Purple */
-    #000428 ,  /* Dark Blue */
-    #00031d ,  /* Dark Blue */
-    #000000   /* Black Outer */
-    );
+body {
+    background-image:url('./image/wallpaper.jpg')
   }
   
   

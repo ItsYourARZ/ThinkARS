@@ -1,7 +1,7 @@
 /* 🌌 FOOTER STYLES */
 footer {
     position: relative;
-    background: linear-gradient(180deg, #000);
+    background: linear-gradient(180deg, #1f2a3c);
     color: white;
     text-align: center;
     padding: 60px 20px;
@@ -129,7 +129,7 @@ footer {
     text-shadow: 0px 0px 5px cyan;
 }
 
-.footer-section{
+.footer-container{
     opacity: 1;
     transform: translateY(50px);
     transition: opacity 1s ease, transform 2s ease;
@@ -151,5 +151,6 @@ footer {
     white-space: nowrap; /* keep in one line */
     overflow: hidden; /* hide overflow */
     border: 2px solid rgba(255, 255, 255, 0.4);
+    font-size: clamp(8px, 2vw, 20px);
 }
 
