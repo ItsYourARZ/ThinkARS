@@ -10,7 +10,7 @@ let suggestion = "";
 
 async function fetchSuggestion(code) {
     try {
-        const res = await fetch("/suggest", {
+        const res = await fetch(".netlify/functions/suggest", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ prompt: code })
