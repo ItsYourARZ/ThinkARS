@@ -1,5 +1,5 @@
 let timeout;
-    editor = document.getElementById('editor');
+    let editor = document.getElementById('editor');
     const suggestionBox = document.getElementById('suggestion');
 
     editor.addEventListener('input', () => {
