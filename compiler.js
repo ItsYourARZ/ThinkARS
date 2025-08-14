@@ -1,19 +1,32 @@
-let timeout;
-    let editor = document.getElementById('editor');
-    const suggestionBox = document.getElementById('suggestion');
+const editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+    mode: "htmlmixed",
+    lineNumbers: true,
+    theme: "dracula",
+    matchBrackets: true,
+    autoCloseTags: true
+});
 
-    editor.addEventListener('input', () => {
-      clearTimeout(timeout);
-      timeout = setTimeout(getSuggestion, 500);
-    });
+function runCode() {
+    const code = editor.getValue();
+    const outputFrame = document.getElementById("output").contentWindow.document;
+    outputFrame.open();
+    outputFrame.write(code);
+    outputFrame.close();
+}
 
-    async function getSuggestion() {
-      const code = editor.value;
-      const res = await fetch('/.netlify/functions/suggest', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+async function getAISuggestion() {
+    const code = editor.getValue();
+    const res = await fetch("/.netlify/functions/suggest", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code })
-      });
-      const data = await res.json();
-      suggestionBox.textContent = data.suggestion || '';
+    });
+    const data = await res.json();
+
+    if (data.suggestion) {
+        // Append AI suggestion to editor
+        editor.replaceRange("\n" + data.suggestion, editor.getCursor());
+    } else {
+        alert("No suggestion received");
     }
+}

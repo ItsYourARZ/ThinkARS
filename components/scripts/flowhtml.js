@@ -1,4 +1,4 @@
-const editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+/** const editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
     mode: "htmlmixed",
     lineNumbers: true,
     theme: "dracula",
@@ -12,4 +12,4 @@ function runCode() {
     outputFrame.open();
     outputFrame.write(code);
     outputFrame.close();
-}
+} **/
