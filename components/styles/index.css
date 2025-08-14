@@ -233,10 +233,3 @@ text-align: left;
 
 
 
-.cm-s-dracula .CodeMirror-line::after {
-            content: attr(data-ghost);
-            opacity: 0.4;
-            color: #aaa;
-            pointer-events: none;
-            margin-left: 4px;
-        }
