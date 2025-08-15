@@ -1,7 +1,14 @@
 /* 🌌 FOOTER STYLES */
 footer {
     position: relative;
-    background: linear-gradient(180deg, #1f2a3c);
+    background-color: #0f082b; /* Dark purple */
+      background-image: repeating-linear-gradient(
+        to bottom,
+        #0f082b 0px,
+        #0f082b 2px,
+        #000000 2px,
+        #000000 4px
+      );
     color: white;
     text-align: center;
     padding: 60px 20px;
@@ -9,6 +16,8 @@ footer {
     overflow: hidden;
     border-top: 4px solid transparent;
     animation: glow 2s infinite alternate;
+    margin: 0;
+    height: 100vh;
 }
 
 /* 👀 FOOTER CONTENT */
