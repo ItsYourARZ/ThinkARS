@@ -118,8 +118,8 @@
 
 
     <!-- The About Me Section -->
-    <div class="section fade-in" aria-labelledby="about-me" id="about" class="about">
-      <h2><span class="highme"><a onclick="toggleInfoforWhoAmI(this)">Who am I?</a></span></h2>
+    <div class="section fade-in" aria-labelledby="about-me" id="about" class="about" onclick="toggleInfo(this)">
+      <h2 class="highme">Who am I?</h2>
       <div class="hidden-info">
         <p>I'm a passionate web developer who loves creating beautiful and functional websites.</p>
         <p>I enjoy working with new technologies.</p>
@@ -128,8 +128,8 @@
     </div>
 
     <!-- The Projects Section -->
-    <div class="section fade-in" aria-labelledby="my-projects" id="projects" class="projects">
-      <h2><span class="highme"><a onclick="toggleInfoforProjects(this)">Projects</a></span></h2>
+    <div class="section fade-in" aria-labelledby="my-projects" id="projects" class="projects" onclick="toggleInfo(this)">
+      <h2 class="highme">Projects</h2>
       <div class="hidden-info">
         <p>Here are some of my exciting projects that I’ve worked on, ranging from web applications to design portfolios.</p>
         <p>Each project represents a new adventure in my journey with technology and design.</p>
@@ -140,8 +140,8 @@
     </div>
 
     <!-- The Contact Me Section -->
-    <div class="section fade-in" aria-labelledby="contact-me" id="contact" class="contact">
-      <h2><span class="highme"><a onclick="toggleInfoforLetsMeet(this)">Join the community today!</a></span></h2>
+    <div class="section fade-in" aria-labelledby="contact-me" id="contact" class="contact" onclick="toggleInfo(this)">
+      <h2 class="highme">Join the community today!</h2>
       <div class="hidden-info">
         <p>Let's connect!</p>
         <p>Reach out if you'd like to collaborate, ask questions, or just say hello.</p>
@@ -151,8 +151,8 @@
     </div>
 
       <!-- The Song Section -->
-    <div class="section fade-in" aria-labelledby="song" id="song-section" class="song-section">
-      <h2><span class="highme"><a onclick="toggleInfoforSong(this)">Boring without a song.</a></span></h2>
+    <div class="section fade-in" aria-labelledby="song" id="song-section" class="song-section" onclick="toggleInfo(this)">
+      <h2 class="highme">Listen to a song on your way!</h2>
       <div class="hidden-info">
         <img src="https://source.boomplaymusic.com/group10/M00/07/01/a7f20c5dd7304b5393ada0c095cd8011_464_464.webp" alt="Tourist" style="width: 150px; height: 150px; border-radius: 15%;" />
         <h3><span class="hightour">Tourist</span>   by   <span class="highsong">RJ Pasin</span></h3>
@@ -177,7 +177,7 @@
 
     <!-- The Get-in-Touch Section -->
     <div class="section fade-in" aria-labelledby="song" id="touch" class="touch">
-      <h2><span class="highme"><a onclick="toggleInfoforTouch(this)">Get in touch!</a></span></h2>
+      <h2 class="highme" onclick="toggleInfo(this)">Send us a mail</h2>
       <div class="hidden-info">
         <p>Please complete the form, and we’ll automatically submit it for you 😉.</p>
         <form id="contact-form">
@@ -208,8 +208,8 @@
 
     
     <!-- The Recaptcha Section -->
-    <div class="section fade-in" aria-labelledby="form" id="recaptcha-section" class="">
-      <h2><span class="highme"><a onclick="toggleInfoforCaptcha(this)">Are you a Robot?</a></span></h2>
+    <div class="section fade-in" aria-labelledby="form" id="recaptcha-section" class="" onclick="toggleInfo(this)">
+      <h2 class="highme">Are you a Robot?</h2>
       <div class="hidden-info">
           <div class="align-recaptcha" id="recaptcha-container">
             <div class="g-recaptcha" data-sitekey="__RECAPTCHA_SITE_KEY__" data-callback="onRecaptchaSuccess"></div>
@@ -224,12 +224,12 @@
 
     <!-- The Compiler Section -->
     <div class="section fade-in" aria-labelledby="compiler">
-      <h2><span class="highme"><a onclick="toggleInfoforHTMLCompiler(this)">Test your HTML Codes.</a></span></h2>
+      <h2 onclick="toggleInfo(this)" class="highme">Test your HTML Codes.</h2>
       <div class="hidden-info">
         <div class="editor-container">
           <div class="editor-header">Code Editor</div>
           <div class="editor-box">
-              <textarea id="editor"></textarea>
+              <textarea id="editor" id="code"></textarea>
           </div>
       </div>
       <button class="btn-run" onclick="runCode()">Run</button>
@@ -241,8 +241,8 @@
 
 
     <!-- The News Section-->
-    <div class="section fade-in" aria-labelledby="rss">
-      <h2><span class="highme"><a onclick="toggleInfoforNewsWeb(this)">Want some news?</a></span></h2>
+    <div class="section fade-in" aria-labelledby="rss" onclick="toggleInfo(this)">
+      <h2 class="highme">Want some news?</h2>
       <div class="hidden-info">
         <p>Stay up-to-date with the latest news from India</p>
         <div class="hidden-info">

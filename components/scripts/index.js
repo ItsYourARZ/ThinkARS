@@ -1,37 +1,7 @@
-function toggleInfoforWhoAmI(link) {
+function toggleInfo(link) {
     const section = link.closest('.section');
     section.classList.toggle("active");
   }
-  function toggleInfoforProjects(link) {
-    const section = link.closest('.section');
-    section.classList.toggle("active");
-  }
-  function toggleInfoforLetsMeet(link) {
-    const section = link.closest('.section');
-    section.classList.toggle("active");
-
-  }
-  function toggleInfoforSong(link) {
-    const section = link.closest('.section');
-    section.classList.toggle("active");
-  }
-  function toggleInfoforTouch(link) {
-    const section = link.closest('.section');
-    section.classList.toggle("active");
-  }
-  function toggleInfoforCaptcha(link) {
-    const section = link.closest('.section');
-    section.classList.toggle("active");
-  }
-  function toggleInfoforHTMLCompiler(link) {
-    const section = link.closest('.section');
-    section.classList.toggle("active");
-  }
-  function toggleInfoforNewsWeb(link) {
-    const section = link.closest('.section');
-    section.classList.toggle("active");
-  }
-
   document.addEventListener("DOMContentLoaded", function() {
     const sections = document.querySelectorAll(".fade-in");
 
