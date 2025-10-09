@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-/* Full-Width Cookie Bar with Frosted Glass Effect */
 .wrapper {
   position: fixed;
   bottom: 0;
@@ -18,14 +16,12 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* Hide the consent bar */
 .wrapper.hide {
   display: none;
 }
 
-/* Cookie Logo */
 .wrapper img {
-  width: 50px; /* Larger cookie logo */
+  width: 50px;
   height: 50px;
   transition: transform 0.3s ease;
 }
@@ -34,7 +30,6 @@
   transform: scale(1.1);
 }
 
-/* Content inside the wrapper */
 .content {
   flex: 1;
 }
@@ -52,16 +47,14 @@ p.cookies {
   margin-bottom: 10px;
 }
 
-/* Buttons container */
 .buttons {
   display: flex;
   gap: 15px;
 }
 
-/* "I understand" button */
 button.item {
-  padding: 5px 12px; /* Small button */
-  background-color: #6c63ff; /* Purple color */
+  padding: 5px 12px;
+  background-color: #6c63ff;
   color: white;
   border: none;
   border-radius: 15px;
@@ -72,16 +65,15 @@ button.item {
 }
 
 button.item:hover {
-  background-color: #5748d3; /* Darker purple on hover */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-color: #5748d3;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 button.item:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.5); /* Focus ring */
+  box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.5);
 }
 
-/* "Learn more" link styling */
 .buttons a.item {
   color: #6c63ff;
   font-size: 12px;
@@ -91,46 +83,46 @@ button.item:focus {
 }
 
 .buttons a.item:hover {
-  color: #5748d3; /* Darker purple on hover */
+  color: #5748d3;
 }
 
-/* Mobile Styles */
+
 @media (max-width: 600px) {
   .wrapper {
-    flex-direction: column; /* Stack content vertically */
+    flex-direction: column;
     text-align: center;
-    padding: 15px 10px; /* Adjust padding for mobile */
+    padding: 15px 10px;
   }
 
   .wrapper img {
-    width: 40px; /* Slightly smaller logo for mobile */
+    width: 40px;
     height: 40px;
-    margin-bottom: 10px; /* Add spacing below the logo */
+    margin-bottom: 10px;
   }
 
   .content {
-    margin-bottom: 10px; /* Space between text and button */
+    margin-bottom: 10px;
   }
 
   p {
-    font-size: 11px; /* Slightly smaller text */
+    font-size: 11px;
   }
 
   .buttons {
     justify-content: center;
-    gap: 0; /* Remove gap between buttons */
+    gap: 0;
   }
 
   button.item {
-    margin: 0 auto; /* Center align the button */
-    padding: 5px 10px; /* Smaller padding for mobile */
-    font-size: 11px; /* Smaller font size */
+    margin: 0 auto;
+    padding: 5px 10px;
+    font-size: 11px;
   }
 
   .buttons a.item {
-    display: block; /* Stack the "Learn more" link */
+    display: block;
     margin-top: 5px;
-    font-size: 11px; /* Smaller font size */
+    font-size: 11px;
   }
 }
 

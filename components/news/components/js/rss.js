@@ -1,5 +1,4 @@
 
-// Education News Fetching Script
 const feedEdu = encodeURIComponent("https://www.hindustantimes.com/feeds/rss/education/rssfeed.xml");
         const apiEdu = `https://api.rss2json.com/v1/api.json?rss_url=${feedEdu}`;
 
@@ -23,7 +22,6 @@ const feedEdu = encodeURIComponent("https://www.hindustantimes.com/feeds/rss/edu
                 console.error(err);
             });
 
-// Entertainment News Fetching Script
 const feedEnt = encodeURIComponent("https://www.hindustantimes.com/feeds/rss/entertainment/rssfeed.xml");
         const apiEnt = `https://api.rss2json.com/v1/api.json?rss_url=${feedEnt}`;
 
@@ -47,7 +45,6 @@ const feedEnt = encodeURIComponent("https://www.hindustantimes.com/feeds/rss/ent
                 console.error(err);
             });
 
-// Lifestyle News Fetching Script
 const feedLife = encodeURIComponent("https://www.hindustantimes.com/feeds/rss/lifestyle/rssfeed.xml");
 const apiLife = `https://api.rss2json.com/v1/api.json?rss_url=${feedLife}`;
 
@@ -71,7 +68,6 @@ const apiLife = `https://api.rss2json.com/v1/api.json?rss_url=${feedLife}`;
                 console.error(err);
             });
 
-// Business News Fetching Script
 const feedBusi = encodeURIComponent("https://www.hindustantimes.com/feeds/rss/business/rssfeed.xml");
 const apiBusi = `https://api.rss2json.com/v1/api.json?rss_url=${feedBusi}`;
 
@@ -95,7 +91,6 @@ const apiBusi = `https://api.rss2json.com/v1/api.json?rss_url=${feedBusi}`;
                 console.error(err);
             });
 
-// Cricket News Fetching Script
 const feedCricket = encodeURIComponent("https://www.hindustantimes.com/feeds/rss/cricket/rssfeed.xml");
 const apiCricket = `https://api.rss2json.com/v1/api.json?rss_url=${feedCricket}`;
         fetch(apiCricket)
@@ -118,7 +113,6 @@ const apiCricket = `https://api.rss2json.com/v1/api.json?rss_url=${feedCricket}`
                 console.error(err);
             });
 
-// World News Fetching Script
 const feedWorld = encodeURIComponent("https://www.hindustantimes.com/feeds/rss/world-news/rssfeed.xml");
 const apiWorld = `https://api.rss2json.com/v1/api.json?rss_url=${feedWorld}`;
 
@@ -142,7 +136,6 @@ const apiWorld = `https://api.rss2json.com/v1/api.json?rss_url=${feedWorld}`;
                 console.error(err);
             });
 
-// Anime News Fetching Script
 const feedAnime = encodeURIComponent("https://www.hindustantimes.com/feeds/rss/entertainment/anime/rssfeed.xml");
 const apiAnime = `https://api.rss2json.com/v1/api.json?rss_url=${feedAnime}`;
         fetch(apiAnime)
@@ -165,7 +158,6 @@ const apiAnime = `https://api.rss2json.com/v1/api.json?rss_url=${feedAnime}`;
                 console.error(err);
             });
 
-// Competitve Exams News Fetching Script
 const feedComp = encodeURIComponent("https://www.hindustantimes.com/feeds/rss/education/competitive-exams/rssfeed.xml");
 const apiComp = `https://api.rss2json.com/v1/api.json?rss_url=${feedComp}`;
 
@@ -189,7 +181,6 @@ const apiComp = `https://api.rss2json.com/v1/api.json?rss_url=${feedComp}`;
                 console.error(err);
             });
 
-// Music News Fetching Script
 const feedMusic = encodeURIComponent("https://www.hindustantimes.com/feeds/rss/entertainment/music/rssfeed.xml");
 const apiMusic = `https://api.rss2json.com/v1/api.json?rss_url=${feedMusic}`;
 
@@ -213,7 +204,6 @@ const apiMusic = `https://api.rss2json.com/v1/api.json?rss_url=${feedMusic}`;
                 console.error(err);
             });
 
-// Sports News Fetching Script
 const feedSports = encodeURIComponent("https://www.hindustantimes.com/feeds/rss/sports/rssfeed.xml");
 const apiSports = `https://api.rss2json.com/v1/api.json?rss_url=${feedSports}`;
         fetch(apiSports)

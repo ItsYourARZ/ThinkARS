@@ -1,7 +1,6 @@
-/* 🌌 FOOTER STYLES */
 footer {
     position: relative;
-    background-color: #0f082b; /* Dark purple */
+    background-color: #0f082b;
       background-image: repeating-linear-gradient(
         to bottom,
         #0f082b 0px,
@@ -20,27 +19,23 @@ footer {
     height: 100vh;
 }
 
-/* 👀 FOOTER CONTENT */
 .footer-container {
     position: relative;
     z-index: 2;
 }
 
-/* 🌟 GLOW ANIMATION */
 @keyframes glow {
     0% { border-top-color: rgb(35, 4, 72); }
     50% { border-top-color: #6a0dad; }
     100% { border-top-color: cyan; }
 }
 
-/* 🔥 NEON GLOW TEXT */
 .neon-text {
     font-size: 24px;
     color: cyan;
 }
 
 
-/* 🌊 FIXED CSS WAVES */
 .footer-wave {
     position: absolute;
     bottom: 0;
@@ -58,7 +53,6 @@ footer {
     100% { transform: translateX(-30px); }
 }
 
-/* 🌌 FIXED PARTICLES */
 #particles-js {
     position: absolute;
     width: 100%;
@@ -69,7 +63,6 @@ footer {
     pointer-events: none;
 }
 
-/* 🚀 SOCIAL ICONS */
 .social-icons {
     margin-top: 20px;
 }
@@ -93,20 +86,17 @@ footer {
     transition: all 0.3s ease-in-out;
 }
 
-/* 🔥 ICON HOVER EFFECTS */
 .icon:hover {
     transform: scale(1.2);
     box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
 }
 
-/* 🎨 ICON SPECIFIC COLORS */
 .spotify:hover { background: #1ED760; }
 .instagram:hover { background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); }
 .discord:hover { background: #7289da; }
 .github:hover { background: #333; }
 
 
-/* 🛡️ COPYRIGHT TEXT */
 .copyright {
     margin-top: 20px;
     font-size: 14px;
@@ -114,13 +104,11 @@ footer {
     text-align: center;
 }
 
-/* 🌟 HOVER EFFECT */
 .copyright:hover {
     color: cyan;
     text-shadow: 0px 0px 5px cyan;
 }
 
-/* 🛠️ FOOTER LINKS */
 .footer-links {
     margin: 15px 0;
 }
@@ -153,12 +141,12 @@ footer {
     border: 1px solid transparent;
     backdrop-filter: blur(10px);
     position: relative;
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none;    /* Firefox */
-    -ms-user-select: none;     /* IE/Edge */
-    user-select: none;         /* Standard */
-    white-space: nowrap; /* keep in one line */
-    overflow: hidden; /* hide overflow */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    overflow: hidden;
     border: 2px solid rgba(255, 255, 255, 0.4);
     font-size: clamp(8px, 2vw, 20px);
 }

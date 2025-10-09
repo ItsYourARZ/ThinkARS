@@ -5,18 +5,16 @@ const progressBarContainer = document.getElementById('progress-bar-container');
 const currentTimeEl = document.getElementById('current-time');
 const durationEl = document.getElementById('duration');
 
-// Toggle play/pause
 playPauseBtn.addEventListener('click', () => {
   if (audio.paused) {
     audio.play();
-    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';  // Change to pause icon
+    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
   } else {
     audio.pause();
-    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';  // Change to play icon
+    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
   }
 });
 
-// Update progress bar and time
 audio.addEventListener('timeupdate', () => {
   const progressPercent = (audio.currentTime / audio.duration) * 100;
   progressBar.style.width = `${progressPercent}%`;
@@ -26,14 +24,12 @@ audio.addEventListener('timeupdate', () => {
   currentTimeEl.textContent = `${currentMinutes}:${currentSeconds}`;
 });
 
-// Update duration when audio loads
 audio.addEventListener('loadedmetadata', () => {
   const durationMinutes = Math.floor(audio.duration / 60);
   const durationSeconds = Math.floor(audio.duration % 60).toString().padStart(2, '0');
   durationEl.textContent = `${durationMinutes}:${durationSeconds}`;
 });
 
-// Allow seeking by clicking on the progress bar
 progressBarContainer.addEventListener('click', (e) => {
   const rect = progressBarContainer.getBoundingClientRect();
   const clickX = e.clientX - rect.left;

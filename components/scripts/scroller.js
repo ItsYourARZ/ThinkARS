@@ -1,12 +1,12 @@
-let scrollSpeed = 2; // Pixels per step
-let scrollInterval = 50; // Time between steps (milliseconds)
+let scrollSpeed = 2;
+let scrollInterval = 50;
 let scrollIntervalId;
 let userInteracted = false;
 
 function autoScroll() {
     window.scrollBy(0, scrollSpeed,);
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        clearInterval(scrollIntervalId); // Stop when reaching the bottom
+        clearInterval(scrollIntervalId);
         }
 }
 
@@ -14,10 +14,8 @@ function startAutoScroll() {
     scrollIntervalId = setInterval(autoScroll, scrollInterval);
 }
 
-// Start auto-scroll initially
 startAutoScroll();
 
-// Stop auto-scroll when user interacts
 window.addEventListener('wheel', () => {
     userInteracted = true;
     clearInterval(scrollIntervalId);

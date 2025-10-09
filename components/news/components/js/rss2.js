@@ -1,4 +1,3 @@
-// Exam Results News Fetching Script
 const feedResults = encodeURIComponent("https://www.hindustantimes.com/feeds/rss/education/exam-results/rssfeed.xml");
 const apiResults = `https://api.rss2json.com/v1/api.json?rss_url=${feedResults}`;
 
@@ -22,7 +21,6 @@ const apiResults = `https://api.rss2json.com/v1/api.json?rss_url=${feedResults}`
                 console.error(err);
             });
 
-// Fashion News Fetching Script
 const feedFashion = encodeURIComponent("https://www.hindustantimes.com/feeds/rss/lifestyle/fashion/rssfeed.xml");
 const apiFashion = `https://api.rss2json.com/v1/api.json?rss_url=${feedFashion}`;
 
@@ -46,7 +44,6 @@ const apiFashion = `https://api.rss2json.com/v1/api.json?rss_url=${feedFashion}`
                 console.error(err);
             });
 
-// Technology News Fetching Script
 const feedTech = encodeURIComponent("https://www.hindustantimes.com/feeds/rss/technology/rssfeed.xml");
 const apiTech = `https://api.rss2json.com/v1/api.json?rss_url=${feedTech}`;
 
@@ -66,7 +63,6 @@ const apiTech = `https://api.rss2json.com/v1/api.json?rss_url=${feedTech}`;
                 document.getElementById("technology").innerHTML = html;
             })
 
-// Marketing News Fetching Script
 const feedHealth = encodeURIComponent("https://www.hindustantimes.com/feeds/rss/lifestyle/health/rssfeed.xml");
 const apiHealth = `https://api.rss2json.com/v1/api.json?rss_url=${feedHealth}`;
 
@@ -90,7 +86,6 @@ const apiHealth = `https://api.rss2json.com/v1/api.json?rss_url=${feedHealth}`;
                 console.error(err);
             });
 
-// Football News Fetching Script
 const feedFootball = encodeURIComponent("https://www.hindustantimes.com/feeds/rss/sports/football/rssfeed.xml");
 const apiFootball = `https://api.rss2json.com/v1/api.json?rss_url=${feedFootball}`;
         fetch(apiFootball)

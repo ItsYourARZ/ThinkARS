@@ -18,11 +18,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none;    /* Firefox */
-    -ms-user-select: none;     /* IE/Edge */
-    user-select: none;         /* Standard */
-    scroll-behavior: smooth; /* Smooth scrolling behavior */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    scroll-behavior: smooth;
   }
 
   main {
@@ -67,10 +67,10 @@
     border: 1px solid transparent;
     backdrop-filter: blur(10px);
     position: relative;
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none;    /* Firefox */
-    -ms-user-select: none;     /* IE/Edge */
-    user-select: none;         /* Standard */
+    -webkit-user-select: none;
+    -moz-user-select: none;    
+    -ms-user-select: none;     
+    user-select: none;
   }
 
   .section.show {
@@ -121,23 +121,7 @@
     opacity: 1;
   }
 
-  .discord-button {
-    margin-top: 20px;
-    display: inline-block;
-    padding: 10px 20px;
-    color: #ffffff;
-    background-color: #5865F2;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-  }
-
-  .discord-button:hover {
-    background-color: #4754C8;
-  }
  
-
   footer {
     margin-top: 20px;
     padding: 15px;
@@ -146,7 +130,6 @@
     font-size: 0.9em;
   }
 
-  /* Responsive Design */
   @media (max-width: 768px) {
     h1 {
       font-size: 1.4em;
@@ -174,57 +157,17 @@
   }
 
   a {
-          text-decoration: none; /* Remove underline from the link */
+          text-decoration: none;
       }
       img {
-          width: 40px; /* Set icon size */
+          width: 40px; 
           height: 40px;
-          transition: transform 0.3s; /* Smooth zoom effect */
+          transition: transform 0.3s;
       }
 
       form {
 margin-top: 20px;
 text-align: left;
-}
-
-
-
-
-.highsong {
-    font-family: "Edu AU VIC WA NT Pre", sans-serif;
-    color: #7581eb;
-    font-size: 1.3em;
-}
-
-.hightour {
-    font-family: 'Pacifico', cursive;
-    color: #00bcd4;
-    font-size: 1.3em;
-    font-weight: bold;
-}
-
-.view-more-link {
-  color: #00bcd4;
-  cursor: pointer;
-  display: inline-block;
-  margin-top: 15px;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1.1em;
-  transition: color 0.3s ease, transform 0.3s;
-}
-
-.view-more-link:hover {
-  color: #008c99;
-  transform: scale(1.1);
-}
-
-
-
-.align-recaptcha{
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 
