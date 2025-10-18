@@ -65,6 +65,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/css/css.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/htmlmixed/htmlmixed.min.js"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.10/mode/python/python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.10/mode/clike/clike.min.js"></script>
 
   <!-- Website Logo -->
   <link rel="apple-touch-icon" sizes="180x180" href="https://phrs-anirudh.netlify.app/static/assets/logo/apple-touch-icon.png">
@@ -74,7 +76,6 @@
 
   <!-- Google Site Verification-->
   <meta name="google-site-verification" content="4JiIo5AbLkNBttu-V57_ZMtVauixJzl8RnK9WC-jW1I" />
-
 
 </head>
 <body onload="document.body.style.opacity = 1;">
@@ -228,18 +229,35 @@
 
     <!-- The Compiler Section -->
     <div class="section fade-in" aria-labelledby="compiler">
-      <h2 onclick="toggleInfo(this)" class="highme">Test your HTML Codes.</h2>
+      <h2 onclick="toggleInfo(this)" class="highme">Test your Codes.</h2>
       <div class="hidden-info">
         <div class="editor-container">
-          <div class="editor-header">Code Editor</div>
-          <div class="editor-box">
-              <textarea id="editor" id="code"></textarea>
+          <div class="editor-header">
+            Code Editor
+            <select id="language" class="lang-select">
+              <option value="html">HTML</option>
+              <option value="java">Java</option>
+              <option value="c">C</option>
+              <option value="cpp">C++</option>
+              <option value="python">Python</option> 
+              <option value="javascript">JavaScript</option>
+              <option value="ruby">Ruby</option>
+              <option value="go">Go</option>
+              <option value="rust">Rust</option>
+              <option value="php">PHP</option>
+            </select>
           </div>
-      </div>
-      <button class="btn-run" onclick="runCode()">Run</button>
-      <div class="output-container">
-          <iframe id="output"></iframe>
-      </div>
+          <div class="editor-box">
+            <textarea id="editor" spellcheck="false"></textarea>
+          </div>
+        </div>
+
+        <button class="btn-run" onclick="runCode()">Run</button>
+
+        <div class="output-container">
+          <pre id="textOutput"></pre>
+          <iframe id="iframeOutput" class="output-iframe" style="color:white;"></iframe>
+        </div>
       </div>
     </div>
 
@@ -300,7 +318,6 @@
   <script src="https://phrs-anirudh.netlify.app/static/assets/js/anirudh-rajesh-footer.js"></script>
   <script src="https://phrs-anirudh.netlify.app/static/assets/js/anirudh-rajesh-email.js"></script>
   <script src="https://phrs-anirudh.netlify.app/static/assets/js/anirudh-rajesh-scroller.js"></script>
-
 
 
 </body>
