@@ -214,19 +214,6 @@
     </div>
 
     
-    <!-- The Recaptcha Section -->
-    <div class="section fade-in" aria-labelledby="form" id="recaptcha-section" class="" onclick="toggleInfo(this)">
-      <h2 class="highme">Are you a Robot?</h2>
-      <div class="hidden-info">
-          <div class="align-recaptcha" id="recaptcha-container">
-            <div class="g-recaptcha" data-sitekey="__RECAPTCHA_SITE_KEY__" data-callback="onRecaptchaSuccess"></div>
-          </div>
-          <div id="recaptcha-message" style="display: none; text-align:center;">
-          You have already attempted the reCAPTCHA.
-          </div>
-        
-      </div>
-    </div> 
 
 
     <!-- The Compiler Section -->
@@ -311,7 +298,6 @@
   </footer>
 
   <script src="recaptcha.js" async defer></script> 
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script src="https://phrs-anirudh.netlify.app/static/assets/js/anirudh-rajesh-index.js"></script>
   <script src="https://phrs-anirudh.netlify.app/static/assets/js/anirudh-rajesh-flowhtml.js"></script>
@@ -320,6 +306,35 @@
   <script src="https://phrs-anirudh.netlify.app/static/assets/js/anirudh-rajesh-footer.js"></script>
   <script src="https://phrs-anirudh.netlify.app/static/assets/js/anirudh-rajesh-email.js"></script>
   <script src="https://phrs-anirudh.netlify.app/static/assets/js/anirudh-rajesh-scroller.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=6LeJQfIrAAAAANku-OufbkDLZUe9csqO8o4FtN92"></script>
+<script>
+const btn = document.getElementById('submit-btn');
+
+btn.addEventListener('click', async () => {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  if (!email || !password) {
+    alert("Please fill in all fields");
+    return;
+  }
+
+  // Get the reCAPTCHA v3 token
+  grecaptcha.ready(async function() {
+    const token = await grecaptcha.execute('6LeJQfIrAAAAANku-OufbkDLZUe9csqO8o4FtN92', {action: 'signup'});
+
+    // Send data to Netlify Function
+    const res = await fetch('/.netlify/functions/verify-recaptcha', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password, token, action: 'signup' })
+    });
+
+    const data = await res.json();
+    alert(data.message || "Submission complete");
+  });
+});
+</script>
 </body>
 
 
