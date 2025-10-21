@@ -5,7 +5,7 @@ export async function handler(event, context) {
   const code = event.queryStringParameters.code;
   const client_id = process.env.SPOTIFY_CLIENT_ID;
   const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-  const redirect_uri = "https://your-site.netlify.app/.netlify/functions/callback";
+  const redirect_uri = "https://anirudh-rajesh.netlify.app/.netlify/functions/callback";
 
   const response = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
