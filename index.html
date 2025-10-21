@@ -322,7 +322,6 @@
   <script src="https://phrs-anirudh.netlify.app/static/assets/js/anirudh-rajesh-scroller.js"></script>
 
   <script>
-    window.location.href = "/.netlify/functions/login";
     async function refreshAccessToken(refresh_token) {
     const response = await fetch(
       `/.netlify/functions/refresh?refresh_token=${refresh_token}`
