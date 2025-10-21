@@ -314,7 +314,7 @@
     try {
       const token = await grecaptcha.execute('6LeJQfIrAAAAANku-OufbkDLZUe9csqO8o4FtN92', { action: 'auto_verify' });
 
-      const res = await fetch('/.netlify/functions/verify-recaptcha', {
+      const res = await fetch('/.netlify/functions/recaptcha-verify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token, action: 'auto_verify' })
