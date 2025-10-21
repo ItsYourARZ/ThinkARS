@@ -297,7 +297,6 @@
     <div id="particles-js"></div>
   </footer>
 
-  <script src="recaptcha.js" async defer></script> 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script src="https://phrs-anirudh.netlify.app/static/assets/js/anirudh-rajesh-index.js"></script>
   <script src="https://phrs-anirudh.netlify.app/static/assets/js/anirudh-rajesh-flowhtml.js"></script>
@@ -308,32 +307,35 @@
   <script src="https://phrs-anirudh.netlify.app/static/assets/js/anirudh-rajesh-scroller.js"></script>
   <script src="https://www.google.com/recaptcha/api.js?render=6LeJQfIrAAAAANku-OufbkDLZUe9csqO8o4FtN92"></script>
 <script>
-const btn = document.getElementById('submit-btn');
+  const status = document.getElementById('status');
 
-btn.addEventListener('click', async () => {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-
-  if (!email || !password) {
-    alert("Please fill in all fields");
-    return;
-  }
-
-  // Get the reCAPTCHA v3 token
+  // Trigger reCAPTCHA v3 automatically on page load
   grecaptcha.ready(async function() {
-    const token = await grecaptcha.execute('6LeJQfIrAAAAANku-OufbkDLZUe9csqO8o4FtN92', {action: 'signup'});
+    try {
+      const token = await grecaptcha.execute('YOUR_SITE_KEY', { action: 'auto_verify' });
 
-    // Send data to Netlify Function
-    const res = await fetch('/.netlify/functions/verify-recaptcha', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password, token, action: 'signup' })
-    });
+      const res = await fetch('/.netlify/functions/verify-recaptcha', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, action: 'auto_verify' })
+      });
 
-    const data = await res.json();
-    alert(data.message || "Submission complete");
+      const data = await res.json();
+
+      if (res.ok) {
+        status.textContent = data.message || 'Verification successful!';
+        console.log('reCAPTCHA verification success:', data);
+      } else {
+        status.textContent = data.message || 'Verification failed';
+        console.warn('reCAPTCHA verification failed:', data);
+      }
+
+    } catch (err) {
+      status.textContent = 'Verification error';
+      console.error('Error verifying reCAPTCHA:', err);
+    }
   });
-});
+
 </script>
 </body>
 
