@@ -1,137 +1,45 @@
-/* Base layout */
 body {
-  background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
+  background: radial-gradient(circle at top left, #001F3F, #000);
   font-family: "Poppins", sans-serif;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   min-height: 100vh;
+  margin: 0;
   color: white;
-  overflow: hidden;
 }
 
-.container {
-  perspective: 1000px;
-}
+.container { perspective: 1000px; }
 
-.form-container {
-  position: relative;
-  width: 380px;
-  transition: transform 0.8s ease;
-  transform-style: preserve-3d;
-}
-
-/* Uiverse style reused */
 .form {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 25px;
+  padding: 30px;
   border-radius: 20px;
-  background-color: #1a1a1a;
-  border: 1px solid #333;
-  box-shadow: 0 0 25px rgba(0,0,0,0.4);
-  backface-visibility: hidden;
-}
-
-.title {
-  font-size: 26px;
-  font-weight: 600;
-  color: #00bfff;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(20px);
+  width: 350px;
   text-align: center;
-  font-family: "Space Grotesk", sans-serif;
-  margin-bottom: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
-.message {
-  font-size: 14px;
-  text-align: center;
-  color: rgba(255,255,255,0.7);
-}
+.title { color: #00bfff; font-size: 26px; font-weight: 600; margin-bottom: 10px; font-family: "Space Grotesk", sans-serif; }
+.message { font-size: 14px; color: rgba(255,255,255,0.7); }
 
-.flex {
-  display: flex;
-  gap: 8px;
-}
+.input { width: 100%; padding: 12px; margin: 8px 0; border-radius: 10px; border: none; background: rgba(255,255,255,0.15); color: white; }
+.input:focus { outline: 2px solid #00bfff; }
 
-label {
-  position: relative;
-}
+button { padding: 12px; margin-top: 10px; border-radius: 10px; border: none; background-color: #00bfff; color: white; font-weight: 600; cursor: pointer; transition: 0.3s; }
+button:hover { background-color: #0099cc; }
 
-.input {
-  background-color: #333;
-  color: #fff;
-  width: 100%;
-  padding: 20px 5px 5px 10px;
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 10px;
-  outline: none;
-}
+.flex { display: flex; gap: 8px; }
+.hidden { display: none; }
 
-label .input + span {
-  color: rgba(255, 255, 255, 0.5);
-  position: absolute;
-  left: 10px;
-  top: 0px;
-  font-size: 0.9em;
-  cursor: text;
-  transition: 0.3s ease;
-}
+.oauth { display: flex; flex-direction: column; gap: 10px; }
+.oauth button { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); }
+.oauth button:hover { background: #00bfff; border: none; }
 
-.input:placeholder-shown + span {
-  top: 13px;
-  font-size: 0.9em;
-}
-
-.input:focus + span,
-.input:valid + span {
-  color: #00bfff;
-  top: 0px;
-  font-size: 0.7em;
-  font-weight: 600;
-}
-
-.submit {
-  background: #00bfff;
-  border: none;
-  color: white;
-  padding: 12px;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: 600;
-  transition: 0.3s ease;
-  cursor: pointer;
-}
-
-.submit:hover {
-  background: #00bfff8c;
-}
-
-.signin {
-  text-align: center;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 14px;
-}
-
-.signin a {
-  color: #00bfff;
-  text-decoration: none;
-}
-
-.signin a:hover {
-  text-decoration: underline;
-}
-
-/* Flip animation for forms */
-.hidden {
-  display: none;
-}
-
-.fade-in {
-  animation: fade 0.4s ease forwards;
-}
-
-@keyframes fade {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
+.signin { font-size: 14px; color: rgba(255,255,255,0.7); }
+.signin a { color: #00bfff; text-decoration: none; }
+.signin a:hover { text-decoration: underline; }
