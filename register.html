@@ -1,114 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Email Link Auth | Firebase</title>
-  <script type="module" src="./register.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login / Signup</title>
   <style>
-    /* === your form style === */
-    .form {
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #121212, #1e1e1e);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 40px;
+      border-radius: 20px;
+      width: 350px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #5865f2;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #4752c4;
+    }
+
+    .oauth-buttons {
       display: flex;
       flex-direction: column;
       gap: 10px;
-      background-color: #ffffff;
-      padding: 30px;
-      width: 450px;
-      border-radius: 20px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      margin: 50px auto;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      margin-top: 15px;
     }
 
-    ::placeholder { font-family: inherit; }
-
-    .inputForm {
-      border: 1.5px solid #ecedec;
-      border-radius: 10px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      padding-left: 10px;
-      transition: 0.2s ease-in-out;
+    .hidden {
+      display: none;
     }
 
-    .input { margin-left: 10px; border: none; width: 85%; height: 100%; border-radius: 10px; }
-    .input:focus { outline: none; }
-    .inputForm:focus-within { border: 1.5px solid #2d79f3; }
-
-    .button-submit {
-      margin: 20px 0 10px 0;
-      background-color: #151717;
-      border: none;
-      color: white;
-      font-size: 15px;
-      font-weight: 500;
-      border-radius: 10px;
-      height: 50px;
-      width: 100%;
+    .link {
+      color: #58a6ff;
       cursor: pointer;
     }
-
-    .button-submit:hover { background-color: #252727; }
   </style>
 </head>
 <body>
-  <div class="form">
-    <h2>Email OTP Login</h2>
-    <div class="inputForm">
-      <input type="email" id="email" class="input" placeholder="Enter your email" required>
+  <div class="container">
+    <h2 id="formTitle">Create Account</h2>
+
+    <!-- Signup Form -->
+    <form id="signup-form">
+      <input type="text" id="firstname" placeholder="First Name" required />
+      <input type="text" id="lastname" placeholder="Last Name" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+      <button type="submit">Sign Up</button>
+
+      <p>Already have an account? <span class="link" onclick="showLogin()">Sign In</span></p>
+    </form>
+
+    <!-- Login Form -->
+    <form id="login-form" class="hidden">
+      <input type="email" id="login-email" placeholder="Email" required />
+      <input type="password" id="login-password" placeholder="Password" required />
+      <button type="submit">Sign In</button>
+
+      <p>Don’t have an account? <span class="link" onclick="showSignup()">Create One</span></p>
+    </form>
+
+    <div class="oauth-buttons">
+      <button id="googleBtn">Continue with Google</button>
+      <button id="githubBtn">Continue with GitHub</button>
+      <button id="microsoftBtn">Continue with Microsoft</button>
     </div>
-    <button id="sendLinkBtn" class="button-submit">Send Sign-In Link</button>
   </div>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-    import { getAuth, sendSignInLinkToEmail, isSignInWithEmailLink, signInWithEmailLink } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyAARY3XCb_p0KpVPRsUh-zN8DY_OxkgisE",
-      authDomain: "the-ars-team.firebaseapp.com",
-      projectId: "the-ars-team",
-      appId: "1:247839744361:web:1d8f1e637659d5efb71df8"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-    // === Send Email Link ===
-    document.getElementById("sendLinkBtn").onclick = async () => {
-      const email = document.getElementById("email").value;
-      if (!email) return alert("Enter an email!");
-
-      const actionCodeSettings = {
-        url: window.location.href, // user returns to this same page
-        handleCodeInApp: true,
-      };
-
-      try {
-        await sendSignInLinkToEmail(auth, email, actionCodeSettings);
-        window.localStorage.setItem("emailForSignIn", email);
-        alert("Sign-in link sent! Check your email inbox.");
-      } catch (error) {
-        alert("Error: " + error.message);
-      }
-    };
-
-    // === Check if it's an email link ===
-    if (isSignInWithEmailLink(auth, window.location.href)) {
-      let email = window.localStorage.getItem("emailForSignIn");
-      if (!email) {
-        email = window.prompt("Please provide your email for confirmation:");
-      }
-
-      signInWithEmailLink(auth, email, window.location.href)
-        .then(result => {
-          alert("Welcome " + result.user.email + " 🎉");
-          window.localStorage.removeItem("emailForSignIn");
-        })
-        .catch(err => {
-          alert("Error signing in: " + err.message);
-        });
-    }
-  </script>
+  <script type="module" src="./register.js"></script>
 </body>
 </html>
