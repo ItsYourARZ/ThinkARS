@@ -1,31 +1,36 @@
+// app.js
 import {
   auth,
   googleProvider,
   githubProvider,
-  microsoftProvider,
-  signInWithPopup,
+  microsoftProvider
+} from "./firebase-config.js";
+
+import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
-} from './firebase-config.js';
+  signInWithPopup,
+  updateProfile
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-// Forms references
+// === FORM TOGGLING ===
 const signupForm = document.getElementById("signup-form");
 const loginForm = document.getElementById("login-form");
+const formTitle = document.getElementById("formTitle");
 
-// ---------- Form Switching Functions ----------
 window.showLogin = () => {
   signupForm.classList.add("hidden");
   loginForm.classList.remove("hidden");
+  formTitle.textContent = "Sign In";
 };
 
 window.showSignup = () => {
   loginForm.classList.add("hidden");
   signupForm.classList.remove("hidden");
+  formTitle.textContent = "Create Account";
 };
 
-// ---------- SIGNUP ----------
+// === SIGNUP ===
 signupForm.addEventListener("submit", async e => {
   e.preventDefault();
   const firstname = document.getElementById("firstname").value.trim();
@@ -35,19 +40,23 @@ signupForm.addEventListener("submit", async e => {
   const confirmPassword = document.getElementById("confirmPassword").value.trim();
 
   if (password !== confirmPassword) {
-    return alert("Passwords do not match!");
+    alert("Passwords do not match!");
+    return;
   }
 
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    await userCredential.user.updateProfile({ displayName: `${firstname} ${lastname}` });
+    await updateProfile(userCredential.user, {
+      displayName: `${firstname} ${lastname}`
+    });
+    alert("Signup successful!");
     window.location.href = "dashboard.html";
   } catch (err) {
     alert("Signup failed: " + err.message);
   }
 });
 
-// ---------- LOGIN ----------
+// === LOGIN ===
 loginForm.addEventListener("submit", async e => {
   e.preventDefault();
   const email = document.getElementById("login-email").value.trim();
@@ -55,13 +64,14 @@ loginForm.addEventListener("submit", async e => {
 
   try {
     await signInWithEmailAndPassword(auth, email, password);
+    alert("Login successful!");
     window.location.href = "dashboard.html";
   } catch (err) {
     alert("Login failed: " + err.message);
   }
 });
 
-// ---------- OAUTH ----------
+// === OAUTH LOGIN ===
 const oauthLogin = async provider => {
   try {
     await signInWithPopup(auth, provider);
@@ -74,10 +84,3 @@ const oauthLogin = async provider => {
 document.getElementById("googleBtn").onclick = () => oauthLogin(googleProvider);
 document.getElementById("githubBtn").onclick = () => oauthLogin(githubProvider);
 document.getElementById("microsoftBtn").onclick = () => oauthLogin(microsoftProvider);
-
-// ---------- PROTECTED ROUTE ----------
-onAuthStateChanged(auth, user => {
-  if (user && window.location.pathname.endsWith("index.html")) {
-    window.location.href = "dashboard.html";
-  }
-});
