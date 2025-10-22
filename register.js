@@ -10,7 +10,7 @@ import {
   signOut
 } from './firebase-config.js';
 
-// Forms & links
+// Forms and links
 const signupForm = document.getElementById("signup-form");
 const loginForm = document.getElementById("login-form");
 const goLogin = document.getElementById("go-login");
@@ -82,8 +82,7 @@ document.getElementById("microsoftBtn").addEventListener("click", () => oauthLog
 
 // ---------- PROTECTED ROUTE ----------
 onAuthStateChanged(auth, user => {
-  // If you want to auto-redirect logged-in users
-  // e.g., prevent showing login page if already signed in
+  // Prevent showing login page if already signed in
   if (user && window.location.pathname.endsWith("index.html")) {
     window.location.href = "dashboard.html";
   }
