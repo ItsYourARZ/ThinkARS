@@ -64,7 +64,7 @@
   </div>
 
   <script type="module">
-    import { auth, onAuthStateChanged, signOut } from './firebase-config.js';
+    import { auth, onAuthStateChanged, signOut } from './register.js';
 
     const userInfo = document.getElementById("user-info");
     const logoutBtn = document.getElementById("logout-btn");
@@ -77,13 +77,13 @@
         `;
       } else {
         // Redirect to login page if not logged in
-        window.location.href = "index.html";
+        window.location.href = "register.html";
       }
     });
 
     logoutBtn.addEventListener("click", async () => {
       await signOut(auth);
-      window.location.href = "index.html";
+      window.location.href = "register.html";
     });
   </script>
 </body>
