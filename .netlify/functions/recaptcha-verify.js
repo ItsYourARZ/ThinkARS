@@ -4,7 +4,7 @@ exports.handler = async (event) => {
   }
 
   const { email, password, token, action } = JSON.parse(event.body);
-  const secret = '6LeJQfIrAAAAABC5fZ7Jvys4zgHg2nei1TXzxNN1';
+  const secret = process.env.RECAPTCHA_SECRET_KEY;
 
   if (!token) {
     return { statusCode: 400, body: JSON.stringify({ message: 'No reCAPTCHA token provided' }) };
