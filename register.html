@@ -6,10 +6,9 @@
 <title>Login / Signup | It'sYourARZ</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="register.css">
-<script type="module" src="register.js" defer></script>
+<script type="module" src="register.js"></script>
 </head>
 <body>
-
 <div class="container">
 
   <!-- SIGNUP FORM -->
@@ -17,27 +16,12 @@
     <p class="title">Create Account</p>
     <p class="message">Signup to get full access.</p>
     <div class="flex">
-      <label>
-        <input class="input" type="text" id="firstname" required>
-        <span>Firstname</span>
-      </label>
-      <label>
-        <input class="input" type="text" id="lastname" required>
-        <span>Lastname</span>
-      </label>
+      <label><input class="input" type="text" id="firstname" required><span>Firstname</span></label>
+      <label><input class="input" type="text" id="lastname" required><span>Lastname</span></label>
     </div>
-    <label>
-      <input class="input" type="email" id="email" required>
-      <span>Email</span>
-    </label>
-    <label>
-      <input class="input" type="password" id="password" required>
-      <span>Password</span>
-    </label>
-    <label>
-      <input class="input" type="password" id="confirmPassword" required>
-      <span>Confirm Password</span>
-    </label>
+    <label><input class="input" type="email" id="email" required><span>Email</span></label>
+    <label><input class="input" type="password" id="password" required><span>Password</span></label>
+    <label><input class="input" type="password" id="confirmPassword" required><span>Confirm Password</span></label>
     <button class="submit" type="submit">Sign Up</button>
     <p class="signin">Already have an account? <a href="#" id="go-login">Sign In</a></p>
   </form>
@@ -46,28 +30,18 @@
   <form class="form hidden" id="login-form">
     <p class="title">Welcome Back</p>
     <p class="message">Login to continue.</p>
-    <label>
-      <input class="input" type="email" id="login-email" required>
-      <span>Email</span>
-    </label>
-    <label>
-      <input class="input" type="password" id="login-password" required>
-      <span>Password</span>
-    </label>
+    <label><input class="input" type="email" id="login-email" required><span>Email</span></label>
+    <label><input class="input" type="password" id="login-password" required><span>Password</span></label>
     <button class="submit" type="submit">Login</button>
-
     <p style="margin:10px 0;">or</p>
-
     <div class="oauth">
       <button id="googleBtn">Sign in with Google</button>
       <button id="githubBtn">Sign in with GitHub</button>
       <button id="microsoftBtn">Sign in with Microsoft</button>
     </div>
-
     <p class="signin">Don’t have an account? <a href="#" id="go-signup">Create One</a></p>
   </form>
 
 </div>
-
 </body>
 </html>
