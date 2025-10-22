@@ -1,21 +1,3 @@
 # Local Netlify folder
 .netlify\functions\node_module
 ./recaptcha.js
-FlechaM-Medium.woff2
-working.html
-working.css
-example.html
-working.js
-.vscode/launch.json
-progress/text-config.html
-progress/password-checker.png
-progress/vite.png
-progress/project.png
-progress/react.png
-progress/registry.png
-progress/Not_Like_Us.jpg
-progress/Not_Like_Us.mp3
-progress/Space_Cadet.jpg
-progress/Space_Cadet.mp3
-progress/Tourist.jpg
-progress/Tourist.mp3
