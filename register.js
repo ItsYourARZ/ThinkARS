@@ -10,24 +10,20 @@ import {
   signOut
 } from './firebase-config.js';
 
-// Forms and links
+// Forms references
 const signupForm = document.getElementById("signup-form");
 const loginForm = document.getElementById("login-form");
-const goLogin = document.getElementById("go-login");
-const goSignup = document.getElementById("go-signup");
 
-// ---------- Form Switching ----------
-goLogin.addEventListener("click", e => {
-  e.preventDefault();
+// ---------- Form Switching Functions ----------
+window.showLogin = () => {
   signupForm.classList.add("hidden");
   loginForm.classList.remove("hidden");
-});
+};
 
-goSignup.addEventListener("click", e => {
-  e.preventDefault();
+window.showSignup = () => {
   loginForm.classList.add("hidden");
   signupForm.classList.remove("hidden");
-});
+};
 
 // ---------- SIGNUP ----------
 signupForm.addEventListener("submit", async e => {
@@ -44,7 +40,6 @@ signupForm.addEventListener("submit", async e => {
 
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    // Optionally set display name
     await userCredential.user.updateProfile({ displayName: `${firstname} ${lastname}` });
     window.location.href = "dashboard.html";
   } catch (err) {
@@ -76,13 +71,12 @@ const oauthLogin = async provider => {
   }
 };
 
-document.getElementById("googleBtn").addEventListener("click", () => oauthLogin(googleProvider));
-document.getElementById("githubBtn").addEventListener("click", () => oauthLogin(githubProvider));
-document.getElementById("microsoftBtn").addEventListener("click", () => oauthLogin(microsoftProvider));
+document.getElementById("googleBtn").onclick = () => oauthLogin(googleProvider);
+document.getElementById("githubBtn").onclick = () => oauthLogin(githubProvider);
+document.getElementById("microsoftBtn").onclick = () => oauthLogin(microsoftProvider);
 
 // ---------- PROTECTED ROUTE ----------
 onAuthStateChanged(auth, user => {
-  // Prevent showing login page if already signed in
   if (user && window.location.pathname.endsWith("index.html")) {
     window.location.href = "dashboard.html";
   }
