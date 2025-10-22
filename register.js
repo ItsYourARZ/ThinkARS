@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAARY3XCb_p0KpVPRsUh-zN8DY_OxkgisE",
@@ -10,11 +10,29 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-const form = document.getElementById("signup-form");
+// Toggle between forms
+const signupForm = document.getElementById("signup-form");
+const loginForm = document.getElementById("login-form");
+const goLogin = document.getElementById("go-login");
+const goSignup = document.getElementById("go-signup");
 
-form.addEventListener("submit", async (e) => {
+goLogin.addEventListener("click", (e) => {
   e.preventDefault();
+  signupForm.classList.add("hidden");
+  loginForm.classList.remove("hidden");
+  loginForm.classList.add("fade-in");
+});
 
+goSignup.addEventListener("click", (e) => {
+  e.preventDefault();
+  loginForm.classList.add("hidden");
+  signupForm.classList.remove("hidden");
+  signupForm.classList.add("fade-in");
+});
+
+// === SIGNUP HANDLER ===
+signupForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
   const firstname = document.getElementById("firstname").value.trim();
   const lastname = document.getElementById("lastname").value.trim();
   const email = document.getElementById("email").value.trim();
@@ -29,27 +47,43 @@ form.addEventListener("submit", async (e) => {
   try {
     const userCred = await createUserWithEmailAndPassword(auth, email, password);
 
-    // Send details to Netlify Function
-    const response = await fetch("/.netlify/functions/registerHandler", {
+    await fetch("/.netlify/functions/registerHandler", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        uid: userCred.user.uid,
-        firstname,
-        lastname,
-        email
-      })
+      body: JSON.stringify({ uid: userCred.user.uid, firstname, lastname, email })
     });
 
-    const result = await response.json();
-    alert(result.message);
-    form.reset();
+    alert("Signup successful! You can now log in.");
+    signupForm.reset();
+    goLogin.click();
 
   } catch (err) {
     alert("Signup failed: " + err.message);
   }
 });
 
+// === LOGIN HANDLER ===
+loginForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = document.getElementById("login-email").value.trim();
+  const password = document.getElementById("login-password").value.trim();
+
+  try {
+    const userCred = await signInWithEmailAndPassword(auth, email, password);
+
+    const res = await fetch("/.netlify/functions/loginHandler", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ uid: userCred.user.uid, email })
+    });
+
+    const result = await res.json();
+    alert(result.message || "Login successful!");
+
+  } catch (err) {
+    alert("Login failed: " + err.message);
+  }
+});
 
 
 /** // Import the functions you need from the SDKs you need

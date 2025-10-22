@@ -2,44 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Signup | It'sYourARZ</title>
+  <title>Login / Signup | It'sYourARZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="register.css">
   <script type="module" src="register.js"></script>
 </head>
 <body>
-  <form class="form" id="signup-form">
-    <p class="title">Register</p>
-    <p class="message">Signup now and get full access to our app.</p>
+  <div class="container">
+    <div class="form-container" id="form-container">
+      
+      <!-- SIGNUP FORM -->
+      <form class="form" id="signup-form">
+        <p class="title">Create Account</p>
+        <p class="message">Signup to get full access to our app.</p>
+        <div class="flex">
+          <label>
+            <input class="input" type="text" id="firstname" required>
+            <span>Firstname</span>
+          </label>
+          <label>
+            <input class="input" type="text" id="lastname" required>
+            <span>Lastname</span>
+          </label>
+        </div>
+        <label>
+          <input class="input" type="email" id="email" required>
+          <span>Email</span>
+        </label>
+        <label>
+          <input class="input" type="password" id="password" required>
+          <span>Password</span>
+        </label>
+        <label>
+          <input class="input" type="password" id="confirmPassword" required>
+          <span>Confirm Password</span>
+        </label>
+        <button class="submit" type="submit">Sign Up</button>
+        <p class="signin">Already have an account? <a href="#" id="go-login">Sign In</a></p>
+      </form>
 
-    <div class="flex">
-      <label>
-        <input class="input" type="text" id="firstname" required>
-        <span>Firstname</span>
-      </label>
+      <!-- LOGIN FORM -->
+      <form class="form hidden" id="login-form">
+        <p class="title">Welcome Back</p>
+        <p class="message">Login to continue your journey.</p>
+        <label>
+          <input class="input" type="email" id="login-email" required>
+          <span>Email</span>
+        </label>
+        <label>
+          <input class="input" type="password" id="login-password" required>
+          <span>Password</span>
+        </label>
+        <button class="submit" type="submit">Login</button>
+        <p class="signin">Don’t have an account? <a href="#" id="go-signup">Create One</a></p>
+      </form>
 
-      <label>
-        <input class="input" type="text" id="lastname" required>
-        <span>Lastname</span>
-      </label>
-    </div>  
-
-    <label>
-      <input class="input" type="email" id="email" required>
-      <span>Email</span>
-    </label> 
-        
-    <label>
-      <input class="input" type="password" id="password" required>
-      <span>Password</span>
-    </label>
-
-    <label>
-      <input class="input" type="password" id="confirmPassword" required>
-      <span>Confirm password</span>
-    </label>
-
-    <button class="submit" type="submit">Submit</button>
-    <p class="signin">Already have an account? <a href="#">Signin</a></p>
-  </form>
+    </div>
+  </div>
 </body>
 </html>
