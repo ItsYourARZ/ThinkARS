@@ -54,6 +54,7 @@ signupForm.addEventListener("submit", async (e) => {
     });
 
     alert("Signup successful! You can now log in.");
+    window.location.href = "dashboard.html";
     signupForm.reset();
     goLogin.click();
 
