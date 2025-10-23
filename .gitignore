@@ -1,3 +1,6 @@
 # Local Netlify folder
 .netlify\functions\node_module
 ./recaptcha.js
+reactjs/the-ars-team/src/setupTests.js
+reactjs/the-ars-team/src/reportWebVitals.js
+/reactjs

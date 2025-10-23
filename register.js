@@ -1,86 +1,91 @@
-// app.js
+import { auth } from "./firebase-config.js";
 import {
-  auth,
-  googleProvider,
-  githubProvider,
-  microsoftProvider
-} from "./firebase-config.js";
-
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  updateProfile
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+  OAuthProvider,
+  signInWithPopup
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-// === FORM TOGGLING ===
-const signupForm = document.getElementById("signup-form");
-const loginForm = document.getElementById("login-form");
-const formTitle = document.getElementById("formTitle");
+let confirmationResult;
 
-window.showLogin = () => {
-  signupForm.classList.add("hidden");
-  loginForm.classList.remove("hidden");
-  formTitle.textContent = "Sign In";
-};
+// 🔹 Setup Recaptcha
+window.recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
+  size: "normal",
+  callback: () => {
+    console.log("reCAPTCHA verified");
+  },
+  "expired-callback": () => {
+    alert("reCAPTCHA expired. Please refresh and try again.");
+  },
+});
 
-window.showSignup = () => {
-  loginForm.classList.add("hidden");
-  signupForm.classList.remove("hidden");
-  formTitle.textContent = "Create Account";
-};
+// 🔹 Send OTP
+document.getElementById("sendOtpBtn").addEventListener("click", async () => {
+  const phoneNumber = document.getElementById("phoneNumber").value;
+  const appVerifier = window.recaptchaVerifier;
 
-// === SIGNUP ===
-signupForm.addEventListener("submit", async e => {
-  e.preventDefault();
-  const firstname = document.getElementById("firstname").value.trim();
-  const lastname = document.getElementById("lastname").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
-  const confirmPassword = document.getElementById("confirmPassword").value.trim();
-
-  if (password !== confirmPassword) {
-    alert("Passwords do not match!");
+  if (!phoneNumber.startsWith("+")) {
+    alert("Please include country code (e.g. +91)");
     return;
   }
 
   try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    await updateProfile(userCredential.user, {
-      displayName: `${firstname} ${lastname}`
-    });
-    alert("Signup successful!");
-    window.location.href = "dashboard.html";
-  } catch (err) {
-    alert("Signup failed: " + err.message);
+    confirmationResult = await signInWithPhoneNumber(auth, phoneNumber, appVerifier);
+    document.getElementById("statusMsg").textContent = "✅ OTP sent to " + phoneNumber;
+  } catch (error) {
+    document.getElementById("statusMsg").textContent = "❌ Error sending OTP: " + error.message;
+    console.error(error);
   }
 });
 
-// === LOGIN ===
-loginForm.addEventListener("submit", async e => {
-  e.preventDefault();
-  const email = document.getElementById("login-email").value.trim();
-  const password = document.getElementById("login-password").value.trim();
+// 🔹 Verify OTP
+document.getElementById("verifyOtpBtn").addEventListener("click", async () => {
+  const code = document.getElementById("otp").value;
 
   try {
-    await signInWithEmailAndPassword(auth, email, password);
-    alert("Login successful!");
-    window.location.href = "dashboard.html";
-  } catch (err) {
-    alert("Login failed: " + err.message);
+    const result = await confirmationResult.confirm(code);
+    const user = result.user;
+    document.getElementById("statusMsg").textContent = `✅ Logged in as ${user.phoneNumber}`;
+  } catch (error) {
+    document.getElementById("statusMsg").textContent = "❌ Invalid OTP.";
+    console.error(error);
   }
 });
 
-// === OAUTH LOGIN ===
-const oauthLogin = async provider => {
+// 🔹 Google Login
+document.getElementById("googleLogin").addEventListener("click", async () => {
+  const provider = new GoogleAuthProvider();
   try {
-    await signInWithPopup(auth, provider);
-    window.location.href = "dashboard.html";
-  } catch (err) {
-    alert("OAuth Login failed: " + err.message);
+    const result = await signInWithPopup(auth, provider);
+    document.getElementById("statusMsg").textContent = `✅ Logged in as ${result.user.displayName}`;
+  } catch (error) {
+    document.getElementById("statusMsg").textContent = "❌ Google login failed.";
+    console.error(error);
   }
-};
+});
 
-document.getElementById("googleBtn").onclick = () => oauthLogin(googleProvider);
-document.getElementById("githubBtn").onclick = () => oauthLogin(githubProvider);
-document.getElementById("microsoftBtn").onclick = () => oauthLogin(microsoftProvider);
+// 🔹 GitHub Login
+document.getElementById("githubLogin").addEventListener("click", async () => {
+  const provider = new GithubAuthProvider();
+  try {
+    const result = await signInWithPopup(auth, provider);
+    document.getElementById("statusMsg").textContent = `✅ Logged in as ${result.user.displayName || result.user.email}`;
+  } catch (error) {
+    document.getElementById("statusMsg").textContent = "❌ GitHub login failed.";
+    console.error(error);
+  }
+});
+
+// 🔹 Microsoft Login
+document.getElementById("microsoftLogin").addEventListener("click", async () => {
+  const provider = new OAuthProvider("microsoft.com");
+  try {
+    const result = await signInWithPopup(auth, provider);
+    document.getElementById("statusMsg").textContent = `✅ Logged in as ${result.user.displayName}`;
+  } catch (error) {
+    document.getElementById("statusMsg").textContent = "❌ Microsoft login failed.";
+    console.error(error);
+  }
+});
