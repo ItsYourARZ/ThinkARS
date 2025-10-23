@@ -10,14 +10,6 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-::placeholder {
-  font-family: inherit;
-}
-
-.form button {
-  align-self: flex-end;
-}
-
 .flex-column > label {
   color: #151717;
   font-weight: 600;

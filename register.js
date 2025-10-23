@@ -1,58 +1,51 @@
 import { auth } from "./firebase-config.js";
 import {
-  RecaptchaVerifier,
-  signInWithPhoneNumber,
+  sendSignInLinkToEmail,
+  signInWithEmailLink,
+  isSignInWithEmailLink,
   GoogleAuthProvider,
   GithubAuthProvider,
   OAuthProvider,
   signInWithPopup
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-let confirmationResult;
+// 🔹 Action Code Settings (redirects user back after clicking email link)
+const actionCodeSettings = {
+  url: window.location.href, // redirect to same page after click
+  handleCodeInApp: true,
+};
 
-// 🔹 Setup Recaptcha
-window.recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
-  size: "normal",
-  callback: () => {
-    console.log("reCAPTCHA verified");
-  },
-  "expired-callback": () => {
-    alert("reCAPTCHA expired. Please refresh and try again.");
-  },
-});
-
-// 🔹 Send OTP
-document.getElementById("sendOtpBtn").addEventListener("click", async () => {
-  const phoneNumber = document.getElementById("phoneNumber").value;
-  const appVerifier = window.recaptchaVerifier;
-
-  if (!phoneNumber.startsWith("+")) {
-    alert("Please include country code (e.g. +91)");
-    return;
-  }
+// 🔹 Send Sign-In Link
+document.getElementById("sendLinkBtn").addEventListener("click", async () => {
+  const email = document.getElementById("email").value;
 
   try {
-    confirmationResult = await signInWithPhoneNumber(auth, phoneNumber, appVerifier);
-    document.getElementById("statusMsg").textContent = "✅ OTP sent to " + phoneNumber;
+    await sendSignInLinkToEmail(auth, email, actionCodeSettings);
+    window.localStorage.setItem("emailForSignIn", email);
+    document.getElementById("statusMsg").textContent = `✅ Sign-in link sent to ${email}. Check your inbox.`;
   } catch (error) {
-    document.getElementById("statusMsg").textContent = "❌ Error sending OTP: " + error.message;
+    document.getElementById("statusMsg").textContent = `❌ Error: ${error.message}`;
     console.error(error);
   }
 });
 
-// 🔹 Verify OTP
-document.getElementById("verifyOtpBtn").addEventListener("click", async () => {
-  const code = document.getElementById("otp").value;
+// 🔹 Complete Sign-In if user clicks link
+if (isSignInWithEmailLink(auth, window.location.href)) {
+  let email = window.localStorage.getItem("emailForSignIn");
 
-  try {
-    const result = await confirmationResult.confirm(code);
-    const user = result.user;
-    document.getElementById("statusMsg").textContent = `✅ Logged in as ${user.phoneNumber}`;
-  } catch (error) {
-    document.getElementById("statusMsg").textContent = "❌ Invalid OTP.";
-    console.error(error);
+  if (!email) {
+    email = window.prompt("Please provide your email for confirmation:");
   }
-});
+
+  signInWithEmailLink(auth, email, window.location.href)
+    .then((result) => {
+      document.getElementById("statusMsg").textContent = `✅ Logged in as ${result.user.email}`;
+      window.localStorage.removeItem("emailForSignIn");
+    })
+    .catch((error) => {
+      document.getElementById("statusMsg").textContent = `❌ Error verifying link: ${error.message}`;
+    });
+}
 
 // 🔹 Google Login
 document.getElementById("googleLogin").addEventListener("click", async () => {
@@ -62,7 +55,6 @@ document.getElementById("googleLogin").addEventListener("click", async () => {
     document.getElementById("statusMsg").textContent = `✅ Logged in as ${result.user.displayName}`;
   } catch (error) {
     document.getElementById("statusMsg").textContent = "❌ Google login failed.";
-    console.error(error);
   }
 });
 
@@ -74,7 +66,6 @@ document.getElementById("githubLogin").addEventListener("click", async () => {
     document.getElementById("statusMsg").textContent = `✅ Logged in as ${result.user.displayName || result.user.email}`;
   } catch (error) {
     document.getElementById("statusMsg").textContent = "❌ GitHub login failed.";
-    console.error(error);
   }
 });
 
@@ -86,6 +77,5 @@ document.getElementById("microsoftLogin").addEventListener("click", async () => 
     document.getElementById("statusMsg").textContent = `✅ Logged in as ${result.user.displayName}`;
   } catch (error) {
     document.getElementById("statusMsg").textContent = "❌ Microsoft login failed.";
-    console.error(error);
   }
 });
