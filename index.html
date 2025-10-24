@@ -628,8 +628,41 @@
   <script src="https://phrs-anirudh.netlify.app/static/assets/js/anirudh-rajesh-email.js"></script>
   <script src="https://phrs-anirudh.netlify.app/static/assets/js/anirudh-rajesh-about-script-about.js"></script>
   <script src="https://phrs-anirudh.netlify.app/static/assets/js/anirudh-rajesh-song-script-song.js"></script>
-  <script src="https://phrs-anirudh.netlify.app/static/assets/js/anirudh-rajesh-recaptcha-script-recaptcha.js"></script>
 
+  <script>
+    const status = document.getElementById("status");
+
+    grecaptcha.ready(async function () {
+      try {
+        const token = await grecaptcha.execute(
+          process.env.RECAPTCHA_SITE_KEY,
+          { action: "auto_verify" }
+        );
+
+        const response = await fetch(".netlify/functions/recaptcha-verify", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ token: token, action: "auto_verify" }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          status.textContent = result.message || "Verification successful!";
+          console.log("reCAPTCHA verification success:", result);
+        } else {
+          status.textContent = result.message || "Verification failed";
+          console.warn("reCAPTCHA verification failed:", result);
+        }
+      } catch (error) {
+        status.textContent = "Verification error";
+        console.error("Error verifying reCAPTCHA:", error);
+      }
+    });
+
+  </script>
 </body>
 
 </html>
