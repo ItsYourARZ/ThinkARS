@@ -112,6 +112,58 @@
     </div>
   </div>
 
+
+  <div id="visitor-badge">
+    <i class="fa-solid fa-eye"></i> <span id="visitor-count">0</span>
+  </div>
+
+  <style>
+    #visitor-badge {
+      position: fixed;
+      top: 12px;
+      right: 18px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      padding: 6px 12px;
+      border-radius: 10px;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    #visitor-badge:hover {
+      transform: scale(1.1);
+      opacity: 0.9;
+    }
+
+    #visitor-badge i {
+      color: rgb(85, 27, 177);
+    }
+  </style>
+
+  <script>
+    async function updateCounter() {
+      try {
+        const res = await fetch("/.netlify/functions/visitor-count");
+        const data = await res.json();
+        document.getElementById("visitor-count").textContent = data.visitors;
+      } catch (err) {
+        console.error("Failed to fetch visitor count:", err);
+      }
+    }
+
+    updateCounter();
+    setInterval(updateCounter, 5000); // Refresh every 5 seconds
+  </script> 
+
+
+
   <introduction class="introduction-content" style="height:35vh;">
     <main>
       <style>
