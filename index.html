@@ -636,7 +636,6 @@
 
       grecaptcha.ready(async function () {
         try {
-          // ✅ Use placeholder instead of process.env
           const token = await grecaptcha.execute("__RECAPTCHA_SITE_KEY__", {
             action: "auto_verify",
           });
