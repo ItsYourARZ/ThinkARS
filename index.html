@@ -632,37 +632,35 @@
 
 
   <script>
-    const status = document.getElementById("status");
+      const status = document.getElementById("status");
 
-    grecaptcha.ready(async function () {
-      try {
-        const token = await grecaptcha.execute(
-          process.env.RECAPTCHA_SITE_KEY,
-          { action: "auto_verify" }
-        );
+      grecaptcha.ready(async function () {
+        try {
+          // ✅ Use placeholder instead of process.env
+          const token = await grecaptcha.execute("__RECAPTCHA_SITE_KEY__", {
+            action: "auto_verify",
+          });
 
-        const response = await fetch(".netlify/functions/recaptcha-verify", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ token: token, action: "auto_verify" }),
-        });
+          const response = await fetch("/.netlify/functions/recaptcha-verify", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ token, action: "auto_verify" }),
+          });
 
-        const result = await response.json();
+          const result = await response.json();
 
-        if (response.ok) {
-          status.textContent = result.message || "Verification successful!";
-          console.log("reCAPTCHA verification success:", result);
-        } else {
-          status.textContent = result.message || "Verification failed";
-          console.warn("reCAPTCHA verification failed:", result);
+          if (response.ok) {
+            status.textContent = result.message || "Verification successful!";
+            console.log("reCAPTCHA verification success:", result);
+          } else {
+            status.textContent = result.message || "Verification failed";
+            console.warn("reCAPTCHA verification failed:", result);
+          }
+        } catch (error) {
+          status.textContent = "Verification error";
+          console.error("Error verifying reCAPTCHA:", error);
         }
-      } catch (error) {
-        status.textContent = "Verification error";
-        console.error("Error verifying reCAPTCHA:", error);
-      }
-    });
+      });
   </script>
 </body>
 
