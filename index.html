@@ -148,9 +148,12 @@
   </style>
 
   <script>
-    async function updateCounter() {
+    let hasIncremented = false;
+
+    async function updateCounter(increment = false) {
       try {
-        const res = await fetch("/.netlify/functions/visitor-count");
+        const url = "/.netlify/functions/visitor-count" + (increment ? "?increment=true" : "");
+        const res = await fetch(url);
         const data = await res.json();
         document.getElementById("visitor-count").textContent = data.visitors;
       } catch (err) {
@@ -158,8 +161,14 @@
       }
     }
 
-    updateCounter();
-    setInterval(updateCounter, 5000); // Refresh every 5 seconds
+    // Increment only once when the page first loads
+    if (!hasIncremented) {
+      updateCounter(true);
+      hasIncremented = true;
+    }
+
+    // Then refresh the display every 5 seconds without incrementing
+    setInterval(() => updateCounter(false), 5000);
   </script> 
 
 
