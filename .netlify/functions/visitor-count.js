@@ -1,24 +1,26 @@
-import fs from "fs";
-import path from "path";
+export async function handler(event) {
+  const fs = await import("fs");
+  const filePath = "/tmp/visitors.json";
 
-const filePath = path.join("/tmp", "visitors.json");
-
-export async function handler(event, context) {
-  // Initialize counter if not exists
-  if (!fs.existsSync(filePath)) {
-    fs.writeFileSync(filePath, JSON.stringify({ count: 0 }));
+  // Read or initialize count
+  let count = 0;
+  if (fs.existsSync(filePath)) {
+    const data = JSON.parse(fs.readFileSync(filePath));
+    count = data.count;
+  } else {
+    fs.writeFileSync(filePath, JSON.stringify({ count }));
   }
 
-  // Read current count
-  let data = JSON.parse(fs.readFileSync(filePath));
-  data.count++;
-
-  // Save new count
-  fs.writeFileSync(filePath, JSON.stringify(data));
+  // If this is a "new visit" (first page load), increment
+  const increment = event.queryStringParameters?.increment === "true";
+  if (increment) {
+    count++;
+    fs.writeFileSync(filePath, JSON.stringify({ count }));
+  }
 
   return {
     statusCode: 200,
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ visitors: data.count }),
+    body: JSON.stringify({ visitors: count }),
   };
 }
