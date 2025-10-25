@@ -604,7 +604,7 @@
 
         <div class="footer-bottom">
           <p class="copyright">
-            © 2025 ThinkARS. All Rights Reserved. | 
+            © 2024-25 The ARS Team. All Rights Reserved. | 
             <a href="./components/privacy_policy.html">Privacy Policy</a>
           </p>
           <div class="footer-links-bottom">
@@ -627,6 +627,8 @@
   <script src="https://phrs-anirudh.netlify.app/static/assets/js/anirudh-rajesh-email.js"></script>
   <script src="https://phrs-anirudh.netlify.app/static/assets/js/anirudh-rajesh-about-script-about.js"></script>
   <script src="https://phrs-anirudh.netlify.app/static/assets/js/anirudh-rajesh-song-script-song.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=__RECAPTCHA_SITE_KEY__"></script>
+
 
   <script>
     const status = document.getElementById("status");
@@ -660,17 +662,6 @@
         console.error("Error verifying reCAPTCHA:", error);
       }
     });
-
-
-    const RECAPTCHA_KEY = process.env.RECAPTCHA_SITE_KEY;
-
-    useEffect(() => {
-      const script = document.createElement("script");
-      script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_KEY}`;
-      script.async = true;
-      document.body.appendChild(script);
-    }, []);
-
   </script>
 </body>
 
