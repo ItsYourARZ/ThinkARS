@@ -147,29 +147,73 @@
     }
   </style>
 
-  <script>
-    let hasIncremented = false;
+  <script type="module">
+    // Import Firebase SDK (modular v9+)
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, setDoc, updateDoc, increment, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-    async function updateCounter(increment = false) {
-      try {
-        const url = "/.netlify/functions/visitor-count" + (increment ? "?increment=true" : "");
-        const res = await fetch(url);
-        const data = await res.json();
-        document.getElementById("visitor-count").textContent = data.visitors;
-      } catch (err) {
-        console.error("Failed to fetch visitor count:", err);
+    const firebaseConfig = {
+      apiKey: "AIzaSyB12XuPOjtJKoso0ezKRCT3pxzVAwH8F7s",
+      authDomain: "the-ars-team---counter.firebaseapp.com",
+      projectId: "the-ars-team---counter",
+      storageBucket: "the-ars-team---counter.firebasestorage.app",
+      messagingSenderId: "193540636912",
+      appId: "1:193540636912:web:266facaa7bcabfbf1d4235",
+      measurementId: "G-N50YTEL8JB"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const counterRef = doc(db, "visitors", "counter");
+
+    async function incrementVisitor() {
+      const snapshot = await getDoc(counterRef);
+
+      if (snapshot.exists()) {
+        await updateDoc(counterRef, { count: increment(1) });
+      } else {
+        await setDoc(counterRef, { count: 1 });
       }
     }
 
-    // Increment only once when the page first loads
-    if (!hasIncremented) {
-      updateCounter(true);
-      hasIncremented = true;
-    }
+    // Live update listener
+    onSnapshot(counterRef, (docSnap) => {
+      if (docSnap.exists()) {
+        document.getElementById("visitor-count").textContent = docSnap.data().count;
+      }
+    });
 
-    // Then refresh the display every 5 seconds without incrementing
-    setInterval(() => updateCounter(false), 5000);
-  </script> 
+    incrementVisitor();
+  </script>
+
+
+<!-- 
+  <script>
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyB12XuPOjtJKoso0ezKRCT3pxzVAwH8F7s",
+      authDomain: "the-ars-team---counter.firebaseapp.com",
+      projectId: "the-ars-team---counter",
+      storageBucket: "the-ars-team---counter.firebasestorage.app",
+      messagingSenderId: "193540636912",
+      appId: "1:193540636912:web:266facaa7bcabfbf1d4235",
+      measurementId: "G-N50YTEL8JB"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+-->
 
 
 
