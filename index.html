@@ -151,26 +151,14 @@
   </style>
 
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getFirestore, doc, getDoc, setDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-    import { firebaseConfig } from "./firebase-config.js";
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
     async function updateVisitorCount() {
-      const counterRef = doc(db, "visits", "counter");
-      const snap = await getDoc(counterRef);
-
-      if (snap.exists()) {
-        await updateDoc(counterRef, { count: increment(1) });
-      } else {
-        await setDoc(counterRef, { count: 1 });
+      try {
+        const res = await fetch("/.netlify/functions/updateVisitor");
+        const data = await res.json();
+        document.getElementById("visitor-count").innerText = data.count;
+      } catch (err) {
+        console.error("Visitor count error:", err);
       }
-
-      const updated = await getDoc(counterRef);
-      document.getElementById("visitor-count").innerText = updated.data().count;
     }
 
     updateVisitorCount();
