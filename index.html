@@ -148,44 +148,30 @@
   </style>
 
   <script type="module">
-    // Import Firebase SDK (modular v9+)
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getFirestore, doc, getDoc, setDoc, updateDoc, increment, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    import { getFirestore, doc, getDoc, setDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyB12XuPOjtJKoso0ezKRCT3pxzVAwH8F7s",
-      authDomain: "the-ars-team---counter.firebaseapp.com",
-      projectId: "the-ars-team---counter",
-      storageBucket: "the-ars-team---counter.firebasestorage.app",
-      messagingSenderId: "193540636912",
-      appId: "1:193540636912:web:266facaa7bcabfbf1d4235",
-      measurementId: "G-N50YTEL8JB"
-    };
+    import { firebaseConfig } from "./firebase-config.js";
 
-    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    const counterRef = doc(db, "visitors", "counter");
+    async function updateVisitorCount() {
+      const counterRef = doc(db, "visits", "counter");
+      const snap = await getDoc(counterRef);
 
-    async function incrementVisitor() {
-      const snapshot = await getDoc(counterRef);
-
-      if (snapshot.exists()) {
+      if (snap.exists()) {
         await updateDoc(counterRef, { count: increment(1) });
       } else {
         await setDoc(counterRef, { count: 1 });
       }
+
+      const updated = await getDoc(counterRef);
+      document.getElementById("visitor-count").innerText = updated.data().count;
     }
 
-    // Live update listener
-    onSnapshot(counterRef, (docSnap) => {
-      if (docSnap.exists()) {
-        document.getElementById("visitor-count").textContent = docSnap.data().count;
-      }
-    });
+    updateVisitorCount();
 
-    incrementVisitor();
   </script>
 
 
