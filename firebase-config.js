@@ -1,9 +1,20 @@
-export const firebaseConfig = {
-apiKey: import.meta.env.FIREBASE_COUNTER_API,
-authDomain: import.meta.env.FIREBADE_COUNTER_AUTHDOMAIN,
-projectId: import.meta.env.FIREBADE_COUNTER_PROJECTID,
-storageBucket: import.meta.env.FIREBASE_COUNTER_STORAGEBUCKET,
-messagingSenderId: import.meta.env.FIREBASE_COUNTER_SENDER_ID,
-appId: import.meta.env.FIREBASE_COUNTER_APP_ID,
-measurementId: import.meta.env.FIREBASE_COUNTER_MEASUREMENTID,
+// firebase-config.js
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// Firestore instance
+const db = getFirestore(app);
+
+export { app, db };
