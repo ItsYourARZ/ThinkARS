@@ -1,37 +1,41 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, doc, getDoc, setDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+// netlify/functions/updateVisitor.js
+import admin from "firebase-admin";
 
+// Initialize Firebase Admin SDK once
+if (!admin.apps.length) {
+  admin.initializeApp({
+    credential: admin.credential.cert({
+      projectId: process.env.FIREBASE_PROJECT_ID,
+      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+      privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n")
+    })
+  });
+}
 
-const firebaseConfig = {
-  apiKey: process.env.VITE_FIREBASE_API_KEY,
-  authDomain: process.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.VITE_FIREBASE_APP_ID
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const db = admin.firestore();
 
 export async function handler(event, context) {
   try {
-    const counterRef = doc(db, "visits", "counter");
-    const snap = await getDoc(counterRef);
+    const counterRef = db.collection("visits").doc("counter");
+    const snap = await counterRef.get();
 
-    if (snap.exists()) {
-      await updateDoc(counterRef, { count: increment(1) });
+    if (snap.exists) {
+      await counterRef.update({ count: admin.firestore.FieldValue.increment(1) });
     } else {
-      await setDoc(counterRef, { count: 1 });
+      await counterRef.set({ count: 1 });
     }
 
-    const updated = await getDoc(counterRef);
+    const updated = await counterRef.get();
 
     return {
       statusCode: 200,
       body: JSON.stringify({ count: updated.data().count })
     };
   } catch (err) {
-    return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
+    console.error(err);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: err.message })
+    };
   }
 }
