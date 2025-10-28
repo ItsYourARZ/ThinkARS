@@ -167,25 +167,33 @@
 
   <script>
     function toggleInfo(e) {
-    let t=e.closest(".run");
-    t.classList.toggle("active")
-  }
+      let t = e.closest(".run");
+      t.classList.toggle("active");
+    }
 
-  document.addEventListener("DOMContentLoaded", function() {
-      let e=document.querySelectorAll(".fade-in"), t=new IntersectionObserver(e=> {
-          e.forEach(e=> {
-              e.isIntersecting&&(e.target.classList.add("show"), e.target.style.animation="fadeUp 1s ease", t.unobserve(e.target))
-            })
-        }
+    document.addEventListener("DOMContentLoaded", function () {
+      let elements = document.querySelectorAll(".fade-in");
 
-        , {
-        threshold:.2
+      let observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+              entry.target.style.animation = "fadeUp 1s ease";
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
 
-      }); e.forEach(e=> {
-        t.observe(e)
-      }), document.body.style.opacity=1
+      elements.forEach((el) => {
+        observer.observe(el);
+      });
 
-  }),
+      document.body.style.opacity = 1;
+    });
+
   </script>
 
 
