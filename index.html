@@ -171,13 +171,6 @@
     t.classList.toggle("active")
   }
 
-  function fitTextToBox(e, t=50) {
-    let n=t,
-    l=e.parentElement;
-    for(e.style.fontSize=n+"1.5px"; (e.scrollWidth>l.clientWidth||e.scrollHeight>l.clientHeight)&&n>5; )n--,
-    e.style.fontSize=n+"1.5px"
-  }
-
   document.addEventListener("DOMContentLoaded", function() {
       let e=document.querySelectorAll(".fade-in"), t=new IntersectionObserver(e=> {
           e.forEach(e=> {
@@ -231,7 +224,7 @@
         }
 
         body{
-          background: linear-gradient(to bottom, #000000, #6f6f6f);
+          background: linear-gradient(to bottom, #000000, #222222);
         }
 
         .run{
